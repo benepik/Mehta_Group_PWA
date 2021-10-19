@@ -1,0 +1,75 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Detail</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-row>
+    <ion-col [size]="12" sizexs="12" size-md="8" size-lg="8" push-md="2" push-lg="2" class="whiteCol ion-no-padding">
+      <ion-row>
+        <ion-col [size]="12" sizexs="12" size-md="6" size-lg="6">
+          <ion-row>
+            <ion-col [size]="12" sizexs="12" size-md="12" class="brd">
+              <!-- (click)=gotoitemdetail(imgdata) -->
+              <div class="borderDiv">
+                <ion-row class="ion-text-center">
+                  <ion-col [size]="2" size-sm="2" size-md="1" size-lg="1" class="padd autoMargin">
+                    <span (click)="privslide()">
+                      <ion-icon name="chevron-back-outline"></ion-icon>
+                    </span>
+                  </ion-col>
+                  <ion-col [size]="8" size-sm="8" size-md="10" size-lg="10" class="padd">
+                    <ion-slides #slidesRef [options]="postSlider" pager="true">
+                      <ion-slide *ngFor = "let img of temparray?.media_arr">
+                        <ion-row class="fullFidth">
+                          <ion-col [size]="12" class="ion-no-padding">
+                            <img [src]="img?.good_image"  onerror="this.src='assets/watermark/watermark.png'" class="imgcss">
+                          </ion-col>
+                        </ion-row>
+                        <!-- </div> -->
+                      </ion-slide>
+                    </ion-slides>
+                  </ion-col>
+                  <ion-col [size]="2" size-sm="2" size-md="1" size-lg="1" class="padd autoMargin">
+                    <span (click)="nextslide()">
+                      <ion-icon name="chevron-forward-outline"></ion-icon>
+                    </span>
+                  </ion-col>
+                </ion-row>
+              </div>
+            </ion-col>
+          </ion-row>
+          <div class="cntr" *ngIf = "tempButt?.show_buy_button == true">
+            <ion-button tappable class="ionic_btn" (click)="buyitem()">{{tempButt?.buy_btn_text}}</ion-button>
+          </div>
+        </ion-col>
+        <ion-col [size]="12" sizexs="12" size-md="6" size-lg="6">
+          <ion-row>
+            <ion-col [size]="12" sizexs="12" size-md="12" size-lg="12">
+              <p class="para">{{temparray?.goods_name}}</p>
+              <p class="para">{{temparray?.product_points}}</p>
+              <div class="para1" [innerHTML]="temparray?.description"></div>
+            </ion-col>
+          </ion-row>
+          <ion-row [ngClass]="item?.show_div ? 'active' : '' " *ngFor="let item of temparray?.display_arr; let i = index" class="boxS" (click)="showArrow(item, i)">
+            <ion-col [size]="10" size-sm="10" size-md="10" size-lg="10">
+              <p class="SettingTitle  ion-no-margin txtcolor" >{{item?.key}}</p>
+            </ion-col>
+            <ion-col [size]="2" size-sm="2" size-md="2" size-lg="2" class="autoMargin textend" tappable>
+              <ion-icon [name]="item?.show_div? 'chevron-up-outline' :'chevron-down-outline'"></ion-icon>
+            </ion-col>
+            <ion-row *ngIf="item?.show_div">
+              <ion-col>
+                <p class="discriptionDiv ion-no-margin" [innerHTML]="item?.value"></p>
+              </ion-col>
+            </ion-row>
+          </ion-row>
+        </ion-col>
+      </ion-row>
+    </ion-col>
+  </ion-row>
+</ion-content>

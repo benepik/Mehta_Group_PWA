@@ -1,0 +1,58 @@
+
+
+<ion-content [ngClass]="{'content-bg':  platform.width()>740}">
+  <ion-row class="ion-justify-content-center abc">
+    <ion-col size-xl="5" size-md="6" size-xs="12" [ngClass]="{'boundary1':  platform.width()>740}">
+     <div class="seg">
+       <ion-row>
+         <ion-col>
+           <h5>Rejected List</h5>
+         </ion-col>
+       </ion-row>
+       <ion-grid>
+        <hr>
+         <ion-row>
+           <ion-col size="3">
+         
+              <div class="relativeDiv">
+                <img *ngIf="userImg=='' " class="profile_image centerData" src="assets/icon/Group 14078.png"/>
+                <img *ngIf="userImg!='' "  class="profile_image centerData dottedBorder userImageUpload" [src]="userImg"/>
+                
+            </div>
+           </ion-col>
+           <ion-col>
+             <p class="name">Rahul</p>
+             <p class="phone">7879879777</p>
+             <p class="phone">status: pending</p>
+             <p class="phone">Request Type: New Request</p>
+           </ion-col>
+           <ion-col class="but-div" size="2">
+             <ion-button class="view butt" (click)="view()">View</ion-button>
+           </ion-col>
+         </ion-row>
+         <hr>
+         <ion-row>
+          <ion-col size="3">
+        
+             <div class="relativeDiv">
+               <img *ngIf="userImg=='' " class="profile_image centerData" src="assets/icon/Group 14078.png"/>
+               <img *ngIf="userImg!='' "  class="profile_image centerData dottedBorder userImageUpload" [src]="userImg"/>
+               
+           </div>
+          </ion-col>
+          <ion-col>
+            <p class="name">Rahul</p>
+            <p class="phone">7879879777</p>
+            <p class="phone">status: pending</p>
+            <p class="phone">Request Type: New Request</p>
+          </ion-col>
+          <ion-col class="but-div" size="2">
+            <ion-button class="view butt" (click)="view()">View</ion-button>
+          </ion-col>
+        </ion-row>
+        <hr>
+       </ion-grid>
+     </div>
+    </ion-col>
+  </ion-row>
+</ion-content>

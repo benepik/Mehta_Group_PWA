@@ -1,0 +1,80 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>Redeem</ion-title>
+        <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+    <ion-row>
+        <ion-col [size]="12" sizexs="12" size-md="8" size-lg="8" push-md="2" push-lg="2" class="whiteCol ion-no-padding">
+            <ion-row  *ngIf="addres?.data?.title!=''">
+                <ion-col [size]="12" sizexs="12" size-md="12" size-lg="12" class="brbottom">
+                    <p class="para">{{addres?.data?.title}}</p>
+                </ion-col>
+            </ion-row>
+            <ion-row *ngFor ="let item of addres?.data?.data">
+                <ion-col [size]="12" sizexs="12" size-md="12" size-lg="12" class="brbottom" *ngIf= "item?.is_primary == '1'">
+                    <p class="para1">{{item?.address_line1}}</p>
+                    <p class="para1">{{item?.address_line2}}</p>
+                    <p class="para1">{{item?.city}}-{{item?.pin_code}}</p>
+                    <br>
+                 
+                </ion-col>
+            </ion-row>
+            <br>
+            <div class="ion-text-center" *ngIf = "addres?.data?.show_btn == true">
+                <ion-button class="ionic_btnic" (click)="changeAddress()">{{addres?.data?.btn_text}}</ion-button>
+                <br>
+            </div>
+            
+            <ion-row *ngIf="cart_details?.length>0">
+                <ion-col [size]="12" size-xs="12" size-md="12" size-lg="12" class="brbottom">
+                    <p class="para">Item purchased</p>
+                </ion-col>
+            </ion-row>
+            <ion-row *ngIf ="msg">
+                <ion-col class="ion-text-center">
+                    <h5 style="color: #B01D22;" class="no-margin">{{msg}}</h5>
+                </ion-col>
+            </ion-row>
+            <ion-row class="brbottom" *ngFor = "let item of cart_details">
+                <!-- {{cart_details}} -->
+                <ion-col *ngIf="msg==''" [size]="3" sizexs="3" size-md="3" size-lg="3">
+                    <img [src]="item?.good_image" onerror="this.src='assets/watermark/watermark.png'" class="imgcss">
+                </ion-col>
+                <ion-col *ngIf="msg==''" [size]="5" sizexs="5" size-md="5" size-lg="5">
+                    <p class="para1">{{item?.goods_name}}</p>
+                    <p class="para1">{{item?.good_point}}</p>
+                    <!-- <p class="para2">Amount 6000</p> -->
+                </ion-col>
+                <ion-col *ngIf="msg==''" [size]="4" sizexs="4" size-md="4" size-lg="4" class="mrauto">
+                    <ion-row >
+                        <ion-col [size]="3" sizexs="3" size-md="3" size-lg="3" class="txtend">
+                            <div>
+                                <ion-icon style="color: red;" name="remove-outline" (click)=minus(item)></ion-icon>
+                            </div>
+                        </ion-col>
+                        <ion-col [size]="6" sizexs="6" size-md="3" size-lg="3" class="ion-text-center">
+                            <span class="numcss">{{item.quantity}}</span>
+                        </ion-col>
+                        <ion-col [size]="3" sizexs="3" size-md="3" size-lg="3">
+                            <div>
+                                <ion-icon style="color: red;" name="add-outline" tappable (click)="plus(item)"></ion-icon>
+                            </div>
+                        </ion-col>
+                    </ion-row>
+                </ion-col>
+            </ion-row>
+            <br>
+            <br>
+            <div class="ion-text-center">
+                <ion-button class="ionic_btn" *ngIf="showDonebutt ==1 && !msg" (click)="doneUpdate()">Done</ion-button>
+                <ion-button class="ionic_btn"  *ngIf="showDonebutt ==0 && !msg" (click)="modalcall()">Buy</ion-button>
+            </div>
+            <br>
+        </ion-col>
+    </ion-row>
+</ion-content>

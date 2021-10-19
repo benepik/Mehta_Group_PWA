@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "740701701459",
+    "project_id": "mehta-groups",
+    "storage_bucket": "mehta-groups.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:740701701459:android:a8221f5c8469a8e3020da6",
+        "android_client_info": {
+          "package_name": "com.benepik.mehta"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "740701701459-3sf84a77mbon79pn52k12k3gth1pabqk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCt6BIJP8xJ2Tektw4WYLj8nnIO8Y-Z7Zk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "740701701459-3sf84a77mbon79pn52k12k3gth1pabqk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{orderData?.page_title}}</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button tappable (click)="close()"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-row >
+    <ion-col [size]="12" size-sm="12" size-md="8" size-lg="8" push-lg="2" push-md="2" 
+    class="whiteCol whit_Pad whit_pad_top">
+    <ion-row>
+      <ion-col [size]="12" >
+        <p class="ion-no-margin headerColor" [innerHTML]="orderData?.order_str"></p>
+      </ion-col>
+      <ion-col [size]="12" >
+        <p class="ion-no-margin boldPDiv" [innerHTML]="orderData?.total_point_str"></p>
+      </ion-col>
+      <ion-col [size]="12" class="ion-text-right" *ngFor="let id of orderData?.Tracking_details">
+        <!-- <p class="ion-no-margin boldPDiv" [innerHTML]="id?.key&nbsp;id?.value"></p> -->
+        <p class="ion-no-margin boldPDiv">{{id?.key}}&nbsp;{{id?.value}}</p>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngFor="let item of orderData?.data">
+      <ion-col>
+        <p class="headerColor">{{item?.key}}</p>
+        <div class="borderDiv orderBgDiv ion-padding">
+          <ion-row *ngFor="let val of item?.data">
+            <ion-col [size]="5" size-sm="5" size-md="5" size-lg="5">
+              <p class="ion-no-margin fontPDiv">{{val?.key}}</p>
+            </ion-col>
+            <ion-col [size]="1" size-sm="1" size-md="1" size-lg="1">:</ion-col>
+            <ion-col [size]="6" size-sm="6" size-md="6" size-lg="6">
+              <p *ngIf="val?.media_type==0" class="ion-no-margin fontPDiv borderRadius ion-text-center" [style.color]="val?.color_code" 
+              [style.background-color]="val?.circle_color">{{val?.value}}</p>
+              <img *ngIf="val?.media_type==1" class="imageorder" [src]="val?.value"/>
+            </ion-col>
+          </ion-row>
+        </div>
+
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col *ngFor="let item of orderData?.footer_data">
+        <ion-button *ngIf="item.btn_applicable==true" color="danger ionic_btn btnDiv" 
+        tappable (click)="acceptFun(item)">{{item?.btn_text}}</ion-button>
+      </ion-col>
+    </ion-row>
+    <div *ngIf="errorMessage!=''"><p class="ion-text-center">{{errorMessage}}</p></div>
+    </ion-col>
+    </ion-row>
+
+</ion-content>
+

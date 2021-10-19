@@ -1,0 +1,65 @@
+
+.col{
+    text-align: end;
+}
+.para{
+    font-weight: bold;
+    color: #B01D22;
+    
+}
+.para1{
+     text-align: end;
+     color: #B01D22;
+ }
+ .profile{
+    width: 140px;
+    height: 150px;
+    padding: 15px;
+    position: relative;
+    border: dotted;
+    border-radius: 71px;
+    border-color: #B01D22;
+ }
+//  .ionic_btn{
+//     text-transform: capitalize;
+//     --border-radius: 20px;
+//     width: 122px;
+//     font-size: 13px;
+//     --background: #B01D22;
+//     height: 32px;
+// }
+
+.banner_bg {
+    // top: 0;
+    margin-top: -66px;
+     left: 0;
+     width: 100%;
+     display: block;
+ }
+ .profile_image{
+    width: 150px;
+ }
+ .simple{
+    padding: 0px;
+    padding-left:12px;
+ }
+ .simple1{
+   padding: 0px;
+   padding-right:8px;
+ }
+ .plushIcon{
+
+    margin-top: -21px;
+    color: #b01d22;
+    font-size: 3rem;
+    border: dotted;
+    border-radius: 30px;
+ }
+ .userImageUpload{
+
+    border-radius: 50%;
+    height: 150px;
+    border: 3px dotted #b01d22;
+    object-fit: cover;
+ }
+ .hiddenDiv{display: none !important;}

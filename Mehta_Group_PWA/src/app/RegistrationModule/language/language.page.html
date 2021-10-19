@@ -1,0 +1,63 @@
+
+
+<ion-content [ngClass]="{'content-bg':  platform.width()>740}">
+ 
+  <ion-row class="ion-justify-content-center abc">
+    <ion-col size-xl="4" size-md="8" size-xs="12" [ngClass]="{'boundary':  platform.width()>740}" >
+    <ion-grid>
+      <ion-row>
+        <ion-col >
+          <img src = "assets/icon/logo.svg" style = "width: 100px;">
+        </ion-col>
+        <ion-col class="col">
+          <img src = "assets/icon/abc.png" style = "width: 100px; height: 50px; text-align: right;">
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <br><br>
+  <div >
+    <ion-row>
+      <ion-col>
+        <h5>Select Language</h5>
+      </ion-col>
+    </ion-row>
+  </div>
+
+
+  <ion-grid>
+    <ion-row class="ion-justify-content-center">
+      <ion-col size-xl="4" size-md="6" size-xs="12" class="ion-align-self-start effect" >
+        <div class="centered ion-text-center" >
+          <label><span>English</span></label>
+        </div>
+      </ion-col>
+      
+      <ion-col size-xl="4" size-md="6" size-xs="12" class="ion-align-self-center effect" >
+        <div class="centered ion-text-center">
+          <label><span>हिन्दी</span></label>
+        </div>
+      </ion-col>
+      <ion-col size-xl="4" size-md="6" size-xs="12" class="ion-align-self-end effect">
+        <div class="centered ion-text-center">
+          <label><span>ગુજરાતી</span></label>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  
+
+
+  <br><br>
+  <br>
+  <div class = "butt1" [ngClass]="{'banner':  platform.width()<740}">
+    <ion-button (click) ="mobile()" class="ionic_btn effect" >Save</ion-button>
+ 
+ 
+    <img src = "assets/icon/Design 1.png"  class="banner_bg">
+    </div>
+  </ion-col>
+  </ion-row>
+ 
+</ion-content>
+
+

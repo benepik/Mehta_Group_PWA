@@ -1,0 +1,116 @@
+<!-- <ion-header [translucent]="true">
+  
+</ion-header> -->
+
+<ion-content [fullscreen]="true" [ngClass]="{'ion-padding': changeContainerClass==true}">
+  <div class="container">
+    <ion-row >
+      <ion-col [size]="12">
+        <ion-row>
+          <ion-col [size]="12"  size-sm="12" size-md="6" size-lg="6" [ngClass]="{'increasePadding': changeContainerClass==true}">
+            <br *ngIf="platform.width()>740">
+            <div class="differentPagerDiv">
+              <ion-slides *ngIf="promotedfeedData" pager="true" [options]="slideOpts" 
+              class="promoted boxShodowDiv borderRediDiv ">
+                <ion-slide *ngFor="let item of promotedfeedData">       
+                <div class="relativeDiv1" tappable (click)=" gotoCommnunication(item)">
+                  <img  class=" sliderImage borderRediDiv" [src]="item?.banner_image" onerror="this.src='assets/watermark/watermark.png'"> 
+                  <div [style.background-image]="'url(' + item?.banner_image + ')'" class="blurDiv"></div>
+                </div>
+                </ion-slide>
+              </ion-slides>
+            </div>
+   
+            <br *ngIf="Reedem">
+            <br *ngIf="platform.width()>740">
+            <ion-row *ngIf="userDetail">
+              <ion-col [size]="12" size-sm="12" size-md="12" size-lg="12">
+                <p class=" titleDiv ion-no-margin ion-margin-top">{{userDetail?.title}}</p>
+              </ion-col>
+              <ion-col [size]="6" size-sm="4" size-md="3" size-lg="3" *ngFor="let item of userDetail?.cards">
+                <div class="userDetailsDiv borderRediDiv">
+                  <img class="userDetailImage" [src]="item?.icon" onerror="this.src='assets/watermark/watermark.png'">
+                  <div class="userDiv" (click)="gotoCustomer(item)">
+                    <p class="userTypeP ion-text-center ion-no-margin">{{item?.type}}</p>
+                  </div>               
+                </div>
+              
+              </ion-col>
+            </ion-row>
+            <ion-row *ngIf="Reedem" >
+              <ion-col [size]="12" size-sm="12" size-md="12" size-lg="12" class="relativeDiv boxShodowDiv borderRediDiv">
+                <img [src]="Reedem?.redeem_background" onerror="this.src='assets/watermark/watermark.png'" class="reedemImage">
+                <div class="ion-padding-horizontal">
+                  <p class="totalAmmountDiv TotalE">{{Reedem?.title}}</p>
+                  <h3 class="totalAmmountDiv ion-no-margin TotalR"><b>{{Reedem?.total_points}}</b></h3>
+                  <ion-button size="small" class="Reedeembtn" color="danger" shape="round" tappable (click)="redeemDetails('self')">
+                  <img [src]="Reedem?.redeem_icon" onerror="this.src='assets/watermark/watermark.png'" 
+                  class="reedeemIcon">&nbsp;<p class="totalAmmountDiv">{{Reedem?.redeem_text}}</p></ion-button>
+                  <ion-row class="redeem_point">
+                    <ion-col [size]="12" size-sm="12" size-md="5" size-lg="5" class="ion-text-left">
+                      <p class="avalpointsColor " [ngClass]="{'ion-no-margin': platform.is('mobile')}">{{Reedem?.available_point_text}} :{{Reedem?.available_points}}</p>
+                    </ion-col>
+                    <ion-col [size]="12" size-sm="12" size-md="7" size-lg="7" class="ion-text-left">
+                      <p class="avalpointsColor" [ngClass]="{'ion-no-margin': platform.is('mobile')}">{{Reedem?.points_redeem_text}}  {{Reedem?.points_redeemed}}</p>
+                    </ion-col>
+                  </ion-row>
+                </div>
+
+              </ion-col>
+            </ion-row>
+
+          </ion-col>
+
+
+
+
+
+          <ion-col [size]="12"  size-sm="12" size-md="6" size-lg="6" [ngClass]="{increasePadding: changeContainerClass==true}">
+          <ion-row >
+            <ion-col [size]="8" size-sm="8" size-md="8" size-lg="8" class="ion-no-padding">
+              <p class=" titleDiv ">{{QuickAccess?.title}}</p>
+            </ion-col>
+            <ion-col hidden [size]="4" size-sm="4" size-md="4" size-lg="4" class="ion-no-padding">
+              <p class="ViewMoreBtn ion-text-right ">{{QuickAccess?.buttonText}}</p>
+            </ion-col>
+            <ion-row  class="whiteCol borderRediDiv widthtotalDiv " >
+              <ion-col class="quickAccessImg_col" [size]="6" size-sm="3" size-md="3" size-lg="3" *ngFor="let item of QuickAccess?.menu_list">
+              <div class=doubleBorder tappable (click)="gotoQuickAccess(item)">
+                <img class="quickAccessImg" [src]="item?.icon" onerror="this.src='assets/watermark/watermark.png'">
+                <p class="quickAccessP ion-text-center">{{item?.name}}</p> 
+              </div>
+              
+            </ion-col>
+            </ion-row>
+
+
+          </ion-row>
+          <ion-row>
+            <ion-col [size]="8" size-sm="8" size-md="8" size-lg="8">
+              <p class=" titleDiv  marginTop ">{{Communication?.title}}</p>
+            </ion-col>
+            <ion-col [size]="4" size-sm="4" size-md="4" size-lg="4">
+              <p class="ViewMoreBtn ion-text-right ion-no-margin marginTop" tappable (click)="ViewMore()">{{Communication?.buttonText}}</p>
+            </ion-col>
+            </ion-row>
+            <div class="padd10 whiteCol borderRediDiv ">
+              <ion-row  class="quick borderBtmDiv widthtotalDiv" *ngFor="let item of Communication?.list">
+                <ion-col [size]="4" size-sm="2" size-md="3" size-lg="2"  class="autoMargin ion-no-padding ">
+                  <img class="communicationImage" [src]="item?.cover_image" onerror="this.src='assets/watermark/watermark.png'">                
+              </ion-col>
+              <ion-col class="autopadd" [size]="8" size-sm="10" size-md="9" size-lg="10" tappable (click)="gotoCommnunication(item)">
+                <p class="titleP ion-no-margin">{{item?.title}}</p>
+                <p class="dateP ">{{item?.start_date}}</p>
+              </ion-col>
+              </ion-row>
+            </div>
+        
+
+          </ion-col>
+        </ion-row>
+
+      </ion-col>
+    </ion-row>
+  </div>
+<!-- <app-spinner></app-spinner> -->
+</ion-content>

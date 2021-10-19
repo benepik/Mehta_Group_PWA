@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button (click)="close()"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{server?.header_title}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-row>
+    <ion-col [size]="12" sizexs="12" size-md="8" size-lg="8" push-md="2" push-lg="2" class="whiteCol ion-no-padding">
+      <div class="ion-padding">
+      <ion-row class="header-row">
+          <ion-col class="co_ro" size="1">
+            <ion-text>S.no</ion-text>
+          </ion-col>
+          <ion-col class="co_ro" size="3">
+            <ion-text>Officer</ion-text>
+          </ion-col>
+          <ion-col class="co_ro" size="3">
+            <ion-text>Dealer</ion-text>
+          </ion-col>
+          <ion-col class="co_ro" size="3">
+            <ion-text>Customer</ion-text>
+          </ion-col>
+          <ion-col class="co_ro" size="2">
+            <ion-text>Details</ion-text>
+          </ion-col>
+        </ion-row>
+        <ion-row *ngFor="let item of serverData; let i = index;" [ngClass]="{'pinkBg': i%2==0}">
+          <ion-col class="co_ro" size="1">
+            <ion-text>{{i+1}}</ion-text>
+          </ion-col>
+          <ion-col class="co_ro" size="3">
+            <ion-text>{{item?.full_name}}</ion-text>
+          </ion-col>
+          <ion-col class="co_ro" size="3">
+            <ion-text>{{item?.total_dealers}}</ion-text>
+          </ion-col>
+          <ion-col class="co_ro"  size="3">
+            <ion-text>{{item?.total_customers}}</ion-text>
+          </ion-col>
+          <ion-col class="co_ro"  size="2">
+            <ion-button class = "act1" (click)="view(item)">view</ion-button>
+          </ion-col>
+        </ion-row>
+        </div>
+      </ion-col>
+      </ion-row>
+
+</ion-content>

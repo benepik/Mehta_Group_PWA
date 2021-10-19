@@ -1,0 +1,57 @@
+<ion-content [ngClass]="{'content-bg':  platform.width()<740}">
+  <ion-row class="ion-justify-content-center">
+    <ion-col size-xl="6" size-md="8" size-xs="12" [ngClass]="{'boundary1':  platform.width()>740}">
+    <ion-grid>
+      <ion-row>
+        <ion-col >
+          <img src = "assets/icon/Bandhan Logo.png" style = "width: 150px;">
+        </ion-col>
+        <ion-col class="col">
+          <img src = "assets/icon/abc.png" style = "width: 130px;  text-align: right;">
+        </ion-col>
+      </ion-row>
+      <br>
+    </ion-grid>
+    <ion-row>
+      <ion-col class="simple" size="8">
+        <p class="para">Upload Profile Picture</p>
+      </ion-col>
+      <ion-col class="simple1" size="4"> 
+        <p class="para1" (click)="skip()">Skip</p>
+      </ion-col>
+    </ion-row>
+    <br>
+    <br>
+    <ion-row>
+      <ion-col [size]="12">
+        <div class="relativeDiv">
+        <img *ngIf="userImg=='' " class="profile_image centerData" src="assets/icon/Group 14078.png"/>
+        <img *ngIf="userImg!='' " class="profile_image centerData dottedBorder userImageUpload" [src]="userImg"/>
+        <!-- <ion-icon name="add-circle" class="plushIcon centerData" *ngIf="platform?.is('cordova')" (click) = "selectImage('img')"></ion-icon> -->
+        <ion-icon name="add-circle" class="plushIcon centerData" tappable (click) = "openSelectImageOpt('img')"></ion-icon>
+        </div>
+      </ion-col>
+      
+    </ion-row>
+    <br>
+    <br>
+   <br>
+   <br>
+
+   
+    <div [ngClass]="{'banner': platform.width()<740}">
+      <ion-row>
+        <ion-col style="text-align: right; padding:20px;">
+          <ion-button class="ionic_btn butt" (click) = "back()">Back</ion-button>
+        </ion-col>
+        <ion-col  style="text-align: left; padding:20px;">
+          <ion-button [disabled]="userImg==''" class="ionic_btn" (click) = "next()">Next</ion-button>
+        </ion-col>
+      </ion-row>
+      <img src = "assets/icon/Design 1.png" class="banner_bg">
+    </div>
+    
+    <!-- <img src = "assets/icon/Design 1.png" class="banner_bg"> -->
+    </ion-col>
+    </ion-row>
+</ion-content>

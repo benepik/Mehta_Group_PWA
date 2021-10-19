@@ -1,0 +1,85 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{community?.pageTitle}}</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button ></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-row >
+    <ion-col [size]="12" size-sm="12" size-md="8" size-lg="8" push-lg="2" push-md="2" class="whiteCol whit_Pad whit_pad_top">
+      <ion-slides pager="true" [options]="slideOpts" >
+        <ion-slide *ngFor="let item of community?.data?.media">
+          <img *ngIf="item?.media_type==1 || item?.media_type=='1'" [src]="item?.media"  onerror="this.src='assets/watermark/watermark.png'" class="communicationImage">
+          <video *ngIf="item?.media_type==2 || item?.media_type=='2'" [src]="item?.media" width="100%" height="250px" controls [poster]="item?.thumb_image"></video>
+          <iframe *ngIf="item?.media_type==3 || item?.media_type=='3'" [src]="item?.media | safe " width=100% height="250px"></iframe>
+        </ion-slide>
+      </ion-slides>
+     
+      <p class="titleDiv" [innerHTML]="community?.data?.title"></p>
+      <p class="contentDiv" [innerHTML]="community?.data?.description"></p>
+      <ion-row>
+        <ion-col size="6">
+          <ion-icon *ngIf="community?.data?.like_status==0" name="thumbs-up-outline" (click)="doLike(community?.data)"></ion-icon> 
+          <ion-icon *ngIf="community?.data?.like_status==1" name="thumbs-up" (click)="doLike(community?.data)"></ion-icon> 
+          {{community?.data?.total_likes}}&nbsp;Likes
+        </ion-col>
+       
+        <ion-col size="6" class="ion-text-right">
+          <ion-icon name="chatbox-ellipses-outline"></ion-icon>&nbsp;{{community?.data?.total_comments}}&nbsp;Comments
+        </ion-col>
+
+      </ion-row>
+      <hr>
+        <!-- <ion-row *ngFor = "let item of community?.data?.comments">
+          <ion-col class="colom1">{{item?.comments}}</ion-col>
+        </ion-row> -->
+        <div *ngIf="noComment == '0'">
+          <h5 class="colom">{{community?.data?.no_comment_msg}}</h5>
+          <img [src]="community?.data?.no_comment_image" onerror="this.src='assets/watermark/watermark.png'">
+        </div>
+        <div   >
+          <ion-row *ngFor = "let item of community?.data?.comments">
+            <ion-col size="6" >    
+              <div class="ion-text-right para-col para_color" *ngIf="item?.comment_align=='left'">
+                <p class="para-name">{{item?.full_name}}</p>
+                <p class="para-time">{{item?.convert_time}}</p>
+                <p class="ion-no-margin" [innerHTML]="item?.comments"></p>
+              </div>     
+                    
+            </ion-col>
+            <ion-col size="6">
+              <div class="ion-text-left para-col" *ngIf="item?.comment_align=='right'">
+                <p class="para-name">{{item?.full_name}}</p>
+                <p class="para-time">{{item?.convert_time}}</p>
+                <p class="ion-no-margin" [innerHTML]="item?.comments"></p>
+              </div>
+
+          </ion-col>
+          </ion-row>
+         
+        </div>    
+
+    
+    </ion-col>
+  </ion-row>
+
+</ion-content>
+<ion-footer style="background-color:#f2f4f5;"> 
+  <ion-row>
+    <ion-col [size]="12" size-sm="12" size-md="8" size-lg="8" push-lg="2" push-md="2">
+      <ion-row>
+        <ion-col [size]="10" size-sm="10" size-md="11" size-lg="11">
+          <input [(ngModel)]="comment" placeholder="Type Your Comment Here">
+        </ion-col>
+        <ion-col [size]="2" size-sm="2" size-md="1" size-lg="1" class="ion-text-center" *ngIf="comment!=''">
+          <ion-icon name="caret-forward-outline" class="sendIcon" (click)="doComment(comment)"></ion-icon>
+        </ion-col>
+      </ion-row>
+    </ion-col>
+  </ion-row>
+
+
+</ion-footer>

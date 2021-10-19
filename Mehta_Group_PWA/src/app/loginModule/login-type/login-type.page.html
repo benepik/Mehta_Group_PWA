@@ -1,0 +1,43 @@
+<ion-header>
+  <!-- <ion-toolbar>
+    <ion-title>loginType</ion-title>
+  </ion-toolbar> -->
+
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="container1">
+  <ion-row>
+    <ion-col [size]="12" sizexs="12" size-md="8" size-lg="8" push-md="2" push-lg="2" class="whiteCol ion-no-padding">
+      <ion-row>
+        <ion-col [size]="6" size-sm="7" size-md="7" size-lg="2">
+          <img src = "assets/icon/logo.svg" onerror=""/>    
+        </ion-col>
+        <ion-col [size]="4" push="2" size-sm="5" size-md="5" size-lg="2" push-lg="8" class="ion-text-right">
+          <img src = "assets/icon/abc.png" onerror=""/>    
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col [size]="12">
+          <p class="selcetP">Select Login Type</p>
+        </ion-col>
+      </ion-row>
+      <ion-row class="ion-padding">
+        <ion-col *ngFor="let item of loginType" [size]="6" size-sm="6" size-md="3" size-lg="3" >
+          <div class="borderDiv widthDivtype">
+            <img [src]="item?.image" class="typeImage">
+            <p class="ion-text-center pDiv">{{item?.type}}</p>
+          </div>
+        </ion-col>
+      </ion-row>
+      <br><br>
+      <ion-row>
+        <ion-col>
+          <ion-button size="small" class="nextbtn" color="danger" shape="round" tappable (click)="gotoHome()">Next</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-col>
+    <div class="bottomImage"></div>
+  </ion-row>
+</div>
+</ion-content>

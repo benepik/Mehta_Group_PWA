@@ -1,0 +1,46 @@
+h5{
+    color: #B01D22;
+    font-size: 20px;
+}
+.seg{
+    padding: 15px;
+}
+.act{
+    text-transform: capitalize;
+    --background: transparent !important;
+    --border-color: #B01D22 !important;
+    color: #B01D22 !important;
+    border: 1px solid;
+    border-radius: 8px;
+    width:100%;
+}
+hr {
+    width: 100% !important;
+    font-size: 1em !important;
+    border: 0.5px solid gainsboro;
+  }
+  .userImageUpload{
+
+    border-radius: 50%;
+    border: 3px dotted #b01d22;
+    object-fit: cover;
+ }
+ .profile_image{
+    width: 90px;
+    height: 70px;
+ }
+ .name{
+    margin-top: 5px;
+ }
+.phone{
+    margin-top: -14px;
+}
+.view{
+    --background: transparent;
+    color: #b01d22;
+    text-transform: capitalize;
+    --border-radius: 20px;
+}
+.but-div{
+    padding-top: 24px
+}

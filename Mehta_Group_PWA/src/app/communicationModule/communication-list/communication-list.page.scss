@@ -1,0 +1,11 @@
+@mixin line-clamp($lines) { display:-webkit-box; -webkit-box-orient:vertical;
+    -webkit-line-clamp: $lines;  overflow: hidden;  text-overflow: ellipsis;
+  }
+.communicationImage{width: 100%;height: 100px;object-fit: cover;}
+.titleDiv{font-size: 14px;color:var(--headerColor);font-weight: bold;@include line-clamp(2);}
+.contentDiv{font-size: 13px; color: #4a4747;line-height: 15px;
+
+}
+.bgWalletImage{    background-repeat: no-repeat;
+  background-size: cover;padding: 5px;
+  background-position: center;}

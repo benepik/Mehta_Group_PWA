@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Add New Address</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [ngClass]="{'content-bg':  platform?.width()<740}">
+  <ion-row class="ion-justify-content-center">
+    <ion-col size-xl="6" size-md="6" size-xs="12" class="boundary1">
+      <div  class="custom_container">
+        <ion-row>
+          <ion-col >
+            <p class="categoryName">Address Details</p>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col  class="colu" size-xl="6" size-md="6" size-xs="12" >
+            <ion-label> Address Line 1<sup>*</sup></ion-label>
+            <ion-input #input  type = "text" [(ngModel)]="add1" ></ion-input>
+          </ion-col>
+            <ion-col  class="colu" size-xl="6" size-md="6" size-xs="12" >
+              <ion-label> Address Line 2 <sup>*</sup> </ion-label>
+               <ion-input #input  type = "text" [(ngModel)]="add2" ></ion-input>
+  
+              </ion-col>
+              <ion-col  class="colu" size-xl="6" size-md="6" size-xs="12" >
+                <ion-label>Pin Code<sup>*</sup> </ion-label>
+                 <ion-input (ngModelChange)='checkInput($event)' #input  maxlength = "6" type = "tel" 
+                  [(ngModel)]="pin"></ion-input>
+                </ion-col>
+                <ion-col  class="colu" size-xl="6" size-md="6" size-xs="12" >
+                  <ion-label> City<sup>*</sup> </ion-label>
+                   <ion-input #input  type = "text" [(ngModel)]="city" disabled></ion-input>
+                    <!-- {{searchData?.city}} {{addressDetail?.city}} -->
+                  </ion-col>
+                  <ion-col  class="colu" size-xl="6" size-md="6" size-xs="12" >
+                    <ion-label> State<sup>*</sup> </ion-label>
+                     <ion-input #input  type = "text" [(ngModel)]="state" disabled></ion-input>
+                       <!-- {{searchData?.state}}{{addressDetail?.state}} -->
+                  
+        
+                    </ion-col>
+        </ion-row>
+        <br>
+       <br>
+        <ion-row>
+          <ion-col>
+            <ion-button class="ionic_btn" tappable (click)="checkingFilled() ">Add</ion-button>
+           </ion-col>
+           <ion-col>
+            <ion-button class="ionic_btn" tappable (click)="back()">Back</ion-button>
+           </ion-col>
+        </ion-row>
+        <br>
+        </div>
+      </ion-col>
+      </ion-row>
+
+</ion-content>

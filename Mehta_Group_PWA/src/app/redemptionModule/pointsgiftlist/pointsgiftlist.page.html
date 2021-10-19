@@ -1,0 +1,90 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Redeem</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button (click)="close()"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+		<ion-refresher-content></ion-refresher-content>
+	  </ion-refresher>
+  <ion-row>
+    <ion-col [size]="12" sizexs="12" size-md="8" size-lg="8" push-md="2" push-lg="2" class="whiteCol ion-no-padding">
+      <div *ngIf="temparray?.success==1" style="background-image: url('assets/Other Icons/Banner.svg');" class="bgWalletImage">
+        <ion-row>
+          <ion-col [size]="2" sizexs="2" size-md="2" size-lg="2">
+            <img [src]="temparray?.header_data?.coin_icon" onerror="this.src='assets/watermark/watermark.png'" class="walletImages">
+          </ion-col>
+          <ion-col [size]="6" sizexs="6" size-md="6" size-lg="6" class="">
+            <p class="ion-no-margin colorWhite fontAcc">{{temparray?.header_data?.bal_text}}</p>
+            <p class="ion-no-margin colorWhite">{{temparray?.header_data?.user_balance}}</p>
+          </ion-col>
+          <ion-col [size]="4" sizexs="3" size-md="3" size-lg="3">
+            <div class="divbtn" ><p>{{temparray?.header_data?.slab_text}}</p>  </div>
+            <div class="divbtn" (click) ="purchaseDetails()"><p>{{temparray?.header_data?.history_text}}</p></div>
+          </ion-col>
+        </ion-row>
+      </div>
+      <div>
+        <ion-row *ngIf = "temparray?.header_data?.cart_btn_applicable == true">
+          <ion-col size = "9" class="ion-text-right col_sss">
+            <img [src]="temparray?.header_data?.cart_icon" onerror="this.src='assets/watermark/watermark.png'" class="walletImage1">
+          </ion-col>
+          <ion-col size = "3" class="col_ss" (click)="goToCart()">
+            <p>{{temparray?.header_data?.cart_text}}: {{temparray?.header_data?.total_products}}</p>
+          </ion-col>
+        </ion-row>
+       
+        
+      </div>
+      <ion-row class="rowReedem">
+        <ion-col [size]="12" sizexs="12" size-md="12" size-lg="12" *ngFor="let item of serverData; let ind=index">
+        
+          <div class="slabsDiv">
+          <p class="ion-no-margin slabsPDiv">{{item.slabs}}</p>
+        </div>
+          <br>
+          <ion-row>
+            <ion-col [size]="1" size-sm="1" size-md="1" size-lg="1" class="padd autoMargin">
+              <span (click)="goToFun(ind, 'prev')">
+                <ion-icon name="chevron-back-outline"></ion-icon>
+              </span>
+            </ion-col>
+            <ion-col [size]="10" size-sm="10" size-md="10" size-lg="10" class="brd ion-no-padding" >
+              <!-- <ion-slides  #slidesRef class = "slide_p" [options]="postSlider" pager="false"> -->
+                <ion-slides  class = "slide_p" [options]="postSlider" pager="false"  >
+                <ion-slide *ngFor="let imgdata of item?.products">
+                  <div class="grayclass" (click)="gotoitemdetail(imgdata)">
+                    <div class="whiteclass color_clsss">
+                      <img [src]="imgdata?.cover_image" onerror="this.src='assets/watermark/watermark.png'" class="imgcss">
+                    </div>
+                    <div class="whiteclass color_cls">
+                      <p text-wrap>{{imgdata?.goods_name}}</p>
+                    
+                    </div>
+                    <div class="whiteclass color_cls">
+                      <p>{{imgdata?.product_points}}</p>
+                    </div>
+                   
+                  </div>
+                </ion-slide>
+              </ion-slides>
+            </ion-col>
+            <ion-col [size]="1" size-sm="1" size-md="1" size-lg="1" class="ion-text-right autoMargin">
+              <!-- nextslide -->
+              <span (click)="goToFun(ind, 'next')">
+                <ion-icon name="chevron-forward-outline"></ion-icon>
+              </span>
+            </ion-col>
+          </ion-row>
+        </ion-col>
+      
+      </ion-row>
+     <div>
+       <img [src]="errorImage"/>
+     </div>
+    </ion-col>
+  </ion-row>
+</ion-content>

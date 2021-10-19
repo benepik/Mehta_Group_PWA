@@ -1,0 +1,47 @@
+h5{
+    color: #B01D22;
+    font-size: 20px;
+}
+.act{ text-transform: initial; --border-radius: 20px; --background:  #B01D22; width:100%; font-size:14px;}
+.act1{
+    text-transform: capitalize;
+    --border-radius: 20px !important;
+    --background: transparent !important;
+  //  --border-color: #B01D22 !important;
+    color: #B01D22 !important;
+    border: 1px solid #B01D22;
+    width:100%;
+    border-radius:20px;
+    font-size:12px;
+}
+hr {
+    width: 100% !important;
+    font-size: 1em !important;
+    border: 0.5px solid gainsboro;
+  }
+  .userImageUpload{
+
+    border-radius: 50%;
+    border: 2px dotted #b01d22;
+    object-fit: cover;
+ }
+ .profile_image{
+    width: 70px;
+    height: 70px;
+ }
+ .name{font-size: 15px;font-weight: bold; color:black;}
+ .contactDiv{font-size: 13px; color:black;}
+.phone{font-size: 12px; color:black;}
+.view{
+    --background: transparent;
+    color: #b01d22;
+    text-transform: capitalize;
+    width:100%;
+    --border-radius: 20px;
+}
+.bgWalletImage{    background-repeat: no-repeat;
+  background-size: cover;padding: 5px;
+  background-position: center;}
+// ion-back-button {
+//   display: block;
+// }

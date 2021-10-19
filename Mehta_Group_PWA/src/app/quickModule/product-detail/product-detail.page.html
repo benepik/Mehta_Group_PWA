@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Product Detail</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <br>
+  <div class="container1">
+  <ion-row>
+    <ion-col [size]="12" size-sm="12" size-md="8" size-lg="8" push-lg="2" push-md="2" class="whiteCol ion-padding">
+      <div *ngFor="let item of items?.media_arr">
+        <img *ngIf="item?.media_type==1 || item?.media_type=='1'" [src]="item?.media" (click)="sendData?.zoomSingleImage(item?.media)" onerror="this.src='assets/watermark/watermark.png'" class="communicationImage">
+        <video *ngIf="item?.media_type==2 || item?.media_type=='2'" [src]="item?.media" width="100%" height="250px" controls [poster]="item?.thumb_image"></video>
+        <iframe *ngIf="item?.media_type==4 || item?.media_type=='4'" [src]="item?.media | safe "  width="100%"  height="400px"></iframe>
+      </div>
+      <!-- <ion-row>
+        <ion-col [size]="12" *ngFor="let item of items?.media_arr">
+          <img *ngIf="item?.media_type==1 || item?.media_type=='1'" [src]="item?.media" onerror="this.src='assets/watermark/watermark.png'" class="communicationImage">
+          <video *ngIf="item?.media_type==2 || item?.media_type=='2'" [src]="item?.media" width="100%" height="250px" controls [poster]="item?.thumb_image"></video>
+          <iframe *ngIf="item?.media_type==4 || item?.media_type=='4'" [src]="item?.media | safe " width=100% height="100%"></iframe>
+        </ion-col>
+      </ion-row> -->
+        <!-- <ion-slide *ngFor="let item of items?.media_arr">
+          <img *ngIf="item?.media_type==1 || item?.media_type=='1'" [src]="item?.media" onerror="this.src='assets/watermark/watermark.png'" class="communicationImage">
+          <video *ngIf="item?.media_type==2 || item?.media_type=='2'" [src]="item?.media" width="100%" height="250px" controls [poster]="item?.thumb_image"></video>
+          <iframe *ngIf="item?.media_type==4 || item?.media_type=='4'" [src]="item?.media | safe " width=100% height="250px"></iframe>
+        </ion-slide>
+      </ion-slides> -->
+      <p class="titleDiv" [innerHTML]="items?.alias_name"></p>
+      <p class="contentDiv" [innerHTML]="items?.content"></p>
+      </ion-col>
+      </ion-row>
+      </div>
+</ion-content>

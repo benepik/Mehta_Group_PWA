@@ -1,0 +1,48 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-title>profile</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+<ion-content >
+  <div [ngClass]="{container: platform?.is('mobile')}">
+        <ion-row class="bgDiv" style="background-image: url('assets/Bandhan Icon/Login banner.png');">
+            <ion-col [size]="12" size-sm="12" size-md="4" size-lg="3" >
+              <div class="userIconImgDiv" [ngClass]="{'forDesktopImgDiv': platform?.is('desktop')}">
+                <img *ngIf="userImg==''" [src]="profileData?.emp_data?.user_image"  onerror="this.src='assets/watermark/watermark.png'" 
+                [ngClass]="[platform?.is('mobile')? 'deskImg' : 'profileImg']">
+                <img *ngIf="userImg !='' " [src]="userImg"  onerror="this.src='assets/watermark/watermark.png'" 
+                [ngClass]="[platform?.is('mobile')? 'deskImg' : 'profileImg']">
+                <!-- [ngClass]="[platform?.is('mobile')? 'deskImg' : 'profileImg']" -->
+                <div class="posDiv">
+                  <ion-icon name="camera" *ngIf="platform?.is('cordova')" (click) = "selectImage('img')"></ion-icon>
+                  <ion-icon name="camera" *ngIf="!platform?.is('cordova')" tappable (click)="openSelectImageOpt('img')"></ion-icon>
+                </div>
+              </div>
+            </ion-col>
+            <ion-col  [size]="12" size-sm="12" size-md="8" size-lg="8" [ngClass]="[platform?.is('mobile')? 'ion-text-center' : 'ion-padding-top']">
+              <p class="ion-no-margin" [ngClass]="[platform?.is('mobile')? 'deskDiv' : 'nameDiv']">
+                {{profileData?.emp_data?.full_name}}
+                <span *ngIf="profileData?.emp_data?.customer_type_name!=''">({{profileData?.emp_data?.customer_type_name}})</span>
+                <span *ngIf="profileData?.emp_data?.dealer_code!=''">({{profileData?.emp_data?.dealer_code}})</span></p>
+              <p class="nameDiv ion-no-margin">{{profileData?.emp_data?.contact}}</p>
+              <!-- [ngClass]="{platform?.is('mobile')? 'deskDiv' :'nameDiv'}" -->
+             
+               
+              
+              
+            </ion-col>
+            <ion-col>
+              <div class= "act ion-text-center" *ngIf="profileData?.button_info?.isButtonApp ==true">
+                <p class="act_p">{{profileData?.button_info?.buttonText}}</p></div>
+            </ion-col>
+          </ion-row>
+          <ion-row class="sidemenu_row borderBtmDiv" *ngFor="let item of profileData?.sidemenu_list" tappable (click)="gotoDetail(item)">
+            <ion-col [size]="2" size-sm="2" size-md="2" size-lg="2">
+              <img [src]="item?.icon" onerror="this.src='assets/watermark/watermark.png'" class="profileIcon">
+            </ion-col>
+            <ion-col [size]="10" size-sm="10" size-md="10" size-lg="10" class="autoMargin borderBtmDiv">
+              <p class="ion-no-margin" [ngClass]="[platform?.is('mobile')? 'desktitle' : 'profileDiv']">{{item?.name}}</p>
+            </ion-col>
+          </ion-row>
+        </div>
+</ion-content>

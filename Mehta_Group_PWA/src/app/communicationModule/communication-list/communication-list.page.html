@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{community?.pageTitle}}</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button ></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-row >
+    <ion-col [size]="12" size-sm="12" size-md="8" size-lg="8" push-lg="2" push-md="2" 
+    class="whiteCol whit_Pad whit_pad_top">
+    <div style="background-image: url('assets/Other Icons/Banner.svg');" class="bgWalletImage">
+    </div>
+    <ion-row class="borderBtmDiv" *ngIf = "community?.noDataImage">
+      <ion-col [size]="4" size-sm="4" size-md="3" size-lg="3"  class="autoMargin">
+        <img [src]="community?.noDataImage" onerror="this.src='assets/watermark/watermark.png'">
+      </ion-col>
+    </ion-row>
+      <ion-row *ngFor="let item of communityData " class="borderBtmDiv">
+        <ion-col [size]="4" size-sm="4" size-md="3" size-lg="3"  class="autoMargin">
+          <img class="communicationImage borderRediDiv" [src]="item?.cover_image" onerror="this.src='assets/watermark/watermark.png'">   
+                   
+      </ion-col>
+      <ion-col [size]="8" size-sm="8" size-md="9" size-lg="9" tappable  (click)="gotoDetail(item)">
+        <p class="titleDiv ion-no-margin" [innerHTML]="item?.title"></p>
+        <p class="contentDiv" [innerHTML]="sendData?.readMoreHTML(item?.description, 200, '') "></p>
+        <p class="dateP ion-no-margin ion-margin-top ion-text-right">{{item?.start_date}}</p>   
+        <!-- <p class="ion-text-right dateP ion-no-margin ion-margin-top">Read More</p> -->
+      </ion-col>
+      </ion-row>    
+    </ion-col>
+  </ion-row>
+  <div *ngIf="errorMessage!=''"><p class="ion-text-center">{{errorMessage}}</p></div>
+  <ion-infinite-scroll *ngIf="errorMessage==''" threshold="100px" (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="Loading more data...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

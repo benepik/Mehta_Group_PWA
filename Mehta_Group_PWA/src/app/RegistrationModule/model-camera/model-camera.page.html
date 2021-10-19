@@ -1,0 +1,45 @@
+<!-- <ion-content [ngClass]="{'content-bg':  platform.width()<740}"> -->
+  <ion-content class="content-bg">
+   <ion-row class="ion-justify-content-center">
+    <ion-col class="back">
+     <ion-grid>
+        <ion-row>
+          <ion-col class="circle">
+         <ion-icon name="close" class="circle_close" (click)="close()"></ion-icon>
+          </ion-col>
+        </ion-row>
+        <ion-row *ngIf="!pgShow">
+          <ion-col>
+            <label class="image-upload">
+             <ion-icon name="camera-outline" class="FooterCam iconBorder"></ion-icon>
+              <p class="activityClass">Take a Snapshot</p>
+              <input *ngIf="!platform?.is('cordova')"  type="file"  multiple accept="image/x-png,image/jpeg" capture (change)="captureImg($event)" >
+             <div class="overDiv" *ngIf="platform?.is('cordova')" tappable (click)="pickImage()"></div>
+            </label>
+
+
+
+          </ion-col>
+          <ion-col size="2">
+            <h1>|</h1>
+          </ion-col>
+          <ion-col>
+            <label class="image-upload">
+              <ion-icon name="images-outline" class="FooterCam iconBorder"></ion-icon>
+              <p class="activityClass">Select Image</p>
+              <input  type="file"  accept="image/x-png,image/jpeg" (change)="captureImg($event)" >
+              </label>
+          </ion-col>
+        </ion-row>
+        <ion-row *ngIf="pgShow">
+          <ion-col [size]='6' *ngFor="let item of pgShow">
+            <ion-button class="pgSo" (click)="pgShoW(item)">{{item?.button_text}}</ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <div [ngClass]="{'banner': platform.width()<740}">
+        <img src = "assets/icon/Design 1.png" class="banner_bg">
+        </div>
+      </ion-col>
+    </ion-row>
+</ion-content>

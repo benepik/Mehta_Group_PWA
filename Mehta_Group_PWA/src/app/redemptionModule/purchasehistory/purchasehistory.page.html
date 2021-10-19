@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{title}}</ion-title> 
+    <ion-buttons slot="start">
+      <ion-back-button tappable *ngIf="backKey=='home'" (click)="hometab()"></ion-back-button>
+      <ion-back-button tappable *ngIf="backKey=='back2'" (click)="goBack()"></ion-back-button>
+      <ion-back-button tappable *ngIf="backKey=='back1'" (click)="close()"></ion-back-button>
+      <ion-back-button tappable *ngIf="backKey=='back'" (click)="back()"></ion-back-button>
+    </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+		<ion-refresher-content></ion-refresher-content>
+	  </ion-refresher>
+  <ion-row>
+    <ion-col [size]="12" sizexs="12" size-md="8" size-lg="8" push-md="2" push-lg="2" class="whiteCol ion-no-padding">
+      <div style="background-image: url('assets/Other Icons/Banner.svg');" class="bgWalletImage">
+        </div>
+      <!-- <p class="purch">Purchase History</p> -->
+      <ion-row *ngFor="let item of arrr; let i = index" class="borderBtmDiv">
+        <ion-col [size]="3" sizexs="3" size-md="3" size-lg="3">
+          <img [src]="item.media" onerror="this.src='assets/watermark/watermark.png'" class="imgcss" />
+        </ion-col>
+        <ion-col [size]="5" sizexs="5" size-md="7" size-lg="7" class="autoMargin">
+          <p class="para bo">{{item.goods_name}}</p>
+          <p class="para">{{item?.order_txt}}</p>
+          <p class="para">{{item?.quantity_str}}: {{item?.product_quantity}}</p>
+          <p class="para">{{item?.point_str}}: {{item?.product_points}}</p>
+          <p class="para">{{item?.sts_str}}: {{item.status}}</p>
+          <p class="para">{{item?.tracking_id}}</p>
+        </ion-col>
+        <ion-col [size]="4" sizexs="4" size-md="2" size-lg="2" class="autoMargin ion-text-center">
+          <ion-button tappable class="ionic_btn" color="danger"  style="width: 92%;font-size: 12px" (click)="modalcall(item)">{{item.button_text}}</ion-button>
+        </ion-col>
+      </ion-row>
+      <div *ngIf="errorImage!=''">
+        <img [src]="errorImage"/>
+      </div>
+    </ion-col>
+  </ion-row>
+  <div *ngIf="errorMessage!=''"><p class="ion-text-center">{{errorMessage}}</p></div>
+  <ion-infinite-scroll *ngIf="errorMessage==''" threshold="100px" (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="Loading more data...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

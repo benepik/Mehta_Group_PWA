@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{serverData?.header_title}}</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [ngClass]="{'content-bg':  platform.width()<740}">
+  <ion-row class="ion-justify-content-center">
+    <ion-col *ngIf="serverData" size-xl="6" size-md="6" size-xs="12" [ngClass]="{'boundary1':  platform.width()>740}">
+      <div style="background-image: url('assets/Other Icons/Banner.svg');" class="bgWalletImage">
+      </div>
+     <div class="ion-padding">
+       <div class="table">
+       <ion-row class="header-row">
+        <ion-col class="co_ro" size="3" *ngFor = "let item of serverData?.header_data">
+          <ion-text>{{item}}</ion-text>
+        </ion-col>
+      </ion-row>
+      <ion-row *ngFor="let data of serverData?.data; let ind=index" [ngClass]="{'pinkBg': ind%2==0}">
+        <ion-col  class="co_ro" size="3">
+          <ion-text>
+            {{data?.bill_month}}
+          </ion-text>
+        </ion-col>
+        <ion-col class="co_ro" size="3">
+          <ion-text>{{data?.full_name}}</ion-text>
+        </ion-col>
+        <ion-col class="co_ro" size="3">
+          <ion-text>{{data?.brand_name}}</ion-text>
+        </ion-col>
+        <ion-col class="co_ro"  size="3">
+          <ion-text>
+            {{data?.product_name}}
+          </ion-text>
+        </ion-col>
+      </ion-row>
+    </div>
+      </div>
+       </ion-col>
+       </ion-row>
+       <div *ngIf="message!=''">
+        <h1 class = "headr_col">{{message}}</h1>
+       </div>
+</ion-content>

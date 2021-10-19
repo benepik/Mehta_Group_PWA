@@ -1,0 +1,33 @@
+
+<ion-content [ngClass]="{'content-bg':  platform.width()>740}">
+  <ion-row class="ion-justify-content-center abc">
+    <ion-col size-xl="6" size-md="6" size-xs="12" [ngClass]="{'boundary1':  platform.width()>740}">
+      <div class="seg">
+        <ion-row>
+          <ion-col>
+            <h5>Assign Dealer</h5>
+          </ion-col>
+        </ion-row>
+        <div class="asign">
+          <div class="assign_card" *ngFor="let item of data">
+           <ion-row>
+             <ion-col>
+              {{item?.name}}<br>{{item?.mobile}}<br>{{item?.code}}
+             </ion-col>
+             <ion-col size="4">
+               <ion-icon name="location"></ion-icon>
+               {{item?.Location}}
+             </ion-col>
+           </ion-row>
+          </div>
+          <ion-row class="seg">
+            <ion-col class="colom">
+              <ion-button class="ass_butt">Assign</ion-button>
+            </ion-col>
+          </ion-row>
+          
+        </div>
+        </div>
+      </ion-col>
+  </ion-row>
+</ion-content>
