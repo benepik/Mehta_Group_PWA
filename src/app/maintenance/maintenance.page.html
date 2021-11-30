@@ -1,0 +1,20 @@
+<!-- alldata?.bgColor -->
+<!-- [style.--background]="'var(--headerLightColor)'" -->
+<ion-content >
+
+  <div *ngIf="alldata">
+    <ion-row >
+      <ion-col [size]="12" size-sm="12" size-md="8" size-lg="8" push-lg="2" push-md="2"  [ngClass]="{whiteCol: platform?.is('desktop')}">
+    <div class="maintenanceholder">
+      <img src="{{alldata?.icon_img}}"class="imgicon"/>
+      <h2 class="redText">{{alldata?.title}}</h2>
+      <br>
+      <h4 class="yellowText" [innerHTML]="alldata?.sub_title"></h4> 
+      <br>
+      <h5 class="blackText">{{alldata?.maintainence_message}}</h5>
+    </div>
+    <img src="{{alldata?.img}}"class="maintenanceImg"/>
+    </ion-col>
+    </ion-row>
+  </div>
+</ion-content>

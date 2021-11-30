@@ -1,0 +1,26 @@
+.colu{
+    padding: 15px;
+    
+}
+ion-input{
+    border-bottom: 1px solid rgba(84, 83, 83, 0.6) !important;
+    /* margin: 0 0px; */
+    color: var(--text-light2);
+    font-size: 0.90rem !important;
+    font-weight: 500 !important;
+    --padding-bottom: 2px !important;
+}
+.categoryName{
+    font-size: 18px;
+    font-weight: bold;
+}
+.ionic_btn{
+    display: block;
+    margin: auto;
+    text-transform: capitalize;
+    --border-radius: 20px;
+    width: 122px;
+    font-size: 13px;
+    --background: #B01D22;
+    height: 32px;
+}

@@ -1,0 +1,91 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{title}}</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+		<ion-refresher-content></ion-refresher-content>
+	  </ion-refresher>
+  <ion-row>
+    <ion-col [size]="12" sizexs="12" size-md="8" size-lg="8" push-md="2" push-lg="2" class="whiteCol ion-no-padding">
+      <div style="background-image: url('assets/Other Icons/Banner.svg');" class="ion-padding bgWalletImage">
+        <p class="colorWhite ion-no-margin accTitle">{{serverData?.reward_card?.title}}</p>
+        <ion-row>
+          <ion-col [size]="1" sizexs="1" size-md="1" size-lg="1">
+            <img src="assets/Other Icons/Wallet.svg" onerror="this.src='assets/watermark/watermark.png'" class="walletImages">
+          </ion-col>
+          <ion-col [size]="5" sizexs="5" size-md="7" size-lg="7" >
+            <p class="ion-no-margin colorWhite fontAcc">{{serverData?.reward_card?.available_balance_text}}</p>
+            <p class="ion-no-margin colorWhite">{{serverData?.reward_card?.available_balance}}</p>
+          </ion-col>
+          <ion-col [size]="3" sizexs="3" size-md="2" size-lg="2" class="ion-no-padding">
+            <ion-button  class="totalBtn">{{serverData?.reward_card?.total_debits_text}}&nbsp;{{serverData?.reward_card?.total_debits}}</ion-button>
+          </ion-col>
+          <ion-col [size]="3" sizexs="3" size-md="2" size-lg="2" class="ion-text-right ion-no-padding">
+            <ion-button class="totalBtn">{{serverData?.reward_card?.total_credits_text}}&nbsp;{{serverData?.reward_card?.total_credits}}</ion-button>
+          </ion-col>
+        </ion-row>
+      </div>
+      <!-- table  -->
+
+<!-- 
+      
+        <div style="width: 100%;overflow:scroll;" class="dataTable">
+          <ion-row class="header-row" *ngIf="serverData?.account_data?.length>0">
+          <ion-col class="co_ro" size="3" *ngFor = "let item of serverData?.header">
+            <ion-text>{{item?.value}}</ion-text>
+          </ion-col>
+          </ion-row>
+          <ion-row *ngFor="let data of serverData?.account_data; let ind=index" [ngClass]="{'pinkBg': ind%2==0}">
+            <ion-col  class="co_ro" size="3">
+              <ion-text>{{data?.date}} </ion-text>
+            </ion-col>
+            <ion-col class="co_ro" size="3">
+              <ion-text>{{data?.description}}</ion-text>
+            </ion-col>
+            <ion-col class="co_ro" size="3">
+              <ion-text>{{data?.debit}}</ion-text>
+            </ion-col>
+            <ion-col class="co_ro"  size="3">
+              <ion-text> {{data?.credit}} </ion-text>
+            </ion-col>
+          </ion-row>
+          <div *ngIf="errorMessage!=''">
+            <p class="ion-text-center">{{errorMessage}}</p> 
+          </div>
+        </div>  -->
+
+
+        <div style="width:100%;overflow:auto" class="dataTable" >
+          <table width="100%" border="1" padding="5">
+            <tr class="header-row" >
+              <td class="ion-text-center" *ngFor = "let item of serverData?.header">{{item?.value}}</td>
+              <!-- <td class="ion-text-center" ></td> -->
+            </tr>
+            
+            <tr *ngFor="let data of serverData?.account_data; let ind=index" [ngClass]="{'pinkBg': ind%2==0}">
+              <td class="ion-text-center"> {{data?.transaction_date}}</td>
+              <td class="ion-text-center"> {{data?.date}}</td>
+              <td class="ion-text-center"><span>{{data?.description}}</span>
+                <!-- <br> 
+                <p class="ion-no-margin">{{data?.dealer_code}}</p> -->
+              </td>
+              <td class="ion-text-center">{{data?.debit}}</td>
+              <td class="ion-text-center"> {{data?.credit}}</td>
+              <!-- <td class="ion-text-center">{{data?.debit}}</td> -->
+              <!-- <td class="ion-text-center">{{data?.debit}}</td> -->
+              <!-- <td class="ion-text-center">{{data?.bags_sold}}</td> -->
+              <!-- <td class="ion-text-center"><ion-button  class = "act1" (click)="view(data)">View</ion-button></td> -->
+            </tr>
+          </table>
+          </div>
+
+    </ion-col>
+  </ion-row>
+
+</ion-content>

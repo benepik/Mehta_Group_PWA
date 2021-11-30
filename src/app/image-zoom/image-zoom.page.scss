@@ -1,0 +1,17 @@
+
+ion-item {  --background: none;}
+ion-slides { width: 100%;}
+ion-slide {  background: rgba(0,0,0,0.9);}
+.swiper-slide img {  width: 100%;  max-width: 100%;}
+.zoom-box {  position: absolute;  height: 100%;   display: flex; width: 100%;}
+
+.product-zoom-modal {  --width: 100%;  background: rgba(255,255,255,0.9);}
+/* End Modal css */
+/* Global modal transparent*/
+.sc-ion-modal-md-h {   --background: none;}
+.sc-ion-modal-ios-h {   --background: none;}
+
+
+ion-toolbar {--background: transparent no-repeat fixed center;
+    --color: #fff;  position: absolute;   top: 0;  }
+    ion-icon{color:#fff;}

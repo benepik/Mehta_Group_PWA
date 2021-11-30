@@ -1,0 +1,31 @@
+.inputfiled{
+  padding:0px 20px;
+    .bodBottom{border:2px solid red;border-radius:10px;text-align:center;font-size:18px;font-weight:bold;
+      padding-right:10px !important;width:85%;height:50px;margin:auto;color:red;}
+  }
+
+  .resendText{color:red;font-size:12px;margin:0;}
+  .otpcss{font-weight: bold;font-size: 15px;}
+  .resend{font-size: 10px;color: red}
+  .desktopcss{background:white;
+    // position:absolute;padding:15px 20px;top:50%;width:35%;height:35%;bottom:0%;
+    // left:50%;right:0;transform:translate(-50%, -50%);
+  }
+  // .mobilecss{ background:white;position:absolute;padding:15px 20px;top:32%;bottom:32%;left:4%;right:4%;}  
+  .txtcentr{text-align: center;}
+  .circle{
+    text-align: end;
+     padding: 0px;
+ //   font-size:20px;
+}
+.circle_close{
+    font-size: 30px;
+    color:#b01d22;
+}
+.sure{
+  font-size:20px;
+  color:#b01d22;
+}
+.ok_but{
+  --background:#b01d22;
+}

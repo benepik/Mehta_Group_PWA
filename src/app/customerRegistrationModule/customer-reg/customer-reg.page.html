@@ -1,0 +1,131 @@
+<ion-header>
+  <ion-toolbar>
+     <ion-buttons slot="start"><ion-back-button (click)="close()"></ion-back-button></ion-buttons>
+    <ion-title *ngIf="pageTitle">{{pageTitle}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <ion-row>
+    <ion-col [size]="12" sizexs="12" size-md="8" size-lg="8" push-md="2" push-lg="2" class="whiteCol ion-no-padding">
+      <div style="background-image: url('assets/Other Icons/Banner.svg');" class="bgWalletImage">
+      </div>
+       <ion-row >
+         <ion-col size="4" *ngFor="let item of buttData">
+           <ion-button *ngIf="item?.tab_status == 'selected_tab'" class ="act" tappable 
+           (click)="changedTab(item)">{{item?.tab_name}}</ion-button>
+           <ion-button *ngIf="item?.tab_status != 'selected_tab'" class ="act1 butt" tappable 
+           (click)="changedTab(item)">{{item?.tab_name}}</ion-button>
+         </ion-col>
+         <hr>
+       </ion-row>
+        <div *ngIf ="showImg && pageTitle != 'Approved List'">
+          <!-- <div *ngIf ="showImg && pageTitle == 'Pending List'"> -->
+          <img [src] = "showImg" onerror="this.src='assets/watermark/watermark.png'">
+        </div>
+      <div *ngIf ="!showImg && pageTitle == 'Pending List'">
+        <ion-row *ngFor = "let id of custmReg">
+          <ion-col size="3">
+               <img *ngIf = "!id?.user_image" class="profile_image centerData" src="assets/icon/Group 14078.png"/>
+               <img *ngIf = "id?.user_image" class="profile_image centerData dottedBorder userImageUpload" [src]="id?.user_image"/>
+          </ion-col>
+          <ion-col size="6" class="autoMargin">
+            <p class="name ion-no-margin">{{id?.full_name}}</p>
+            <p class="contactDiv ion-no-margin">{{id?.contact}}</p>
+           
+            <p class="phone ion-no-margin">{{id?.dealer_name}}</p>
+            <p class="phone ion-no-margin">{{id?.dealer_code}}</p>
+            <p class="phone ion-no-margin">{{id?.registration_sts}}</p>
+          </ion-col>
+          <ion-col class="but-div autoMargin" size="3">
+            <ion-button class="view butt" (click)="view(id)">{{id?.view_btn}}</ion-button>
+          </ion-col>
+          <hr>
+        </ion-row>
+        <!-- <div *ngIf ="showImg">
+          <img [src] = "showImg" onerror="this.src='assets/watermark/watermark.png'">
+        </div> -->
+        <ion-infinite-scroll *ngIf="errorMessage==''" threshold="100px" (ionInfinite)="loadDataPending($event)">
+          <ion-infinite-scroll-content
+            loadingSpinner="bubbles"
+            loadingText="Loading more data...">
+          </ion-infinite-scroll-content>
+        </ion-infinite-scroll>
+        </div>
+        <!-- <div *ngIf ="showImg && pageTitle == 'Approved List'">
+          <ion-row >
+            <ion-col size="6" *ngFor="let items of buttonData">
+              <ion-button *ngIf="items?.tab_status == 'selected_tab'" class ="act" (click) = "changedTabs(items)">{{items?.tab_name}}</ion-button>
+              <ion-button *ngIf="items?.tab_status == 'unselected_tab'" class ="act1 butt" (click) = "changedTabs(items)">{{items?.tab_name}}</ion-button>
+            </ion-col>
+            <hr>
+          </ion-row>
+          <img [src] = "showImg" onerror="this.src='assets/watermark/watermark.png'">
+        </div> -->
+        <!-- !showImg  && -->
+         <div *ngIf ="pageTitle == 'Approved List'">
+         <ion-row >
+          <ion-col size="6" *ngFor="let items of buttonData">
+            <ion-button *ngIf="items?.tab_status == 'selected_tab'" class ="act" (click) = "changedTabs(items)">{{items?.tab_name}}</ion-button>
+            <ion-button *ngIf="items?.tab_status == 'unselected_tab'" class ="act1 butt" (click) = "changedTabs(items)">{{items?.tab_name}}</ion-button>
+          </ion-col>
+          <hr>
+        </ion-row>
+        
+        <ion-row *ngFor = "let id of custmReg">
+          <ion-col size="3">
+              <img *ngIf = "!id?.user_image" class="profile_image centerData" src="assets/icon/Group 14078.png"/>
+              <img *ngIf = "id?.user_image" class="profile_image centerData dottedBorder userImageUpload" [src]="id?.user_image"/>
+          </ion-col>
+          <ion-col size="6" class="autoMargin">
+            <p class="name ion-no-margin">{{id?.full_name}}</p>
+            <p class="contactDiv ion-no-margin">{{id?.contact}}</p>
+            
+            <p class="phone ion-no-margin">{{id?.dealer_name}}</p>
+            <p class="phone ion-no-margin">{{id?.dealer_code}}</p>
+            <p class="phone ion-no-margin">{{id?.registration_sts}}</p>
+          </ion-col>
+          <ion-col class="but-div autoMargin" size="3">
+            <ion-button class="view butt" (click)="view(id)">{{id?.view_btn}}</ion-button>
+          </ion-col>
+          <hr>
+        </ion-row>
+        <img *ngIf="showImg" [src] = "showImg" onerror="this.src='assets/watermark/watermark.png'">
+        <ion-infinite-scroll *ngIf="errorMessage==''" threshold="100px" (ionInfinite)="loadDataActive($event)">
+          <ion-infinite-scroll-content
+            loadingSpinner="bubbles"
+            loadingText="Loading more data...">
+          </ion-infinite-scroll-content>
+        </ion-infinite-scroll>
+
+      </div>
+
+         <div *ngIf ="!showImg && pageTitle == 'Rejected List'">
+          <ion-row *ngFor = "let id of custmReg" >
+            <ion-col size="3">
+                <img *ngIf = "!id?.user_image" class="profile_image centerData" src="assets/icon/Group 14078.png"/>
+                <img *ngIf = "id?.user_image" class="profile_image centerData dottedBorder userImageUpload" [src]="id?.user_image"/>
+            </ion-col>
+            <ion-col size="6" class="autoMargin">
+              <p class="name ion-no-margin">{{id?.full_name}}</p>
+              <p class="contactDiv ion-no-margin">{{id?.contact}}</p>
+             
+              <p class="phone ion-no-margin">{{id?.dealer_name}}</p>
+              <p class="phone ion-no-margin">{{id?.dealer_code}}</p>
+              <p class="phone ion-no-margin">{{id?.registration_sts}}</p>
+            </ion-col>
+            <ion-col class="but-div autoMargin" size="3">
+              <ion-button class="view butt" (click)="view(id)">{{id?.view_btn}}</ion-button>
+            </ion-col>
+            <hr>
+          </ion-row>
+          <ion-infinite-scroll *ngIf="errorMessage==''" threshold="100px" (ionInfinite)="loadData($event)">
+            <ion-infinite-scroll-content
+              loadingSpinner="bubbles"
+              loadingText="Loading more data...">
+            </ion-infinite-scroll-content>
+          </ion-infinite-scroll>
+         </div>
+    </ion-col>
+  </ion-row>
+
+</ion-content>

@@ -1,0 +1,74 @@
+.act{ text-transform: initial; --border-radius: 20px;  width:100%; --background:  #B01D22; width:100%; font-size:14px;}
+.act2{
+    text-transform: capitalize;
+    --border-radius: 20px !important;
+    --background: transparent !important;
+  //  --border-color: #B01D22 !important;
+    color: #B01D22 !important;
+    border: 1px solid #B01D22;
+    width:100%;
+    border-radius:20px;
+    font-size:14px;
+}
+
+// .header .col {
+//     background-color:lightgrey;
+// }
+
+.col {
+    border: solid 1px grey;
+    border-bottom-style: none;
+    border-right-style: none;
+}
+
+.col:last-child {
+    border-right: solid 1px grey;
+}
+
+.row:last-child .col {
+    border-bottom: solid 1px grey;
+}
+
+  ion-text{
+      font-size:16px;
+  }
+  .act1{
+    text-transform: capitalize;
+    --background: transparent !important;
+    --border-color: #B01D22 !important;
+    color: #B01D22 !important;
+      border: 1px solid;
+    border-radius: 8px;
+    width:100%;
+    height: 20px;
+  }
+  .table{
+    box-shadow: 1px 1px 1px 2px #efeaea;
+  }
+  .pinkBg{background-color: #f2e8e8;}
+  .bgWalletImage{background-repeat: no-repeat;   background-size: cover;padding: 5px;   background-position: center;}
+
+    .dataTable{
+      .header-row { background:  #B01D22; color: #fff;font-size: 14px;}
+      .header-row td{  padding: 10px;  border-right: 1px solid #fff;}
+      tr.body-row td { width: 100%; min-width: fit-content; white-space: nowrap; padding: 10px 5px; border-right: 1px solid #ECEEEF;
+        font-size: 13px;
+      }
+
+    }
+
+.nameText {
+  width: 200px;
+  min-width: fit-content;
+  max-width: -webkit-fill-available;
+}
+.mobileText {
+  width: 100px;
+  min-width: fit-content;
+  max-width: -webkit-fill-available;
+}
+.officerText {
+  width: 150px;
+  min-width: fit-content;
+  max-width: -webkit-fill-available;
+}

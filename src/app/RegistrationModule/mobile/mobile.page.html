@@ -1,0 +1,63 @@
+
+<ion-content [ngClass]="{'content-bg':  platform.width()<740}">
+  <ion-row class="ion-justify-content-center abc1">
+    <ion-col size-xl="4" size-md="8" size-xs="12" [ngClass]="{'boundary':  platform.width()>740}">
+      <ion-grid>
+        <ion-row>
+          <ion-col >
+            <img src = "assets/icon/logo.svg" class="small_p">
+          </ion-col>
+          <ion-col class="col">
+            <img src = "assets/icon/abc.png" class="small">
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <ion-row class="ion-padding">
+        <ion-col >
+          <p class="ion-no-margin" [innerHTML]="maintanceData?.mobile_string"></p>
+        </ion-col>
+      </ion-row>
+      <ion-row class="ion-padding">
+        <ion-col [size]="2" size-sm="2" size-md="2" size-lg="2" >
+          <ion-input maxlength="0" type="tel" [(ngModel)]="phone_code" read-only>+91</ion-input>
+          </ion-col>
+          <ion-col [size]="10" size-sm="10" size-md="10" size-lg="10">
+              <ion-input type="tel" [(ngModel)]="phonenumber" pattern="^[1-9][0-9]*$" maxlength="10" minlength="10"></ion-input>
+          </ion-col>
+      </ion-row>
+   
+      <br>  <br>
+      <ion-row *ngIf="loginPageData?.type=='login' || loginPageData?.type=='newRegister'" class="ion-padding">
+        <ion-col [size]="1" class="autoMargin ion-no-padding"> <ion-checkbox color="danger" [(ngModel)]="isChecked"></ion-checkbox></ion-col>
+        <ion-col [size]="11">
+        <p class = "para ion-no-margin" >By continuing you agree to the 
+          <span tappable (click)="termsShow()">Terms of Use</span> and 
+          <span tappable (click)="privacyShow()">Privacy Policy.</span></p></ion-col>
+      </ion-row>
+
+      <br>
+      <ion-row>
+        <ion-col *ngIf="loginPageData?.type =='login' || loginPageData?.type =='newRegister' ">
+          <ion-button tappable (click)="gotoLogn()" class="ionic_btn btnCenter">Back</ion-button></ion-col>
+        <ion-col *ngIf="loginPageData?.type =='Register' || loginPageData?.type =='Existing'"> 
+          <ion-button tappable (click)="gotoHomeTab()" class="ionic_btn btnCenter">Back</ion-button></ion-col>
+        <ion-col>
+          <ion-button *ngIf="loginPageData?.type =='login' || loginPageData?.type =='newRegister' " [disabled]="phonenumber?.trim()=='' || !isChecked" 
+            tappable (click)="LoginCall(phonenumber,'sms')" class="ionic_btn btnCenter">{{maintanceData?.btn_text}}</ion-button>
+            <!-- loginPageData?.type !='Register' &&  -->
+          <ion-button *ngIf="loginPageData?.type =='Existing'"
+            [disabled]="phonenumber?.trim()==''"   tappable (click)="UpCall(phonenumber,'sms')" class="ionic_btn btnCenter">Continue</ion-button>
+          <ion-button *ngIf="loginPageData?.type == 'Register'"
+            [disabled]="phonenumber?.trim()==''"   tappable (click)="LoginCall(phonenumber,'sms')" class="ionic_btn btnCenter">Continue</ion-button>    
+        </ion-col>
+      </ion-row>
+ 
+  
+      <br>
+      <div class = "ion-text-center" [ngClass]="{'banner': platform.width()<740}">
+        <img src="./assets/icon/Design 1.png" class ="banner_bg">
+      </div>
+    </ion-col>
+  </ion-row>
+
+</ion-content>

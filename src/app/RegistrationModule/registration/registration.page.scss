@@ -1,0 +1,106 @@
+.para{ color: var(--headerColor);}
+.head{ background-color:var(--reedeemColor);}
+.para2{font-size: 15px;}
+.dateDiv{padding: 10px 0px 0px 0px;  border-bottom: 1px solid rgba(84, 83, 83, 0.6) !important;font-size: 0.90rem !important;
+    font-weight: 500 !important;--padding-bottom: 2px !important;}
+ion-input{
+    border-bottom: 1px solid rgba(84, 83, 83, 0.6) !important;
+    /* margin: 0 0px; */
+    color: var(--text-light2);
+    font-size: 0.90rem !important;
+    font-weight: 500 !important;
+    --padding-bottom: 2px !important;
+}
+.boundary{
+    box-shadow: 1px 1px 1px 2px #efeaea;
+    padding:0;
+    --background: white;
+}
+.colu{
+    padding: 15px;
+    
+}
+.colum{
+    padding: 13px 80px 0px;
+}
+.card{
+  //  width:250px;
+    height: 108px;
+    border: dotted;
+    border-color: lightgrey;
+}
+.card1{
+      width:75%;
+      height: 108px;
+      border: dotted;
+      border-color: lightgrey;
+  }
+.ionic_btn{
+    display: block;
+    margin: auto;
+    text-transform: initial;
+    --border-radius: 20px;
+    width: 122px;
+    font-size: 13px;
+    --background: #B01D22;
+    height: 32px;
+}
+ion-list{
+    padding: 0;
+}
+.radioType{
+    font-size: 17px;
+}
+.butt1{
+    padding-top: 8px;
+}
+.image-upload>input {display: none;}
+.rdio{
+    padding:0px;
+}
+ion-list{
+    margin-top: -14px;
+    margin-left: -14px;
+}
+// ion-select{
+//     margin-top: -36px;
+// }
+.categoryName{
+    font-size: 18px;
+    font-weight: bold;
+}
+ion-select {width: 100%;justify-content: center;
+    .select-icon{    
+        .select-icon-inner {color : red !important; opacity: 1 !important;}
+    }
+  }
+ sup{font-size: 15px;color: var(-headerColor);font-weight: bold;color: var( --headerColor);top: -2px !important;}
+//  .delearList{position:absolute;top:100%;left:0;right:0;background:#fff;z-index:9;padding:0 10px;
+//     .delearText{margin:0;
+//         p{margin:0;border-bottom:1px solid gainsboro;padding:8px 0;font-size:14px;}
+//     }
+// }
+
+.clsoeIcon{    text-align: end;
+    position: absolute;
+    right: 40px;
+    top: 4px;
+    left: 5px;
+    font-size: 24px;
+    /* bottom: 105px; */
+    bottom: 0px;}
+    ion-label{
+        color:black;
+    }
+    ion-input{
+        color:black; 
+    }
+    ion-select{
+        color:black; 
+        --background:white;
+    }
+    ion-datetime{
+        color:black; 
+    }
+    .small{width: 100px; height: 50px; text-align: right;}
+    .small_p{width: 100px;}

@@ -1,0 +1,48 @@
+
+
+<ion-content [ngClass]="{'content-bg':  platform.width()<740}">
+  <ion-row class="ion-justify-content-center">
+    <ion-col size-xl="5" size-md="8" size-xs="12" [ngClass]="{'boundary':  platform.width()>740}">
+    <ion-grid>
+      <ion-row>
+        <ion-col >
+          <img src = "assets/icon/logo.svg" class="small_p">
+        </ion-col>
+        <ion-col class="col">
+          <img src = "assets/icon/Hathi & Siddhi.svg" class="small">
+        </ion-col>
+      </ion-row>
+      </ion-grid>
+      <ion-grid>
+        <ion-row>
+          <ion-col class="butt_col">
+           <ion-button class="butto" tappable (click)="register('login')">Login</ion-button>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col class="pad1" size="5">
+          <div >
+            <hr>
+          </div>
+        </ion-col>
+        <ion-col class="pad colom" size="2">
+          Or
+        </ion-col>
+        <ion-col class="pad1" size="5">
+          <div >
+            <hr>
+          </div>
+        </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col class="butt_col">
+           <ion-button class="butto" tappable (click)="register('newRegister')">Click here to join us</ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <div [ngClass]="{'banner': platform.width()<740}">
+          <img src = "assets/icon/Design 1.png" class="banner_bg">
+          </div>
+      </ion-col>
+      </ion-row>
+</ion-content>

@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{header_title}}</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button (click)="close()"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <br>
+  <div class="container1">
+  <ion-row>
+    <ion-col [size]="12" sizexs="12" size-md="8" size-lg="8" push-md="2" push-lg="2" class="whiteCol ion-no-padding">
+      <div style="background-image: url('assets/Other Icons/Banner.svg');" class="bgWalletImage">
+      </div>
+     <div class="seg">
+       <ion-row>
+         <ion-col [size]="6" size-sm="6" size-md="6" size-lg="6" *ngFor = "let item of listHeader">
+           <div class= "act ion-text-center">
+                <p class="ion-no-margin" [ngClass]="[platform?.is('ios') ? 'no_text1':'no_text' ]">{{item?.key}}</p>
+                <p class="no"><b>{{item?.value}}</b></p>
+              </div>
+         </ion-col>
+       </ion-row>
+       <!-- <ion-grid> -->
+        <hr>
+         <ion-row *ngFor ="let item of dealerList">
+           <ion-col [size]="3" size-xs="3" size-md="3" size-lg="3" class="ion-no-padding">
+            <img *ngIf="item?.userImg=='' " class="profile_image centerData" src="assets/icon/Group 14078.png"/>
+            <img *ngIf="item?.userImg!='' "  class="profile_image centerData dottedBorder userImageUpload" [src]="item?.userImg"/>
+           </ion-col>
+           <ion-col [size]="5" size-xs="5" size-md="6" size-lg="6" class="autoMargin">
+             <p class="name ion-no-margin"><b>{{item?.full_name}}</b></p>
+             <p class="phone ion-no-margin" *ngIf="item?.contact!=''">{{item?.contact}}</p>
+             <p class="phone ion-no-margin" *ngIf="item?.total_customers!=''">Customer : {{item?.total_customers}}</p>
+             <p class="phone ion-no-margin" *ngIf="item?.dealer_code!=''">{{item?.dealer_code}}</p>
+           </ion-col>
+           <ion-col class="but-div" [size]="4" size-xs="4" size-md="3" size-lg="3" class="autoMargin">
+             <ion-button class="view butt" (click)="view(item)">View Profile</ion-button>
+           </ion-col>
+           <hr>
+         </ion-row>
+         <div *ngIf="errorMessage!=''"><p class="ion-text-center">{{errorMessage}}</p></div>
+      <ion-infinite-scroll *ngIf="errorMessage==''" threshold="100px" (ionInfinite)="loadData($event)">
+        <ion-infinite-scroll-content
+          loadingSpinner="bubbles"
+          loadingText="Loading more data...">
+        </ion-infinite-scroll-content>
+      </ion-infinite-scroll>
+        
+       <!-- </ion-grid> -->
+     </div>
+    </ion-col>
+  </ion-row>
+</div>
+</ion-content>

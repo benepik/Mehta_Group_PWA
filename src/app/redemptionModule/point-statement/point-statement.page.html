@@ -1,0 +1,70 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{serverData?.header_title}}</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [ngClass]="{'content-bg':  platform.width()<740}">
+  <ion-row class="ion-justify-content-center">
+    <ion-col *ngIf="serverData" size-xl="6" size-md="6" size-xs="12" [ngClass]="{'boundary1':  platform.width()>740}">
+      <div style="background-image: url('assets/Other Icons/Banner.svg');" class="bgWalletImage">
+      </div>
+     <!-- <div class="ion-padding">
+       <div class="table">
+       <ion-row class="header-row">
+        <ion-col class="co_ro" size="3" *ngFor = "let item of serverData?.header_data">
+          <ion-text>{{item}}</ion-text>
+        </ion-col>
+      </ion-row>
+      <ion-row *ngFor="let data of serverData?.data; let ind=index" [ngClass]="{'pinkBg': ind%2==0}">
+        <ion-col  class="co_ro" size="3">
+          <ion-text>
+            {{data?.bill_month}}
+          </ion-text>
+        </ion-col>
+        trans_date
+        <ion-col  class="co_ro" size="3">
+          <ion-text>
+            {{data?.bill_month}}
+          </ion-text>
+        </ion-col>
+        <ion-col class="co_ro" size="3">
+          <p class="ion-no-margin">{{data?.full_name}}</p>
+          <p class="ion-no-margin">{{data?.contact}}</p>
+        </ion-col>
+        <ion-col class="co_ro" size="3">
+          <ion-text>{{data?.brand_name}}</ion-text>
+        </ion-col>
+        <ion-col class="co_ro"  size="3">
+          <ion-text>
+            {{data?.product_name}}
+          </ion-text>
+        </ion-col>
+      </ion-row>
+    </div>
+      </div> -->
+
+      <div style="width:100%;overflow:auto" class="dataTable" >
+        <table>
+          <tr class="header-row">
+            <td class="ion-text-center" *ngFor="let item of serverData?.header_data">{{item}}</td>
+          </tr>
+          <tr class="body-row" *ngFor="let data of serverData?.data; let ind=index" [ngClass]="{'pinkBg': ind%2==0}">
+            <td class="ion-text-center">{{data?.bill_month}}</td>
+            <td class="ion-text-center">{{data?.trans_date}}</td>
+            <td class="ion-text-center">{{data?.full_name}}<br>{{data?.contact}}</td>
+            <td class="ion-text-center">{{data?.brand_name}}</td>
+            <td class="ion-text-center">{{data?.product_name}}</td>
+            <!-- <td class="ion-text-center"><ion-button *ngIf="data?.btn_applicable == '1'" class = "act1" (click)="view(data)">{{data?.detail_btn}}</ion-button></td> -->
+          </tr>
+        </table>
+        </div>
+       </ion-col>
+       </ion-row>
+       <div *ngIf="message!=''">
+        <h1 class = "headr_col">{{message}}</h1>
+       </div>
+</ion-content>

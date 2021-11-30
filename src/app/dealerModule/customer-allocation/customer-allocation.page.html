@@ -1,0 +1,102 @@
+
+<!-- <ion-row *ngIf="customerData" class="fixedData">
+  <ion-col [size]="12" size-sm="12" size-md="8" size-lg="8" push-lg="2" push-md="2" class="whiteCol ion-padding">
+  <p [innerHTML]="customerData?.header_title" class="customerPDiv"></p>
+ <ion-row >
+   <ion-col [size]="6" size-sm="6" size-md="6" size-lg="6" >
+     <div class="act ion-text-center">
+       <p [innerHTML]="customerData?.header_arr?.first_div?.title" class="ion-no-margin fontTDiv"></p>
+       <p [innerHTML]="customerData?.header_arr?.first_div?.total_customers" class="totalCount ion-no-margin"></p>
+       <ion-button *ngIf="customerData?.header_arr?.first_div?.button_applicable==true" fill="outline" 
+       class="btnCustomer" shape="round" size="small" tappable (click)="addCustomer(customerData?.header_arr?.first_div)">
+       {{customerData?.header_arr?.first_div?.button_text}}</ion-button>
+     </div>
+
+   </ion-col>
+   <ion-col [size]="6" size-sm="6" size-md="6" size-lg="6" >
+     <div class="act ion-text-center">
+       <img [src]="customerData?.header_arr?.second_div?.icon" onerror="this.src='./assets/watermark/watermark.png'" class="imgIcon">
+       <ion-button *ngIf="customerData?.header_arr?.second_div?.button_applicable==true" tappable (click)="transectionHistory()" 
+       fill="outline" class="btnCustomer" shape="round" size="small">{{customerData?.header_arr?.second_div?.button_text}}</ion-button>
+     </div>
+
+     
+   </ion-col>
+ </ion-row>
+ <div class="borderBtmDiv padd10">
+  <ion-searchbar placeholder="Search Customer"  [(ngModel)]="searchString" (ionChange)="searchCustomer($event)"></ion-searchbar>
+</div>
+</ion-col>
+</ion-row> -->
+<ion-content>
+  <div class="container1">
+  <ion-row >
+    <ion-col [size]="12" size-sm="12" size-md="8" size-lg="8" push-lg="2" push-md="2" class="whiteCol ion-padding">
+     <div  class="fixedData"> 
+       <p [innerHTML]="customerData?.header_title" class="customerPDiv"></p>
+      <ion-row >
+        <ion-col [size]="6" size-sm="6" size-md="6" size-lg="6" >
+          <div class="act ion-text-center">
+            <p [innerHTML]="customerData?.header_arr?.first_div?.title" class="ion-no-margin fontTDiv"></p>
+            <p [innerHTML]="customerData?.header_arr?.first_div?.total_customers" class="totalCount ion-no-margin"></p>
+            <ion-button *ngIf="customerData?.header_arr?.first_div?.button_applicable==true" fill="outline" 
+            class="btnCustomer" shape="round" size="small" tappable (click)="addCustomer(customerData?.header_arr?.first_div)">
+            {{customerData?.header_arr?.first_div?.button_text}}</ion-button>
+          </div>
+        </ion-col>
+        <ion-col [size]="6" size-sm="6" size-md="6" size-lg="6" >
+          <div class="act ion-text-center">
+            <img [src]="customerData?.header_arr?.second_div?.icon" onerror="this.src='./assets/watermark/watermark.png'" class="imgIcon">
+            <ion-button *ngIf="customerData?.header_arr?.second_div?.button_applicable==true" tappable (click)="transectionHistory()" 
+            fill="outline" class="btnCustomer" shape="round" size="small"
+            [ngClass]="{'widthtotalDiv': platform?.is('mobile')}" >{{customerData?.header_arr?.second_div?.button_text}}</ion-button>
+            
+          </div>
+
+        </ion-col>
+      </ion-row>
+      <div class="borderBtmDiv padd10">
+        <ion-searchbar placeholder="Search Customer"  [(ngModel)]="searchString" (ionChange)="searchCustomer($event)"></ion-searchbar>
+      </div> 
+    </div>
+      <ion-row *ngFor="let item of userData" class="borderBtmDiv">
+        <ion-col [size]="2" size-sm="2" size-md="2" size-lg="2">
+          <img [src]="item?.user_image" onerror="this.src='./assets/watermark/watermark.png'" class="userImageCss">
+        </ion-col>
+        <ion-col [size]="6" size-sm="6" size-md="6" size-lg="6">
+          <p [innerHTML]="item?.full_name" class="ion-no-margin fontDiv"></p>
+          <p [innerHTML]="item?.contact" class="ion-no-margin fontDiv"></p>
+          <p class="ion-no-margin fontDiv">{{item?.registration_sts}}{{item?.user_registration_status}}</p>
+          <p *ngIf="item?.remaining_points!=''" [innerHTML]="item?.remaining_points" class="ion-no-margin fontDiv"></p>
+        </ion-col>
+        <ion-col *ngIf="!platform?.is('mobile')"  size-md="2" size-lg="2" class="ion-text-center ion-no-padding autoMargin">
+          <ion-button *ngIf="item?.view_profile_btn_applicable=='1'" class="viewButton" tappable (click)="view(item)"
+           size="small" color="danger">{{item?.view_profile_btn}}</ion-button>
+          <!-- <ion-button *ngIf="item?.allocate_btn_applicable=='1'" class="viewButton" tappable (click)="allocated(item)"
+          fill="outline" shape="round" size="small">{{item?.allocate_btn}}</ion-button> -->
+        </ion-col>
+        <ion-col *ngIf="!platform?.is('mobile')" size-md="2" size-lg="2" class="ion-text-center ion-no-padding autoMargin">
+          <!-- <ion-button *ngIf="item?.view_profile_btn_applicable=='1'" class="viewButton" tappable (click)="view(item)"
+          fill="outline" shape="round" size="small">{{item?.view_profile_btn}}</ion-button> -->
+          <ion-button *ngIf="item?.allocate_btn_applicable=='1'" class="viewButton" tappable (click)="allocated(item)"
+           size="small" color="danger">{{item?.allocate_btn}}</ion-button>
+        </ion-col>
+        <ion-col *ngIf="platform?.is('mobile')" [size]="4" size-sm="4" size-md="2" size-lg="2" class="ion-text-center ion-no-padding">
+          <ion-button *ngIf="item?.view_profile_btn_applicable=='1'" class="viewButton widthtotalDiv" tappable (click)="view(item)"
+          color="danger" size="small">{{item?.view_profile_btn}}</ion-button>
+          <ion-button *ngIf="item?.allocate_btn_applicable=='1'" class="viewButton widthtotalDiv" tappable (click)="allocated(item)"
+          color="danger" size="small">{{item?.allocate_btn}}</ion-button>
+        </ion-col>
+      </ion-row>
+      <!-- </div> -->
+    </ion-col>
+  </ion-row>
+  <div *ngIf="errorMessage!=''"><p class="ion-text-center">{{errorMessage}}</p></div>
+  <ion-infinite-scroll *ngIf="errorMessage==''" threshold="100px" (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="Loading more data...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</div>
+</ion-content>

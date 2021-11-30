@@ -1,0 +1,80 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{serverData?.header_title}}</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button (click)="close()"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-row>
+    <ion-col [size]="12" sizexs="12" size-md="8" size-lg="8" push-md="2" push-lg="2" class="whiteCol ion-no-padding">
+      <div style="background-image: url('assets/Other Icons/Banner.svg');" class="bgWalletImage">
+      </div>
+     <div class="seg">
+      <ion-row>
+        <ion-col size-xl="6" size-md="6" size-xs="6">
+         <ion-item lines="none">
+           <!-- <ion-label position="stacked">Change Year</ion-label> -->
+           <ion-datetime [(ngModel)] = "month" displayFormat="MMM  YYYY" (ionChange) = "changeData($event)"></ion-datetime>
+             <ion-icon name="chevron-down-outline"></ion-icon>
+           </ion-item>
+        </ion-col>
+      </ion-row>
+       <!-- <ion-row>
+         <ion-col size-xl="12" size-md="12" size-xs="12">
+          <ion-item>
+            <ion-label position="stacked">Select Month</ion-label>
+              <ion-datetime [(ngModel)] = "month" displayFormat="MMM  YYYY" placeholder="Select Month" (ionChange) = "changeData($event)"></ion-datetime>
+       
+           
+            </ion-item>
+         </ion-col>
+       </ion-row> -->
+       <div style="width:100%;overflow:auto" class="dataTable" >
+        <table>
+          <tr class="header-row">
+            <td class="ion-text-center" *ngFor="let item of serverData?.header_data">{{item}}</td>
+          </tr>
+          <tr class="body-row" *ngFor="let data of serverData?.data; let ind=index" [ngClass]="{'pinkBg': ind%2==0}">
+            <td class="ion-text-center"> {{ind + 1}}</td>
+            <td class="ion-text-center">{{data?.full_name}}<br> <p class="ion-no-margin">{{data?.dealer_code}}</p></td>
+            <td class="ion-text-center">{{data?.bags_sold}}</td>
+            <!-- <td class="ion-text-center">{{data?.bags_sold}}</td> -->
+            <td class="ion-text-center"><ion-button  class = "act1" (click)="view(data)">View</ion-button></td>
+          </tr>
+        </table>
+        </div>
+        <h1 *ngIf = "message !=''" class = "headr_col">{{message}}</h1>
+      <!-- <div class="table_start">
+       <div class="table">
+       <ion-row class="header-row">
+        <ion-col class="co_ro" size="3" *ngFor = "let item of serverData?.header_data">
+          <ion-text>{{item}}</ion-text>
+        </ion-col>
+      </ion-row>
+      <h1 *ngIf = "message !=''" class = "headr_col">{{message}}</h1>
+      <ion-row *ngFor="let data of serverData?.data; let ind=index" [ngClass]="{'pinkBg': ind%2==0}">
+        <ion-col *ngIf = "message ==''" class="co_ro" size="3">
+          <ion-text>
+            {{ind + 1}}
+          </ion-text>
+        </ion-col>
+        <ion-col *ngIf = "message ==''" size="3" class="co_ro">
+          <ion-text>{{data?.full_name}}</ion-text>
+          <p class="ion-no-margin">{{data?.dealer_code}}</p>
+        </ion-col>
+        <ion-col *ngIf = "message ==''" size="3" class="co_ro">
+          <ion-text>{{data?.bags_sold}}</ion-text>
+        </ion-col>
+        <ion-col *ngIf = "message ==''" class="co_ro" size="3">
+          <ion-button  class = "act1" (click)="view(data)">View</ion-button>
+        </ion-col>
+      </ion-row>
+    </div>
+      </div> -->
+      </div>
+       </ion-col>
+       </ion-row>
+</ion-content>

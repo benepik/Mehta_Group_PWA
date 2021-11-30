@@ -1,0 +1,82 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{apiDetails?.item?.name}}&nbsp;Orders</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button (click)="close()"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-row class="ion-padding">
+    <ion-col [size]="12" size-sm="12" size-md="8" size-lg="8" push-lg="2" push-md="2" class="whiteCol ion-padding borderRediDiv quick widthtotalDiv">
+        <ion-searchbar placeholder="Search Customer"  [(ngModel)]="searchString" (ionChange)="searchCustomer($event)"></ion-searchbar>
+      <ion-row>
+        <ion-col size-xl="6" size-md="6" size-xs="6">
+         <ion-item lines="none">
+           <!-- <ion-label position="stacked">Change Year</ion-label> -->
+             <ion-datetime [(ngModel)] = "month" displayFormat="MMMM" placeholder="Month" (ionChange)="changeData($event)"></ion-datetime>
+             <ion-icon name="chevron-down-outline"></ion-icon>
+           </ion-item>
+        </ion-col>
+        <ion-col size-xl="6" size-md="6" size-xs="6" class="autoMargin">
+            <!-- <ion-label position="stacked">Customer Type &nbsp;<ion-icon name="chevron-down-outline"></ion-icon></ion-label> -->
+            <ion-select  placeholder="Customer Type"  (ionChange)="checkValue($event)" >
+              <ion-select-option *ngFor = "let id of listType" [value]="id?.value" >{{id?.key}}</ion-select-option>
+            </ion-select>
+            <!-- </ion-item> -->
+         </ion-col>
+      </ion-row>
+      <div class="ion-padding borderRediDiv borderDiv margin10Div" *ngFor = "let item of listData">
+        <ion-row>
+          <ion-col [size]="6" size-sm="6" size-md="9" size-lg="9">
+            <p class="ion-no-margin orderPDiv">{{item?.full_name}}</p>
+            <p class="ion-no-margin orderPDiv">{{item?.type_name}}</p>
+            <p class="ion-no-margin orderPDiv">{{item?.contact}}</p>
+            <p class="ion-no-margin orderPDiv">{{item?.officer_name}}</p> 
+          </ion-col>
+          <ion-col [size]="6" size-sm="6" size-md="3" size-lg="3" class="ion-text-right">
+            <p class="ion-no-margin orderPDiv">{{item?.order_id_str}}</p>
+            <p class="ion-no-margin orderPDiv">{{item?.buy_date}}</p>
+            <p class="ion-no-margin orderPDiv">{{item?.tat_days}}</p>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col [size]="4" size-sm="4" size-md="4" size-lg="4">
+            <p class="ion-no-margin orderPDiv1">{{item?.good_str}}</p>
+            <p class="ion-no-margin orderPDiv1">{{item?.points_str}}</p>
+          </ion-col>
+          <ion-col [size]="4" size-sm="4" size-md="5" size-lg="5" >
+            <ion-row>
+              <ion-col *ngFor="let kick of item?.footer_data">
+                <ion-button *ngIf="kick?.btn_applicable==true" color="danger ionic_btn1 btnDiv" 
+                tappable (click)="verifyFun(item, kick)">{{kick?.btn_text}}</ion-button>
+              </ion-col>
+            </ion-row>
+           
+          </ion-col>
+          <ion-col [size]="4" size-sm="4" size-md="3" size-lg="3">
+            <p *ngIf="item?.btn_applicable==true" class="ion-no-margin orderPDiv2 ion-text-right" tappable (click)="gotoViewOrder(item)">{{item?.btn_text}}</p>
+        <!-- <p *ngIf="item.btn_applicable==true" color="danger btnDiv" 
+        tappable (click)="gotoViewOrder(item)">{{item?.btn_text}}</p> -->
+      </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col [size]="4" size-sm="4" size-md="4" size-lg="4">
+            <p class="ion-no-margin orderPDiv">{{item?.tracking_id}}</p>
+          </ion-col>
+        </ion-row>
+      </div>
+      <div *ngIf="errorMessage!=''"><p class="ion-text-center">{{errorMessage}}</p></div>
+      <div *ngIf="errorImage!=''">
+        <img [src]="errorImage"/>
+      </div>
+      <ion-infinite-scroll *ngIf="errorMessage==''" threshold="100px" (ionInfinite)="loadData($event)">
+        <ion-infinite-scroll-content
+          loadingSpinner="bubbles"
+          loadingText="Loading more data...">
+        </ion-infinite-scroll-content>
+      </ion-infinite-scroll>
+      </ion-col>
+      </ion-row>
+</ion-content>

@@ -1,0 +1,25 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar translucent>
+    <ion-buttons slot="end">
+        <a *ngIf="zoomData?.flag==10 && (zoomData?.award_to==loginUserData?.employee_id)" href="{{zoomData?.certificate_image}}" download>
+          <ion-icon name="download" slot="start"></ion-icon>
+        </a>
+  
+      &nbsp;&nbsp;&nbsp;&nbsp;
+      <ion-icon name="close" slot="end" (click)="dismiss()"></ion-icon>&nbsp;&nbsp;&nbsp;&nbsp;
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<!-- [fulscreen]="true" -->
+<ion-content  class="imageZoomPage fullscreen">
+  <div class="zoom-box">
+    <ion-slides pager="false" #slides [options]="slideOpts"  >
+      <ion-slide >
+        <div class="swiper-zoom-container">
+          <img *ngIf="zoomData?.flag!=10" class="card-img" src="{{zoomData}}" onerror="this.src='./assets/error.jpg'" >
+          <img *ngIf="zoomData?.flag==10" class="card-img" src="{{zoomData?.certificate_image}}" onerror="this.src='./assets/error.jpg'" >
+        </div>
+      </ion-slide>
+    </ion-slides>
+  </div>
+</ion-content>

@@ -1,0 +1,90 @@
+<ion-header [translucent]="true">
+  <ion-toolbar >
+    <ion-buttons slot="start" class="headerButtons ">
+      <div [ngClass]="{'deskDiv1': !platform?.is('mobile')}">
+        <img class="homeBandhanLogo" [ngClass]="[platform?.is('ios') ? 'b_logoIos': 'b_logo']"
+        src="assets/Bandhan Icon/Bandhan yellow logo.png" onerror="this.src='assets/watermark/watermark.png'">
+      </div>
+      <div *ngIf="!platform?.is('mobile')" class="ion-text-center inlineDiv ion-activatable ripple-parent" [ngClass]="{'activeTab': activeTabs=='home'}" (click)="changeTab('home', $event)">
+         <p class="ion-no-margin navIcon tab_padd">
+          <img class="homeLogo" src="assets/icon/Home.png" onerror="this.src='assets/watermark/watermark.png'">
+          &nbsp;<span class="ion-no-margin navText1 homepDiv1">Home</span></p>
+         <ion-ripple-effect></ion-ripple-effect>
+      </div>
+      <div *ngIf="!platform?.is('mobile')" class="ion-text-center inlineDiv ion-activatable ripple-parent" [ngClass]="{'activeTab': activeTabs=='profile'}" (click)="changeTab('profile',$event)">
+        <p class="ion-no-margin navIcon tab_padd">
+          <img class="homeLogo" src="assets/icon/Profile.png" onerror="this.src='assets/watermark/watermark.png'">
+          &nbsp;<span class="ion-no-margin navText1 homepDiv1">Profile</span>  </p>
+        <ion-ripple-effect></ion-ripple-effect>
+      </div>
+
+
+      <div *ngIf="!platform?.is('mobile') && employType=='2'" class="ion-text-center inlineDiv ion-activatable ripple-parent" [ngClass]="{'activeTab': activeTabs=='customer-allocation'}" (click)="changeTab('customer-allocation', $event)">
+        <p class="ion-no-margin navIcon tab_padd">
+          <img class="homeLogo" src="assets/icon/Customer.png" onerror="this.src='assets/watermark/watermark.png'">
+          &nbsp;<span class="ion-no-margin navText1 homepDiv1">Customer</span> </p>
+        <ion-ripple-effect></ion-ripple-effect>
+      </div>
+      <div *ngIf="!platform?.is('mobile') && orderShow==true" class="ion-text-center inlineDiv ion-activatable ripple-parent" [ngClass]="{'activeTab': activeTabs=='orders'}" (click)="changeTab('orders', $event)">
+        <p class="ion-no-margin navIcon tab_padd">
+          <img class="homeLogo" src="assets/icon/Shop.png" onerror="this.src='assets/watermark/watermark.png'">
+          &nbsp;<span class="ion-no-margin navText1 homepDiv1">Orders</span> </p>
+        <ion-ripple-effect></ion-ripple-effect>
+      </div>
+     
+     <div *ngIf="!platform?.is('mobile')" class="ion-text-center inlineDiv" >
+      &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; 
+    </div>
+
+ 
+    </ion-buttons>
+<!-- 
+    <ion-tabs >
+      <ion-tab-bar slot="start" class="transparantBgColor">
+        <ion-tab-button tab="home">
+          <p class="ion-no-margin navIcon tab_padd">
+            <img class="homeLogo" src="assets/icon/Home.png" onerror="this.src='assets/watermark/watermark.png'">
+            &nbsp;<span class="ion-no-margin navText1 homepDiv1">Home</span></p>
+        </ion-tab-button>
+      <ion-tab-button tab="profile" [ngClass]="{'activeTab': activeTabs=='profile'}" (click)="changeTab('profile',$event)">
+        <p class="ion-no-margin navIcon tab_padd">
+          <img class="homeLogo" src="assets/icon/Profile.png" onerror="this.src='assets/watermark/watermark.png'">
+          &nbsp;<span class="ion-no-margin navText1 homepDiv1">Profile</span>  </p>
+      </ion-tab-button>
+      </ion-tab-bar>
+    </ion-tabs> -->
+    <!-- <ion-buttons slot="end">
+      <ion-button>
+        <img class="homeLogo" src="assets/icon/Location.png" onerror="this.src='assets/watermark/watermark.png'">
+        &nbsp;<p class="homepDiv1 place_logo">Gujarat</p>
+      </ion-button> -->
+      <!-- <ion-button>
+        <img class="homeLogo" src="assets/NavbarIcon/Alert.svg" onerror="this.src='assets/watermark/watermark.png'">
+      </ion-button> -->
+    <!-- </ion-buttons> -->
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-tabs #openTabs (ionTabsDidChange)="setCurrentTab()" >
+  <ion-tab-bar *ngIf="platform?.is('mobile')" slot="bottom"  style="position:relative;" class="headerColor">
+    <ion-tab-button tab="home">
+      <img class="homeLogo" src="assets/NavbarIcon/Home.svg" onerror="this.src='assets/watermark/watermark.png'">
+      <ion-label class="homepDiv">Home</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="profile">
+      <img class="homeLogo" src="assets/NavbarIcon/Profile.svg" onerror="this.src='assets/watermark/watermark.png'">
+      <ion-label class="homepDiv">Profile</ion-label>
+    </ion-tab-button>
+    <ion-tab-button tab="customer-allocation" *ngIf="employType=='2'">
+      <img class="homeLogo" src="assets/NavbarIcon/Customer.svg" onerror="this.src='assets/watermark/watermark.png'">
+      <ion-label class="homepDiv">Customer</ion-label>
+    </ion-tab-button>
+    <ion-tab-button tab="orders" *ngIf="orderShow==true">
+      <img class="homeLogo" src="assets/NavbarIcon/Order.svg" onerror="this.src='assets/watermark/watermark.png'">
+      <ion-label class="homepDiv">Orders</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs>
+

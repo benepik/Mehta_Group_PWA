@@ -1,0 +1,38 @@
+@mixin line-clamp($lines) {display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:$lines;overflow:hidden;
+    text-overflow:ellipsis;}
+.homeBandhanLogo{height: 40px;}
+.homeLogo{height: 15px;}
+.homeLogo, .homeBandhanLogo{object-fit: contain;}
+.homepDiv{font-size: 18px;color:var(--headerColor);}
+.userDetailsDiv{background-image: linear-gradient(0deg, var(--headerColor), rgb(176 29 34 / 72%));padding: 10px 10px; 
+    border: 1px solid #cacfd2;height: 110px;
+    .userDetailImage{height: 50px;width: 100%;padding: 10px;}
+    .userDiv{border: 1px solid #fff;height: 30px;border-radius: 11px;position: relative;
+        .userTypeP{font-size: 12px;color: #fff;@include line-clamp(2);position: absolute;left: 0; right: 0;top: 50%;
+           transform: translate(0px, -50%);}
+    }
+}
+.titleDiv{color:white;font-size: 15px;font-weight: bold;}
+.quickAccessImg{height: 40px;object-fit: contain;display: block;margin: auto;}
+.quickAccessP{font-size: 12px; color:black;}
+.communicationImage{height: 68px;width: 100%;border-radius: 3px;object-fit: cover;}
+.marginTop{margin-top: 5px;}
+.reedemImage{position:absolute;top:0;left:0;right:0;bottom:0;z-index:-1;background-size:cover;height:100%;width:100%;}
+.avalpointsColor,.totalAmmountDiv{color: var(--reedeemColor);}
+.avalpointsColor{font-size: 13px; font-size: 15px;}
+.Reedeembtn{color:var(--reedeemColor);border:3px solid var(--reedeemColor);border-radius:16px;min-width:30%;
+    font-weight: bold;margin-top: 11px;font-size: 16px;text-transform: initial;}
+.reedeemIcon{height:15px;width: 15px;object-fit: contain;}
+.TotalE{margin-bottom: 7px; font-size: 18px;}
+.TotalR{margin-bottom: 5px;font-size: 30px;}
+ion-slides.promoted{
+    .sliderImage{width: 100% !important;height: 100% !important;object-fit: contain;}}
+    .redeem_point{margin-top:12px;}
+    .quick{padding: 10px;width: 100%;}
+    .autopadd{ padding:14px;}
+    .quickAccessImg_col{ padding-top: 12px;}
+    .blurDiv{position:absolute;top:0;bottom:0;left:0;right:0;background-position:center;background-size:100%;filter:blur(7px);z-index:-1;}
+    .relativeDiv1{position: relative;width: 100%;border-radius: 10px; overflow: hidden; height: 200px;}
+    .padd10{padding:10px;}
+    .doubleBorder{border-right-color:#d6d6d6;border-right-width: .02em; border-right-style: solid;}
+    // .doubleBorder:nth-last-child(1){border: none;}

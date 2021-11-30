@@ -1,0 +1,79 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{allocatedPointsRes?.header_title}}</ion-title>
+    <ion-buttons slot="start" tappable (click)="gotoHomeTab()">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content class="ion-padding">
+  <ion-row *ngIf="allocatedPointsRes" class="ion-justify-content-center">
+    <ion-col size-xl="6" size-md="6" size-xs="12" class="whiteCol ion-no-padding">
+      <div style="background-image: url({{allocatedPointsRes?.header_bg}});" class="hedaerBackgroundImage ion-padding">
+        <ion-row *ngFor="let item of allocatedPointsRes?.user_data" >
+          <ion-col [size]="5" size-sm="5" size-md="3" size-lg="4"  push-lg="1" push-md="1">
+            <h6 class="ion-no-margin ">{{item?.key}}</h6>
+          </ion-col>
+          <ion-col [size]="2" size-sm="2" size-md="2" size-lg="2">
+            <h6 class="ion-no-margin ion-text-center">:</h6>
+          </ion-col>
+          <ion-col [size]="5" size-sm="5" size-md="3" size-lg="4"  push-lg="1" push-md="1">
+            <h6 class="ion-no-margin">{{item.value}}</h6>
+          </ion-col>
+        </ion-row>
+        <br>
+        <ion-row *ngIf="allocatedPointsRes?.footer" (click)="customer_list()">
+          <ion-col size="5" class="ion-text-right">
+            <img [src]="allocatedPointsRes?.footer?.icon" class="image" />
+          </ion-col>
+          <ion-col size="7" class="col_pDiv"><p class="ion-no-margin" >{{allocatedPointsRes?.footer?.text}}</p></ion-col>
+        </ion-row>
+      </div>
+      <br>
+        <ion-row  *ngIf="allocatedPointsRes?.point_data">
+          <ion-col>
+            <div style="background-image: url({{allocatedPointsRes?.point_data?.background_image}});" class="hedaerBackgroundImage">
+              <!-- <ion-grid> -->
+               <ion-row >
+                 <ion-col [size]="2" size-sm="2" size-md="2" size-lg="2"  class="col_img">
+                   <img [src]="allocatedPointsRes?.point_data?.coin_icon" class="img">
+                 </ion-col>
+                 <ion-col [size]="5" size-sm="5" size-md="5" size-lg="5" class="col_text">
+                   <p style="margin-bottom:0px;">{{allocatedPointsRes?.point_data?.available_balance_string}}</p>                
+                  <p class="col_P ion-no-margin">{{allocatedPointsRes?.point_data?.available_balance}}</p>
+                </ion-col>
+                <ion-col [size]="5" size-sm="5" size-md="5" size-lg="5" class="colom1">
+                  <ion-row *ngFor="let ki of allocatedPointsRes?.point_data?.other_arr">
+                    <ion-col class="ion-no-padding" *ngIf = "ki?.btn_applicable == true">
+                      <ion-button fill="outline" shape="round" size="small" class="viewButton" (click)="goToRedeem(ki)">{{ki?.btn_text}}</ion-button>
+                    </ion-col>
+                  </ion-row>
+                  <!-- <ion-button fill="outline" shape="round" size="small" class="viewButton">Purchase History</ion-button> -->
+                  <!-- <ion-button fill="outline" shape="round" size="small" class="viewButton">Redeem</ion-button> -->
+                </ion-col>
+               </ion-row>
+               <ion-row class="col_text">
+                 <ion-col [size]="5" size-sm="5" size-md="5" size-lg="5" class="ion-text-center"><p class="ion-no-margin redemDiv">
+                   {{allocatedPointsRes?.point_data?.debit_string}}&nbsp;{{allocatedPointsRes?.point_data?.total_debits}}</p></ion-col>
+                 <ion-col [size]="2" size-sm="2" size-md="2" size-lg="2" class="ion-text-center">|</ion-col>
+                <ion-col [size]="5" size-sm="5" size-md="5" size-lg="5"><p class="ion-no-margin redemDiv">
+                  {{allocatedPointsRes?.point_data?.total_balance_string}}&nbsp;{{allocatedPointsRes?.point_data?.total_credits}}</p>
+                </ion-col>
+               </ion-row>
+              <!-- </ion-grid> -->
+            </div>
+          </ion-col>
+        </ion-row>
+     
+        <ion-row *ngIf="allocatedPointsRes?.statement?.show_statement_btn==true">
+          <ion-col class="colom">
+            <ion-button class="act" (click) = "redemption_report(allocationData)">{{allocatedPointsRes?.statement?.statement_text}}</ion-button>
+          </ion-col>
+        </ion-row>
+     
+      <!-- </div> -->
+      </ion-col>
+      </ion-row>
+</ion-content>

@@ -1,0 +1,80 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Allocate Bags</ion-title>
+    <ion-buttons slot="start" tappable (click)="gotoHomeTab()">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-row>
+    <ion-col [size]="12" size-sm="12" size-md="8" size-lg="8" push-lg="2" push-md="2" class="whiteCol ion-padding">
+      <ion-list>
+        <ion-item lines="none" class=redbgDiv>
+          <p  class="fullNamediv">{{dealerHomeData?.full_name}},&nbsp;{{dealerHomeData?.contact}}</p>
+        </ion-item>
+        <ion-item *ngIf="budgetMonth && budgetMonth?.length>=1">
+          <ion-label position="stacked">Month</ion-label>
+          <ion-select [(ngModel)]="budMonthOpt" okText="Okay" cancelText="Dismiss" (ionChange)="checkBudgetValue($event,budMonthOpt )"  interface="popover">
+            <ion-select-option *ngFor="let budMonthOpt of budgetMonth" [value]="budMonthOpt" class="w100">{{budMonthOpt?.budget_month}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-item *ngIf="brandList && brandList?.length>=1">
+          <ion-label position="stacked">Brands</ion-label>
+          <ion-select [(ngModel)]="brandOption" okText="Okay" cancelText="Dismiss" (ionChange)="checkBrandValue($event,brandOption )"  interface="popover">
+            <ion-select-option *ngFor="let brandOption of brandList" [value]="brandOption" class="w100">{{brandOption?.brand_name}} </ion-select-option>
+          </ion-select>
+        </ion-item>
+
+  
+  
+        <ion-item  *ngIf="productList && productList?.length>=1">
+          <ion-label position="stacked">Product</ion-label>
+          <ion-select  [(ngModel)]="productOption"  okText="Okay" cancelText="Dismiss" (ionChange)="checkProdValue($event,productOption )"  interface="popover">
+            <ion-select-option *ngFor="let productOption of productList" [value]="productOption" class="w100">  {{productOption?.product_name}} </ion-select-option>
+          </ion-select>
+        </ion-item>
+  <!-- {{minmonth}} -->
+        <ion-item *ngIf="brandList && brandList?.length>=1">
+          <ion-label position="stacked">Date</ion-label>
+          <ion-datetime placeholder="Select Allocation Date"  min={{minDate}} max={{maxDate}} 
+          displayFormat="MMM/DD/YYYY" [(ngModel)]="myDate"></ion-datetime>
+          <ion-icon name="calendar" slot="end"></ion-icon>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked" >Invoice No.</ion-label>
+          <ion-input type="text" [(ngModel)]="Invoice" ></ion-input>
+        </ion-item>
+  
+        <ion-item>
+          <ion-label position="stacked" >No. of Bags</ion-label>
+          <!-- <ion-input type="tel" [(ngModel)]="bagsCount" ></ion-input> -->
+          <ion-input type="tel" [(ngModel)]="bagsCount" (ionChange)="checkBagCount($event)"></ion-input>
+        </ion-item>
+        <!-- {{dealerHomeData?.max_bag_limit}} -->
+        <!-- <ion-item *ngIf="bagsCount>0" lines="none">
+          <p class="totalPoint">Points: {{bagsCount}}</p>
+          <p class="totalPoint">Points: {{bagsCount*pointAllocatedRes}}</p>
+        </ion-item> -->
+     
+      </ion-list>
+  <br>
+  <ion-row >
+   <ion-col  class=" ion-text-center">
+   <ion-button [disabled]="!brandOption || !productOption || bagsCount<=0
+     || btnDisable==true  || !myDate || maxBagLimit<bagsCount"  class="ionic_btn BTmmm" tappable (click)="gotoSubmit()">{{btnText}}</ion-button>
+   <!-- || bagsCount>maxBagLimit |||| bagsCount<=0-->
+   <!-- bagsCount>0 -->
+  <br>
+  <br>
+    </ion-col>
+    </ion-row>
+    </ion-col>
+  </ion-row>
+    <!-- <div class="whiteBg"> -->
+  
+<!-- </div> -->
+</ion-content>

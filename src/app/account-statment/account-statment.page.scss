@@ -1,0 +1,21 @@
+.table{box-shadow: 1px 1px 1px 2px #EFEAEA;}
+  .pinkBg{background-color: #F2E8E8;}
+  .header .col { background-color:lightgrey;}
+.col {border: solid 1px grey;border-bottom-style: none; border-right-style: none;}
+.col:last-child {border-right: solid 1px grey;}
+.row:last-child .col {border-bottom: solid 1px grey;}
+.header-row {background:  #B01D22;color: #fff;font-size: 14px;}
+  .co_ro{border-left: 1px solid #ECEEEF;text-align: center; }
+  ion-text{ font-size:12px; }
+  .walletImages{ height: 40px;width: 50px;object-fit: contain;margin: auto;display: block;}
+    .colorWhite{color: #fff;}
+    .accTitle{font-size:14px; font-weight:bold;}
+    .bgWalletImage{background-repeat: no-repeat; background-size: cover; background-position: center;}
+    .totalBtn{--background:#ec6d72;text-transform:initial;max-width:100%;white-space:pre-wrap;font-size:11px;
+        --padding-start: 5px; --padding-end: 5px;}
+    .fontAcc{font-size: 12px;}
+    .dataTable{
+      .header-row td{min-width:100px;padding: 10px;  border-right: 1px solid #fff;}
+      tr td {padding:2px;border-right: 1px solid #ECEEEF;font-size: 13px;}
+
+    }

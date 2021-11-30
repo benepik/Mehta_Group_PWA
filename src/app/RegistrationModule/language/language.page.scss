@@ -1,0 +1,63 @@
+.ion-page {
+   
+    --background:#7faac0;
+}
+.logo{
+    left: 40px;
+    right: 40px;
+    top: 40px;
+    bottom: 40px;
+}
+.centered{
+    padding: 31px;
+    box-shadow: 1px 1px 1px 2px #efeaea;
+    border-radius:5px;
+    height: 80px;
+}
+.effect{
+    margin-top: 11px;
+}
+.effect :hover{
+    --background: #B01D22;
+    background-color:#B01D22;
+    color: white;
+}
+.effect :focus{
+    background-color:#B01D22;
+    color: white;
+}
+.col{
+    text-align: end;
+}
+
+    .banner_bg {
+           // top: 0;
+           
+           margin-top: -66px;
+            left: 0;
+            width: 100%;
+            display: block;
+            border-radius: 10px;
+        }
+.butt1{
+text-align: center;
+//margin-top: 90px;
+}
+.ionic_btn{
+    // color: #f5f6f9;
+    --background:  #c9888a;
+    --border-radius: 14px;
+    width: 113px;
+    text-transform: capitalize;
+    height: 30px;
+    font-size: 14px;
+}
+
+h5 {
+    font-size: 15px;
+    font-weight: bold;
+    font-family: monospace;
+}
+// .abc{
+//     padding: 0px;
+// }

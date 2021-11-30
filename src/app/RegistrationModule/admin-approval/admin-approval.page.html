@@ -1,0 +1,33 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-title>adminApproval</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content style="--background:#fff;" class="ion-padding">
+ <ion-row>
+   <ion-col  [size]="12" size-sm="12" size-md="8" size-lg="8" push-lg="2" push-md="2"  class="ion-padding">
+    <ion-grid>
+      <ion-row>
+        <ion-col >
+          <img src = "assets/icon/logo.svg" style = "width: 100px;">
+        </ion-col>
+        <ion-col class="col">
+          <img src = "assets/icon/abc.png" style = "width: 100px;text-align: right;">
+        </ion-col>
+      </ion-row>
+      </ion-grid>
+   </ion-col>
+ </ion-row>
+ <div class="overImgDiv ion-text-center" [ngClass]="{'desktopDiv': !this.platform.is('mobile')}">
+    <img [src]="approvalImage" onerror="this.src='./assets/watermark/watermark.png'" class="underWork"/>
+    <br><br>
+    <ion-button color="danger" size="large" class="btnL" tappable (click)="gotoLogin()">Return to login</ion-button>
+ </div>
+  <!-- <div>
+    <img [src]="approvalImage" onerror="this.src='./assets/watermark/watermark.png'" class="underWork"/>
+  </div> -->
+<div >
+ 
+</div>
+</ion-content>

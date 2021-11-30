@@ -1,0 +1,60 @@
+<ion-content style="--background: rgba(255,255,255,0.5);">
+  <ion-row>
+    <ion-col class="circle">
+   <ion-icon name="close" class="circle_close" (click)="close()"></ion-icon>
+    </ion-col>
+  </ion-row>
+  <!-- <div *ngIf = "key == 0">
+    <ion-row>
+      <ion-col class="ion-text-center">
+        <p class="sure">Are You Sure?</p>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="ion-text-center">
+        <ion-button class="ok_but" (click)="ok()">Ok</ion-button>
+      </ion-col>
+    </ion-row>
+  </div> -->
+  <div [ngClass]="{'mobilecss':val==true, 'desktopcss':val==false}" class="inputfiled">
+    <ion-row>
+      <ion-col class="ion-no-padding" [size]="12">
+        <p class="otpcss">{{temparray?.FirstMsg}}</p>
+        <!-- <ion-input type="text" [(ngModel)]="otpfirts" (ionChange)="getkey(otpfirts,$event)"></ion-input> -->
+      </ion-col>
+    </ion-row>
+    <!--  -->
+  <!-- </ion-grid> -->
+
+    <ion-row>
+
+      <ion-col [size]="3" class="ion-no-padding">
+        <!-- <ion-input type="tel" [(ngModel)]="otpfirts"></ion-input> 
+
+        <ion-input type="number" [(ngModel)]="otpfirts" (ionChange)="getkey(otpfirts,$event)"></ion-input> -->
+         <ion-input style="padding:0px !important;" type="tel" #otp1 placeholder="*" class="bodBottom" maxlength="1" (ionFocus)="checkFocus(1)"
+          (keyup)="moveFocus(otp2, FirstOtp, '1')" [(ngModel)]="FirstOtp"></ion-input> 
+      </ion-col>
+      <ion-col [size]="3" class="ion-no-padding">
+        <ion-input style="padding:0px !important;" type="tel" #otp2 placeholder="*" class="bodBottom" maxlength="1" (ionFocus)="checkFocus(2)"
+          (keyup)="moveFocus(otp3, SecondOtp, '2')" [(ngModel)]="SecondOtp"></ion-input>
+      </ion-col>
+      <ion-col [size]="3" class="ion-no-padding">
+        <ion-input style="padding:0px !important;" type="tel" #otp3 placeholder="*" class="bodBottom" maxlength="1" (ionFocus)="checkFocus(3)"
+          (keyup)="moveFocus(otp4, ThirdOtp, '3')" [(ngModel)]="ThirdOtp"></ion-input>
+      </ion-col>
+      <ion-col [size]="3" class="ion-no-padding">
+        <ion-input style="padding:0px !important;" type="tel" #otp4 placeholder="*" class="bodBottom" maxlength="1" (ionFocus)="checkFocus(4)"
+          (keyup)="moveFocus(otp4, FourthOtp, '4')" [(ngModel)]="FourthOtp"></ion-input>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col [size]="12">
+        <p class="resend" (click) = "getOtpDetails()">{{temparray?.ThirdMsg}}&nbsp;{{temparray?.resendText}}</p>
+      </ion-col>
+    </ion-row>
+    <div class="txtcentr">
+      <ion-button class="ionic_btn" (click)="gotohistory()">{{temparray?.buttonText}}</ion-button>
+    </div>
+  </div>
+</ion-content>

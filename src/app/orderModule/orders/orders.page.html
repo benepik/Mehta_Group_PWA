@@ -1,0 +1,46 @@
+
+<ion-content>
+  <br>
+  <div class="container1">
+  <ion-row>
+    <ion-col [size]="12" size-sm="12" size-md="8" size-lg="8" push-lg="2" push-md="2" class="whiteCol ion-padding">
+      <p class="customerPDiv">Redemption Order</p>
+      <ion-row >
+        <ion-col [size]="12" size-sm="12" size-md="12" size-lg="12" class="ion-no-padding">
+          <div class="act ion-text-center">
+            <ion-row>
+              <ion-col size="4" *ngFor = "let item of listHeader">
+                <p class="ion-no-margin fontTDiv">{{item?.key}}</p>
+                <p class="totalCount ion-no-margin">{{item?.value}}</p>
+                
+              </ion-col>
+            </ion-row>
+          </div>
+
+        </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size-xl="6" size-md="6" size-xs="6">
+           <ion-item>
+             <!-- <ion-label position="stacked">Change Year</ion-label> -->
+               <ion-datetime [(ngModel)] = "year" displayFormat="YYYY" (ionChange) = "changeData($event)"></ion-datetime>
+               <ion-icon name="chevron-down-outline"></ion-icon>
+             </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row *ngFor = "let id of listData"  (click) = "listDetails(id)">
+          <ion-col size="1" class="ion-text-center autoMargin">
+            <img class="homeLogo" [src] = "id?.status_icon">
+          </ion-col>
+          <ion-col size="9">
+            <p>{{id?.name}}:{{id?.order_count}}</p>
+             </ion-col>
+          <ion-col size ="2" class="ion-text-center autoMargin">
+            <ion-icon class="homelogo iconlogo" name="chevron-forward-outline"></ion-icon>
+          </ion-col>
+          <hr class="ion-no-margin">
+        </ion-row>
+        </ion-col>
+        </ion-row>
+        </div>
+</ion-content>

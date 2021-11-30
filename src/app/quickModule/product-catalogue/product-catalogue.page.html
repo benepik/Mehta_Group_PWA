@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Product List</ion-title>
+    <ion-buttons slot="start">
+    <ion-back-button></ion-back-button>
+  </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <br>
+  <div class="container1">
+  <ion-row>
+    <ion-col [size]="12" size-sm="12" size-md="8" size-lg="8" push-lg="2" push-md="2" class="whiteCol ion-padding">
+      <ion-row>
+        <ion-col class="ion-text-center" [size]="12" size-lg="6" size-sm="12"  size-md="12" *ngFor="let item of productBrand">
+          <div class="product_cs" (click)="product_cs(item)">
+            <img [src]="item?.media">
+            <p class="prd_cs_p">{{item?.alias_name}}</p>
+          </div>
+        </ion-col>
+      </ion-row>
+      </ion-col>
+      </ion-row>
+      </div>
+</ion-content>

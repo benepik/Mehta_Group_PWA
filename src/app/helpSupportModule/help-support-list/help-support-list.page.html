@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{settings?.pageTitle}}</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content class="ion-padding">
+  <ion-row>
+    <ion-col [size]="12" size-sm="12" size-md="8" size-lg="8" push-md="2" push-lg="2" class="whiteCol ion-padding">
+      <p class="ion-no-margin mainTitle">{{settings?.pageTitle}}</p>
+      <br>
+      <ion-row *ngFor="let item of settings?.data"  class="ion-align-items-center boxS"  tappable (click)="gotoFaq(item)">
+        <ion-col [size]="3" size-sm="2" size-md="1" size-lg="1" class="autoMargin">
+          <img [src]="item?.icon" onerror="this.src='assets/watermark/watermark.png'" class="arrowIcon">
+        </ion-col>
+        <ion-col [size]="7" size-sm="8" size-md="10" size-lg="10" >
+          <p class="SettingTitle " [innerHTML]="item?.title"></p>
+          </ion-col>
+          <ion-col [size]="2" size-sm="2" size-md="1" size-lg="1" class="autoMargin">
+            <img [src]="item?.arrow_icon" onerror="this.src='assets/watermark/watermark.png'" class="arrowIcon">
+          </ion-col>
+      </ion-row>
+
+
+    </ion-col>
+  </ion-row>
+
+</ion-content>

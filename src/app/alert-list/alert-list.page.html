@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{alertData?.pageTitle}}</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button>
+
+      </ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-row>
+    <ion-col [size]="12" sizexs="12" size-md="8" size-lg="8" push-md="2" push-lg="2" class="whiteCol ion-no-padding">
+  <div  *ngIf="alertList" class="moduleAligment">
+    <div   class="dataContainer" >
+      <!-- <ion-row>
+        *ngFor="let data of alertList"
+        <ion-col [size]="12"><p class="date">{{data?.label}}</p></ion-col>
+      </ion-row> -->
+      <ion-row *ngFor="let alert of alertList?.alert_notification" class="alertlist" tappable (click)="alertDetail(alert)"> 
+        <ion-col [size]="3"><img src="{{alert?.title_icon}}" class="modIcons" onerror="this.src='./assets/watermark/watermark.png'"></ion-col>
+        <ion-col [size]="9">
+          <p class="modTitle" [innerHTML]="alert.description"></p>   
+          <p class="time autoMargin">{{alert?.created_date}}</p>
+        </ion-col>
+      </ion-row>
+    </div>
+  </div>
+<div *ngIf="errorMessage">
+  <p class="ion-text-center">{{errorMessage}}</p>
+</div>
+<ion-infinite-scroll *ngIf="errorMessage==''" threshold="100px" (ionInfinite)="loadData($event)">
+  <ion-infinite-scroll-content
+    loadingSpinner="bubbles"
+    loadingText="Loading more data...">
+  </ion-infinite-scroll-content>
+</ion-infinite-scroll>
+</ion-col>
+  </ion-row>
+
+</ion-content>

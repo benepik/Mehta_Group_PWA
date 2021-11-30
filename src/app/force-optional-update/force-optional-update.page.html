@@ -1,0 +1,31 @@
+<ion-content style="position:relative;" >
+  <!-- <ion-row >
+    <ion-col [size]="12" size-sm="12" size-md="8" size-lg="8" push-lg="2" push-md="2"  [ngClass]="{whiteCol: platform?.is('Desktop')}"> -->
+  <div class="backgroundDiv" [style.background]="'url('+showAllData?.update_image+')'">
+
+    <div class="updateDataDiv">
+       <ion-row >
+    <ion-col [size]="12" size-sm="12" size-md="8" size-lg="8" push-lg="2" push-md="2">
+      <div class="innerTextDiv"> 
+        <ion-row>
+          <ion-col [size]="12"><p class="titleText">{{showAllData?.title}}</p></ion-col>
+          <ion-col [size]="12"><p class="discriptionText">{{showAllData?.content}}</p></ion-col>
+        </ion-row>
+        <br>
+        <ion-row>
+          <ion-col [size]="2"  size-sm="2" size-md="2" size-lg="2"></ion-col>
+          <ion-col [size]="8" size-sm="8" size-md="8" size-lg="8">
+            <ion-button color="danger" *ngIf="appStatus==1 || appStatus==2" class="dynamicButtonColor" tappable (click)="updateApp(showAllData)">{{showAllData?.button_text}}</ion-button>
+            <p class="continueAppDiv" *ngIf="appStatus==2 || appStatus=='2'" tappable (click)="goToHome()" >{{showAllData?.button_text2}}</p>
+          </ion-col>
+          <ion-col [size]="2" size-sm="2" size-md="2" size-lg="2"></ion-col>
+        </ion-row>
+      </div>
+    </ion-col>
+    </ion-row>
+    </div>
+
+  </div>
+  <!-- </ion-col>
+  </ion-row> -->
+</ion-content>

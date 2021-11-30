@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{server?.header_title}}</ion-title>
+    <ion-buttons slot="start" tappable (click)="gotoHomeTab()">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [ngClass]="{'content-bg':  platform.width()<740}" class="ion-padding">
+    <ion-row class="ion-justify-content-center ">
+      <ion-col *ngIf="server?.data" size-xl="6" size-md="6" size-xs="12"
+      class="whiteCol table" [ngClass]="{'boundary1':  platform.width()>740}">
+      <!-- <div style="background-image: url('assets/Other Icons/Banner.svg');" class="bgWalletImage">
+      </div> -->
+       <div class="ion-padding" >
+         <ion-row class="header-row">
+          <ion-col class="co_ro" *ngFor="let item of server?.header_data">
+            <p class="ion-text-center ion-no-margin">{{item}}</p>
+          </ion-col>
+        </ion-row>
+        <ion-row *ngFor="let data of serverData; let ind=index" [ngClass]="{'pinkBg': ind%2==0}">
+          <ion-col class="co_ro">
+            <p class="ion-no-margin ion-text-center">{{data?.created_date}}</p>
+          </ion-col>
+          <ion-col class="co_ro">
+            <p class="ion-no-margin ion-text-center">{{data?.bill_month}}</p>
+          </ion-col>
+          <ion-col class="co_ro">
+            <p class="ion-no-margin ion-text-center" *ngIf="allocationHomeData.requestType!='customer'">{{data?.description}}</p>
+            <p class="ion-no-margin ion-text-center" *ngIf="allocationHomeData.requestType=='customer'">{{data?.brand_name}}</p>
+          </ion-col>
+          <ion-col class="co_ro">
+            <p class="ion-no-margin ion-text-center" *ngIf="allocationHomeData.requestType!='customer'">{{data?.debit}}</p>
+            <p class="ion-no-margin ion-text-center" *ngIf="allocationHomeData.requestType=='customer'">{{data?.bags}}</p>
+          </ion-col>
+        </ion-row>
+       </div>
+         </ion-col>
+         </ion-row>
+         <div *ngIf="errorMessage!=''">
+          <p class="ion-text-center">{{errorMessage}}</p>
+        </div>
+</ion-content>

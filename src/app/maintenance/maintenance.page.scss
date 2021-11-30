@@ -1,0 +1,9 @@
+.maintenanceholder{text-align:center;margin-top:8%;
+    .imgicon{height:50px;width:50px;object-fit:contain;}
+    .redText{color:white;font-weight:bold;}
+    .yellowText{color:white;font-weight:600;}
+    .blackText{color:var(--blackTextColor);font-weight:600;}
+}
+.maintenanceImg{
+    // position:absolute;bottom:0px;right:0px;
+    width:100%;padding:6px;}
