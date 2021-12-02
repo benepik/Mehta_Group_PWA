@@ -59,9 +59,7 @@ export class AppComponent {
 
       // this.fcmActivity()
       this.generateDeviceId();
-      // if(this.platform.is('cordova')){
-        this.apiService.generateFCMToken();
-      // }
+      this.apiService.generateFCMToken();
       this.maintance(); 
 
 

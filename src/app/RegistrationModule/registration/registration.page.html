@@ -168,24 +168,23 @@
  </div>
 
 <br>
-   <ion-row *ngIf="formData && formData?.length>=1 && formValue?.footer_data?.btn_text_applicable==true">
+   <ion-row *ngIf="formData && formData?.length>=1">
      <ion-col *ngIf="RegistrationType?.request_page == 'home' || RegistrationType?.request_page == 'dealer'
      || RegistrationType?.request_page == 'account_detail' || RegistrationType?.request_page == 'officer'">
        <ion-button class="ionic_btn" tappable (click)="back()">Back</ion-button>
      </ion-col>
-    <ion-col *ngIf="LoginStoredType =='login' && RegistrationType?.request_page != 'dealer' && RegistrationType?.request_page != 'officer'
+    <!-- <ion-col *ngIf="LoginStoredType =='login' && RegistrationType?.request_page != 'dealer' && RegistrationType?.request_page != 'officer'
     && RegistrationType?.request_page != 'account_detail' && RegistrationType?.request_page != 'pending_customer'
     && RegistrationType?.request_page != 'active_customer' && RegistrationType?.request_page != 'block_customer' 
     && RegistrationType.request_page != 'rejected_customer' && RegistrationType?.request_page != 'home'" >
       <ion-button  class="ionic_btn" tappable (click)="submitFunCall('skip')">skip</ion-button>
-     </ion-col>
+     </ion-col> -->
      <ion-col  *ngIf="RegistrationType?.request_page == 'home' || RegistrationType?.request_page == 'dealer'
     || RegistrationType?.request_page == 'account_detail' || RegistrationType?.request_page == 'officer'">
       <ion-button  class="ionic_btn" tappable (click)="Submit('save')">Save</ion-button>
      </ion-col>
      <ion-col  *ngIf="RegistrationType?.request_page == 'pending_customer'">
-      <ion-button *ngIf="RegistrationType?.request_page != 'active_customer'" class="ionic_btn" tappable 
-      (click)="profileView('rejected')">Reject</ion-button>
+      <ion-button *ngIf="RegistrationType?.request_page != 'active_customer'" class="ionic_btn" tappable (click)="profileView('rejected')">Reject</ion-button>
        </ion-col>
        <ion-col  *ngIf="RegistrationType?.request_page == 'active_customer'">
         <ion-button class="ionic_btn" tappable (click)="profileView('block')">Block</ion-button>
@@ -197,10 +196,6 @@
        <ion-col  *ngIf="RegistrationType?.request_page == 'block_customer'">
         <ion-button class="ionic_btn" tappable (click)="profileView('approve')">Activate</ion-button>
        </ion-col>
-<!-- 
-       <ion-col>
-         <ion-button class="ionic_btn">{{formValue?.footer_data?.btn_text}}</ion-button>
-       </ion-col> -->
   </ion-row>
       </ion-col>
   </ion-row>

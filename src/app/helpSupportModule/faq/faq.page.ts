@@ -19,6 +19,7 @@ export class FaqPage implements OnInit {
   constructor(public zone:NgZone, private router:Router, public activeRoute: ActivatedRoute, private apiService:ApiService,
     private sendData:DataTransferService) {
     this.faqsData=this.sendData.alldata;
+    console.log('faqsData',this.faqsData);
    }
 
   ngOnInit() {

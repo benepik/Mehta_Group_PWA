@@ -123,6 +123,18 @@ setTimeout(() => {
     console.log('RegistrationType', this.RegistrationType);
   }
 
+  // checkInput(data, searchString) {
+  //   if (data.call_api == 1) {
+  //     if (searchString.toString().length >= data.min_value) {
+  //       // this.deelarShow = data.request_type;
+  //       this.searchApiCall(data, searchString);
+  //     } else {
+  //       this.searchData = [];
+  //     }
+
+  //   }
+  // }
+
   checkInput(data, ev) {
     let searchString=ev;
     console.log('checkInput data==> ',data );
@@ -153,14 +165,34 @@ setTimeout(() => {
       this.route.navigate(['/tabs/customer-allocation']);
       //this.route.navigateByUrl("/tabs/customer-allocation");
     }else{
-      this.storage.remove('allStoreData');
-      this.apiService.generateDeviceId();
-      this.apiService.generateFCMToken();
-      this.maintance();
+      // this.storage.remove('allStoreData');
+      // this.apiService.generateDeviceId();
+      // this.apiService.generateFCMToken();
+      // this.maintance();
       // this.route.navigate(['./login']);
     }
   });
   
+  }
+
+
+  logOutCall(){
+    this.zone.run(()=>{
+      let apiKey={}
+      console.log('login data response',apiKey);
+      this.apiService.apiCallWithLoginToken(URLS.LogOutUrl,apiKey).subscribe((result) =>{
+        console.log('logout data response',result);   
+        this.localStorage.remove('allStoreData');
+        this.apiService.generateDeviceId();
+        this.apiService.generateFCMToken();
+        this.maintance();
+        //  this.router.navigate(['/login']);
+        //  window.location.reload();
+          this.apiService.showToastMessage(result.message, 'top', 2000, 'greenBg');     
+      },err =>{
+        this.apiService.showToastMessage(JSON.stringify(err), 'top', 3000, 'redBg');
+      });
+    }); 
   }
 
   async maintance(){
@@ -643,115 +675,116 @@ return;
     });
     await actionSheet.present();
   }
+  //  back(){
+  //   this.route.navigate(['./mobile']);
+  //  }
+ async Submit(type) {
+  this.emptyFieldFound=0;
 
-  async Submit(type) {
-    this.emptyFieldFound=0;
+  console.log("this.pin_autoid",this.pin_autoid);
 
-    console.log("this.pin_autoid",this.pin_autoid);
-
-    console.log('field full==> ', this.formData);
-    for (let j = 0; j < this.formData.length; j++) {
-      for (let k = 0; k < this.formData[j].data.length; k++) {
-        if(this.formData[j].data[k].is_mandatory==1 && this.formData[j].data[k].answer=="" ){
-          this.emptyFieldFound=1;
-          console.log('field==> ', this.formData[j].data[k]);
-          console.log('field==> ', this.formData[j].data[k].answer);
-        }
-
-        if(this.formData[j].data[k].is_sub_option==1){
-        
-          let index = this.formData[j].data[k].option.findIndex(p => p.value == this.formData[j].data[k].answer);
-            console.log('field1 yoyo index==> ', index);
-            console.log('field1 yoyo==> ', this.formData[j].data[k].option[index]);
-            if(index>=0){
-              if(this.formData[j].data[k].option[index].is_mandatory==1){
-                this.emptyFieldFound=1;
-                console.log('field1==> ', this.formData[j].data[k].option[index]);
-                console.log('field1==> ', this.formData[j].data[k].option[index].answer);
-              }
-              if(this.formData[j].data[k].option[index].is_sub_option==1){
-    
-                for (let m = 0; m < this.formData[j].data[k].option[index].sub_option.length; m++) {
-                  if(this.formData[j].data[k].option[index].sub_option[m].isMandatory==1 && this.formData[j].data[k].option[index].sub_option[m].answer==""){
-                    this.emptyFieldFound=1;
-                    console.log('field2==> ', this.formData[j].data[k].option[index].sub_option[m]);
-                    console.log('field2==> ', this.formData[j].data[k].option[index].sub_option[m].answer);
-                  }
-                }
-    
-              }
-            }else{
-
-              for (let l = 0; l < this.formData[j].data[k].option.length; l++) {
-                if(this.formData[j].data[k].option[l].is_mandatory==1){
-                  this.emptyFieldFound=1;
-                  console.log('field else1==> ', this.formData[j].data[k].option[l]);
-                  console.log('field else11==> ', this.formData[j].data[k].option[l].answer);
-                }
-                if(this.formData[j].data[k].option[l].is_sub_option==1){
-                  // let index = this.formData[j].data[k].option[l].sub_option.findIndex(p => p.value == this.formData[j].data[k].answer);
-
-
-                  for (let m = 0; m < this.formData[j].data[k].option[l].sub_option.length; m++) {
-                    if(this.formData[j].data[k].option[l].sub_option[m].isMandatory==1 && this.formData[j].data[k].option[l].sub_option[m].answer==""){
-                      this.emptyFieldFound=1;
-                      console.log('field else12==> ', this.formData[j].data[k].option[l].sub_option[m]);
-                      console.log('field else12==> ', this.formData[j].data[k].option[l].sub_option[m].answer);
-                    }
-                  }
-      
-                }
-              }
-
-            }
-          
-      
-        }
-    
-
+  console.log('field full==> ', this.formData);
+  for (let j = 0; j < this.formData.length; j++) {
+    for (let k = 0; k < this.formData[j].data.length; k++) {
+      if(this.formData[j].data[k].is_mandatory==1 && this.formData[j].data[k].answer=="" ){
+        this.emptyFieldFound=1;
+        console.log('field==> ', this.formData[j].data[k]);
+        console.log('field==> ', this.formData[j].data[k].answer);
       }
 
-
-      if(j==this.formData.length-1){
-        console.log('this.emptyFieldFound==> ', this.emptyFieldFound);
-        if(this.emptyFieldFound==1 ||  this.searchData==[]){
-          this.apiService.showToastMessage("Please fill all mandatory fields", 'top', 3000, 'redBg');
-          return;
-        }else{
-
-
-          for (let j = 0; j < this.formData.length; j++) {
-            for (let k = 0; k < this.formData[j].data.length; k++) {
-              if(this.formData[j].data[k].id=='pin_code'){
-              
-                this.formData[j].data[k].answer=this.pin_autoid;
-              }
-            else if(this.formData[j].data[k].id=='dealer_code'){
-            console.log("this.dealer_autoid",this.dealer_autoid);
-            if(this.formData[j].data[k].is_editable=='false' || this.formData[j].data[k].is_editable==false){
-              this.formData[j].data[k].answer= this.formData[j].data[k].auto_dealer_id;
+      if(this.formData[j].data[k].is_sub_option==1){
+       
+        let index = this.formData[j].data[k].option.findIndex(p => p.value == this.formData[j].data[k].answer);
+          console.log('field1 yoyo index==> ', index);
+          console.log('field1 yoyo==> ', this.formData[j].data[k].option[index]);
+          if(index>=0){
+            if(this.formData[j].data[k].option[index].is_mandatory==1){
+              this.emptyFieldFound=1;
+              console.log('field1==> ', this.formData[j].data[k].option[index]);
+              console.log('field1==> ', this.formData[j].data[k].option[index].answer);
             }
-            else{
-              this.formData[j].data[k].answer= this.dealer_autoid;
-            }
-              
+            if(this.formData[j].data[k].option[index].is_sub_option==1){
+  
+              for (let m = 0; m < this.formData[j].data[k].option[index].sub_option.length; m++) {
+                if(this.formData[j].data[k].option[index].sub_option[m].isMandatory==1 && this.formData[j].data[k].option[index].sub_option[m].answer==""){
+                  this.emptyFieldFound=1;
+                  console.log('field2==> ', this.formData[j].data[k].option[index].sub_option[m]);
+                  console.log('field2==> ', this.formData[j].data[k].option[index].sub_option[m].answer);
+                }
               }
+  
+            }
+          }else{
+
+            for (let l = 0; l < this.formData[j].data[k].option.length; l++) {
+              if(this.formData[j].data[k].option[l].is_mandatory==1){
+                this.emptyFieldFound=1;
+                console.log('field else1==> ', this.formData[j].data[k].option[l]);
+                console.log('field else11==> ', this.formData[j].data[k].option[l].answer);
+              }
+              if(this.formData[j].data[k].option[l].is_sub_option==1){
+                // let index = this.formData[j].data[k].option[l].sub_option.findIndex(p => p.value == this.formData[j].data[k].answer);
+
+
+                for (let m = 0; m < this.formData[j].data[k].option[l].sub_option.length; m++) {
+                  if(this.formData[j].data[k].option[l].sub_option[m].isMandatory==1 && this.formData[j].data[k].option[l].sub_option[m].answer==""){
+                    this.emptyFieldFound=1;
+                    console.log('field else12==> ', this.formData[j].data[k].option[l].sub_option[m]);
+                    console.log('field else12==> ', this.formData[j].data[k].option[l].sub_option[m].answer);
+                  }
+                }
+    
+              }
+            }
+
+          }
+         
+     
+      }
+  
+
+    }
+
+
+    if(j==this.formData.length-1){
+      console.log('this.emptyFieldFound==> ', this.emptyFieldFound);
+      if(this.emptyFieldFound==1 ||  this.searchData==[]){
+        this.apiService.showToastMessage("Please fill all mandatory fields", 'top', 3000, 'redBg');
+        return;
+      }else{
+
+
+        for (let j = 0; j < this.formData.length; j++) {
+          for (let k = 0; k < this.formData[j].data.length; k++) {
+            if(this.formData[j].data[k].id=='pin_code'){
+            
+              this.formData[j].data[k].answer=this.pin_autoid;
+            }
+           else if(this.formData[j].data[k].id=='dealer_code'){
+           console.log("this.dealer_autoid",this.dealer_autoid);
+           if(this.formData[j].data[k].is_editable=='false' || this.formData[j].data[k].is_editable==false){
+            this.formData[j].data[k].answer= this.formData[j].data[k].auto_dealer_id;
+           }
+           else{
+            this.formData[j].data[k].answer= this.dealer_autoid;
+           }
             
             }
+           
           }
-
-
-          this.submitFunCall(type);
-  // alert("Shivanshi ma'am api to hit karo, sab fields fill ho gyi h");
-
         }
-      }
 
+
+        this.submitFunCall(type);
+// alert("Shivanshi ma'am api to hit karo, sab fields fill ho gyi h");
+
+      }
     }
 
   }
 
-  submitFunCall(type){
+ }
+    submitFunCall(type){
     this.zone.run(() => {
       let apiKey = {
         "save_data": this.formData,
@@ -789,7 +822,9 @@ return;
     this.currentObj = obj;
     if (this.showImgOption == false) {
       this.showImgOption = true;
-      let blkankdata={"nulldata":"blank",flag:obj.flag_type}
+
+let blkankdata={"nulldata":"blank",flag:obj.flag_type}
+
       const modal = await this.modalCtrl.create({
         component: ModelCameraPage,
         componentProps:{data:blkankdata},
@@ -820,25 +855,25 @@ return;
 
   }
 
-  // captureImg(event) {
-  //   // console.log('event1==>', event);
-  //   // console.log('this.currentObj==>', this.currentObj);
+  captureImg(event) {
+    // console.log('event1==>', event);
+    // console.log('this.currentObj==>', this.currentObj);
 
-  //   // var formData = new FormData();
-  //   // if(event.target.files){
-  //   //   const file = event.target.files[0];
-  //   //   const reader = new FileReader();
-  //   //   reader.readAsDataURL(file);
-  //   //   reader.onload = () => {
-  //   //       console.log(reader.result);
-  //   //       formData.append("file", this.files);
-  //   //      console.log('this.currentObj==>', this.currentObj);
-  //   //      this.currentObj.answer= reader.result;
+    // var formData = new FormData();
+    // if(event.target.files){
+    //   const file = event.target.files[0];
+    //   const reader = new FileReader();
+    //   reader.readAsDataURL(file);
+    //   reader.onload = () => {
+    //       console.log(reader.result);
+    //       formData.append("file", this.files);
+    //      console.log('this.currentObj==>', this.currentObj);
+    //      this.currentObj.answer= reader.result;
 
-  //   //   };
+    //   };
 
-  //   // }
-  // }
+    // }
+  }
   registaionForm() {
     this.zone.run(() => {
       let apiKey = {

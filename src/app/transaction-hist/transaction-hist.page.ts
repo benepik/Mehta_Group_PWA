@@ -29,7 +29,8 @@ export class TransactionHistPage implements OnInit {
     this.showButt();
   }
   showButt(){
-    this.buttReg = [{auto_id: "1", tab_name: "Customer Report", tab_status: "selected_tab", requestType: 'customer'}, {auto_id: "2", tab_name: "Dealer Report", tab_status: "unselected_tab", requestType: 'dealer'}]
+    this.buttReg = [{auto_id: "1", tab_name: "Customer Report", tab_status: "selected_tab", requestType: 'customer'},
+     {auto_id: "2", tab_name: "Dealer Report", tab_status: "unselected_tab", requestType: 'dealer'}]
   }
   close(){
     this.route.navigate(['./tabs/home']);
@@ -78,9 +79,7 @@ export class TransactionHistPage implements OnInit {
     // }
     // 
    }
-  view(item){
-    // this.sendData.registrationType = {'auto_id':'','request_page':'self'}
-    // // this.sendData.request_page = 'self';
+  viewFun(item){
     this.sendData.alldata = {'customer_id':item.auto_id,'employee_type':'','request_page':'other','backKey': 'back2'}
     // this.sendData.registrationType = {'auto_id':item.auto_id,'request_Type':this.requestType,'request_page':'other'}
     this.route.navigate(['/purchasehistory']);

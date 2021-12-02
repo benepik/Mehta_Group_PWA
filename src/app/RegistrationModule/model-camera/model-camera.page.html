@@ -3,16 +3,15 @@
    <ion-row class="ion-justify-content-center">
     <ion-col class="back">
      <ion-grid>
-        <ion-row>
-          <ion-col class="circle">
-         <ion-icon name="close" class="circle_close" (click)="close()"></ion-icon>
-          </ion-col>
-        </ion-row>
+       <!-- <br *ngIf="platform?.is('mobile')"> -->
+       <!-- <br *ngIf="platform?.is('mobile')">
+       <br *ngIf="platform?.is('mobile')"> -->
+
         <ion-row *ngIf="!pgShow">
           <ion-col>
             <label class="image-upload">
              <ion-icon name="camera-outline" class="FooterCam iconBorder"></ion-icon>
-              <p class="activityClass">Take a Snapshot</p>
+              <p class="activityClass ion-no-margin">Take a Snapshot</p>
               <input *ngIf="!platform?.is('cordova')"  type="file"  multiple accept="image/*" capture (change)="captureImg($event)" >
              <div class="overDiv" *ngIf="platform?.is('cordova')" tappable (click)="pickImage()"></div>
             </label>
@@ -26,20 +25,33 @@
           <ion-col>
             <label class="image-upload">
               <ion-icon name="images-outline" class="FooterCam iconBorder"></ion-icon>
-              <p class="activityClass">Select Image</p>
+              <p class="activityClass ion-no-margin">Select Image</p>
               <input type="file" accept="image/*" (change)="captureImg($event)" >
               </label>
           </ion-col>
         </ion-row>
+        <br *ngIf="pgShow"> 
         <ion-row *ngIf="pgShow">
           <ion-col [size]='6' *ngFor="let item of pgShow">
             <ion-button class="pgSo" (click)="pgShoW(item)">{{item?.button_text}}</ion-button>
           </ion-col>
         </ion-row>
+        <br *ngIf="pgShow"> 
+        <ion-row>
+          <ion-col class="circle">
+         <ion-icon name="close" class="circle_close" (click)="close()"></ion-icon>
+          </ion-col>
+        </ion-row>
       </ion-grid>
-      <div [ngClass]="{'banner': platform.width()<740}">
-        <img src = "assets/icon/Design 1.png" class="banner_bg">
-        </div>
+      <!-- [ngClass]="{'banner': platform.width()<740}" -->
       </ion-col>
     </ion-row>
+    <div class="banner" *ngIf="platform?.is('desktop')"> 
+      <!-- class="banner"  -->
+      <img src = "./assets/icon/Design 1.png" >
+    </div>
+    <div slot="fixed" style="bottom:0px;" *ngIf="platform?.is('mobile')"> 
+      <!-- class="banner"  -->
+      <img src = "./assets/icon/Design 1.png" class="banner_bg">
+    </div>
 </ion-content>

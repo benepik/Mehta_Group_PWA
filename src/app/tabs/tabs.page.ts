@@ -26,6 +26,8 @@ export class TabsPage implements OnInit{
     public popoverController: PopoverController,private localStorage:LocalStorageService, 
     public apiService: ApiService,public sendData:DataTransferService
     ) {
+      // this.forceUpdate();
+  
   }
 
   ionViewWillEnter(){

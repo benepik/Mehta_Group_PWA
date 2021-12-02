@@ -31,7 +31,8 @@
     <td class="ion-text-center"><p class="nameText autoMargin">{{data?.full_name}}</p></td>
     <td class="ion-text-center"><p class="mobileText autoMargin">{{data?.contact}}</p></td>
     <td class="ion-text-center"><p class="officerText autoMargin">{{data?.authority_name}}</p></td>
-    <td class="ion-text-center"><ion-button *ngIf="data?.btn_applicable == '1'" class = "act1" (click)="view(data)">{{data?.detail_btn}}</ion-button></td>
+    <td class="ion-text-center"><ion-button *ngIf="data?.btn_applicable == '1'" class = "act1" tappable
+      (click)="viewFun(data)">{{data?.detail_btn}}</ion-button></td>
   </tr>
 </table>
 </div>
