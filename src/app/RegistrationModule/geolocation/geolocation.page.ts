@@ -66,27 +66,40 @@ export class GeolocationPage implements OnInit {
       });
   }
  async getLocationFun(){
-   this.diagnostic.isLocationEnabled().then((enabled) =>{
-    // this.diagnostic.requestLocationAuthorization().then((requestLocation=>{}))
-    console.log("Location setting is enabled" , enabled);
-     if(enabled){
-      console.log("Location setting is " + (enabled ? "enabled" : "disabled"));
-      console.log("The following enabled ",enabled);
-      this.apiService.presentLoadingDefault();
-      this.zone.run(async ()=>{
-      this.loc='';
-      console.log('curr_pos4');
-      let curr_pos=await this.geolocation.getCurrentPosition();
-      console.log('curr_pos', curr_pos.coords.latitude);
-      console.log('curr_pos', curr_pos.coords.longitude);
-    this.getGeoLocation(curr_pos.coords.latitude, curr_pos.coords.longitude)
-    });
-     }else{
-      console.log("The following error occurred: ",enabled);
-      this.locationAlert();
-      return false;
-     }
-   });
+   if(this.platform.is('cordova')){
+    this.diagnostic.isLocationEnabled().then((enabled) =>{
+      // this.diagnostic.requestLocationAuthorization().then((requestLocation=>{}))
+      console.log("Location setting is enabled" , enabled);
+       if(enabled){
+        console.log("Location setting is " + (enabled ? "enabled" : "disabled"));
+        console.log("The following enabled ",enabled);
+        this.apiService.presentLoadingDefault();
+        this.zone.run(async ()=>{
+        this.loc='';
+        console.log('curr_pos4');
+        let curr_pos=await this.geolocation.getCurrentPosition();
+        console.log('curr_pos', curr_pos.coords.latitude);
+        console.log('curr_pos', curr_pos.coords.longitude);
+      this.getGeoLocation(curr_pos.coords.latitude, curr_pos.coords.longitude)
+      });
+       }else{
+        console.log("The following error occurred: ",enabled);
+        this.locationAlert();
+        return false;
+       }
+     });
+   }else{
+    this.apiService.presentLoadingDefault();
+    this.zone.run(async ()=>{
+    this.loc='';
+    console.log('curr_pos4');
+    let curr_pos=await this.geolocation.getCurrentPosition();
+    console.log('curr_pos', curr_pos.coords.latitude);
+    console.log('curr_pos', curr_pos.coords.longitude);
+  this.getGeoLocation(curr_pos.coords.latitude, curr_pos.coords.longitude)
+  });
+   }
+ 
   }
  
   async getGeoLocation(lat: number, lng: number, type?) {

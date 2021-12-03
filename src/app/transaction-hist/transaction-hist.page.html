@@ -10,9 +10,9 @@
 <ion-content [ngClass]="{'content-bg':  platform.width()<740}" class="ion-padding">
     <ion-row class="ion-justify-content-center ">
       <ion-col *ngIf="server?.data" size-xl="6" size-md="6" size-xs="12"
-      class="whiteCol table" [ngClass]="{'boundary1':  platform.width()>740}">
-      <div style="background-image: url('assets/Other Icons/Banner.svg');" class="bgWalletImage">
-      </div>
+      class="whiteCol table ion-no-padding" [ngClass]="{'boundary1':  platform.width()>740}">
+      <!-- <div style="background-image: url('assets/Other Icons/Banner.svg');" class="bgWalletImage">   </div>-->
+        <div class="underLineBorder"></div>
        <div>
          <ion-row>
            <ion-col size-xs="6" size-xl="6" *ngFor = "let id of buttReg">

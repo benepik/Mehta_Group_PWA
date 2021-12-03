@@ -63,26 +63,23 @@ export class RegistrationPage implements OnInit {
   currentName: any;
   data1: any;
   data2: string;
-
-
   previewImagePath:any;
   maintanceData: any;
-  constructor(private camera:Camera,public actionSheetController:ActionSheetController,private file:File,
+  constructor(private camera:Camera,public actionSheetController:ActionSheetController,private storage:LocalStorageService ,
     private route:Router,public platform:Platform,private filePath: FilePath, public modalCtrl:ModalController, 
     private sendData: DataTransferService, public toastController: ToastController, public apiService: ApiService, 
-    private transfer: FileTransfer,
-    private zone: NgZone,public localStorage:LocalStorageService, private storage:LocalStorageService ,
+    private transfer: FileTransfer,private zone: NgZone,public localStorage:LocalStorageService,private file:File,
     public sanitizer:DomSanitizer) {
       // var url =URLS.baseUrl+URLS.imageUploadUrl;
       // console.log("twerer",url)
   }
 
-removeImage(arr){
-  arr.answer='';
-  // arr.imgArr.splice(index, 1);  
-  console.log('arr',arr);
+  removeImage(arr){
+    arr.answer='';
+    // arr.imgArr.splice(index, 1);  
+    console.log('arr',arr);
 
-}
+  }
 
   compareFn(e1: any, e2: any): boolean {
     console.log('==> e1', e1);
@@ -93,16 +90,16 @@ removeImage(arr){
     
   }
   ionViewWillEnter(){
-setTimeout(() => {
-  this.RegistrationType = this.sendData.registrationType;
-  
-  // console.log('1',this.RegistrationType);
-  if(this.RegistrationType.frompage=='back'){
-    this.reId = this.sendData.alldata;
-    this.ngOnInit();
-  }
+    setTimeout(() => {
+      this.RegistrationType = this.sendData.registrationType;
+      
+      // console.log('1',this.RegistrationType);
+      if(this.RegistrationType.frompage=='back'){
+        this.reId = this.sendData.alldata;
+        this.ngOnInit();
+      }
 
-  }, 1000);
+    }, 1000);
   }
   ngOnInit() {
     console.log('currentDate ',this.currentDate);
@@ -170,6 +167,7 @@ setTimeout(() => {
       // this.apiService.generateFCMToken();
       // this.maintance();
       // this.route.navigate(['./login']);
+      this.logOutCall();
     }
   });
   
