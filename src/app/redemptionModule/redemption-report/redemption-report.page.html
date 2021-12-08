@@ -13,7 +13,7 @@
       class="whiteCol table" [ngClass]="{'boundary1':  platform.width()>740}">
       <!-- <div style="background-image: url('assets/Other Icons/Banner.svg');" class="bgWalletImage">
       </div> -->
-       <div class="ion-padding" >
+       <div class="" [ngClass]="[platform?.is('desktop') ? 'ion-padding' : 'ion-no-padding']">
          <ion-row class="header-row">
           <ion-col class="co_ro" *ngFor="let item of server?.header_data">
             <p class="ion-text-center ion-no-margin">{{item}}</p>

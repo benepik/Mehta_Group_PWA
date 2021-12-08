@@ -56,7 +56,8 @@ view(item){
   this.sendData.alldata = item;
   this.sendData.itemDetails = this.allocationData.customer_id;
   console.log('123',this.sendData.alldata);
- this.route.navigate(['./customer-details']);
+  console.log('1234',this.sendData.itemDetails );
+ this.route.navigate(['/customer-details']);
   // this.navCtrl.navigateBack('/customer-details');
 }
 }

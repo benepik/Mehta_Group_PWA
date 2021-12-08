@@ -33,9 +33,9 @@ export class PurchasehistoryPage implements OnInit {
        console.log("back button key==", this.backKey);
     }
 
-  ionViewWillLeave(){
-    this.sendData.itemDetails = { "product_id":"", "quantity": ""}
-  }
+  // ionViewWillLeave(){
+  //   this.sendData.itemDetails = { "product_id":"", "quantity": ""};
+  // }
   ngOnInit() {
     this.purchaseHIst(null);
   }

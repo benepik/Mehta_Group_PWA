@@ -61,7 +61,6 @@ export class HomePage {
     }else if(this.storageData.allStoreData.employee_type==2){
       this.sendData.alldata={'customer_id':'','employee_type':'', 'redeem_for': id,'request_page':'dealer'};
     }
-
     this.router.navigate(['/pointsgiftlist']);
   }
   reloder(){

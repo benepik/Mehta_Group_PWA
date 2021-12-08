@@ -3,16 +3,16 @@ import { Key } from "protractor"
 export const URLS = {
 
   //***************** Development URL*****************
-  // MainUrl:"https://benepik.in",
-  // baseUrl:"https://benepik.in/BandhanRewards/api",
+  MainUrl:"https://benepik.in",
+  baseUrl:"https://benepik.in/BandhanRewards/api",
 
   //***************** UAT URL*****************
   // MainUrl:"https://benepik.org",
   // baseUrl:"https://benepik.org/BandhanRewards/api",
 
   // ***************** production URL*****************
-    MainUrl:"https://benepik.co.in",
-    baseUrl:"https://benepik.co.in/BandhanRewards/api",
+    // MainUrl:"https://benepik.co.in",
+    // baseUrl:"https://benepik.co.in/BandhanRewards/api",
 
   //pwa
   maintanceUrl:"/maintainence",

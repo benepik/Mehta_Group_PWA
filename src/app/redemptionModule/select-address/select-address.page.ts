@@ -29,18 +29,16 @@ export class SelectAddressPage implements OnInit {
     this.redeem_for = this.sendData.redeem_for;
     this.addressDetail = this.sendData.addressDetails;
     console.log("this.redeem_for : ",this.addressDetail);
-    if(this.addressDetail.auto_id!=''){
-      console.log("this.redeem_for :123 ",this.addressDetail);
-    this.add1=this.addressDetail.address_line1;
-    this.add2=this.addressDetail.address_line2;
-    this.pin=this.addressDetail.pin_code;
-    this.city= this.addressDetail.city;
-    this.state= this.addressDetail.state;
-   
-      console.log("this.redeem_for :12 ",this.req);
-    }
-    else{
+    if(this.addressDetail.auto_id==''){
       this.pin=this.addressDetail.pin_code;
+      // console.log("this.redeem_for :123 ",this.addressDetail);
+    }else{
+      this.add1=this.addressDetail.address_line1;
+      this.add2=this.addressDetail.address_line2;
+      this.pin=this.addressDetail.pin_code;
+      this.city= this.addressDetail.city;
+      this.state= this.addressDetail.state;
+        console.log("this.redeem_for :12 ",this.req);
       // this.addressDetail.auto_id='';
       // console.log("this ",this.addressDetail.auto_id);
     }
@@ -48,11 +46,9 @@ export class SelectAddressPage implements OnInit {
 
   ngOnInit() {
   //  this.searchApiCall(this.pin) ;
-if(this.pin!=''){
-  this.searchApiCall(this.pin) ;
-}
-
-   
+  if(this.pin!=''){
+    this.searchApiCall(this.pin) ;
+  } 
    this.req=this.sendData.alldata;
   }
   // ionViewWillLeave(){

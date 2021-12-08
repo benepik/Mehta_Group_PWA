@@ -149,6 +149,7 @@ __webpack_require__.r(__webpack_exports__);
 
 let TabsPage = class TabsPage {
     constructor(zone, router, platform, popoverController, localStorage, apiService, sendData) {
+        // this.forceUpdate();
         this.zone = zone;
         this.router = router;
         this.platform = platform;

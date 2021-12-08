@@ -38,9 +38,17 @@ allocationData: any;
    // this.cart_details = this.sendData.cartDetails;
    // this.itemDetailsShow();
    }
+   ionViewWillLeave(){
+    //  if(this.allocationData.customer_id==''){
+    //    this.allocationData.request_page='self';
+    //  }else{
+    //   this.allocationData.request_page='other';
+    //  }
+   }
   
   ngOnInit() {
     this.redeem_for = this.sendData.redeem_for;
+    console.log('redeem_for', this.redeem_for);
     this.allocationData = this.sendData.alldata;
     this.item_details = this.sendData.itemDetails;
     console.log('this.allocationData', this.allocationData);
@@ -76,11 +84,7 @@ buyitem(item){
       "cart_request":this.cart_req,
       "request_for":this.allocationData.customer_id,
       "request_user_type":this.allocationData.employee_type,
-      "product_arr": [
-        {
-            "product_id":item.product_id,
-            "count":item.quantity
-        }]
+      "product_arr": [{"product_id":item.product_id,"count":item.quantity}]
     }
     console.log("item.product_id ,item.quantity ", item.quantity, item.quantity)
     
@@ -151,14 +155,13 @@ async callModal(){
   modal.onDidDismiss().then((dataReturned) => {
     console.log("data returned after dismiss modal==",dataReturned);
     if (dataReturned !== null) {
-     
+      this.route.navigate(['/purchasehistory']);
     }
     else{
       
     }
   });
-  this.sendData.alldata={"request_for":this.allocationData.customer_id,
-  "request_user_type":this.allocationData.employee_type}
+  this.sendData.alldata={"request_for":this.allocationData.customer_id,"request_user_type":this.allocationData.employee_type}
   this.sendData.item=this.redeem_for;
   return await modal.present();
 }
@@ -225,15 +228,15 @@ showAddress(){
   });
 }
 changeAddress(){
-  if(this.allocationData.customer_id!=''){
-    this.sendData.alldata={'customer_id':this.allocationData.customer_id,'request_page':'other', 'employee_type':this.allocationData.employee_type }
-    //this.sendData.backKey = 'back';
-    this.route.navigate(['./change-address']);
+  if(this.allocationData.customer_id==''){
+    this.sendData.alldata={'customer_id':'','request_page':this.redeem_for, 'employee_type':''}
+    this.route.navigate(['/change-address']);
   }else{
-    this.sendData.alldata={'customer_id':'','request_page':'self', 'employee_type':''}
-    this.route.navigate(['./change-address']);
+    this.sendData.alldata={'customer_id':this.allocationData.customer_id,'request_page':this.redeem_for, 
+    'employee_type':this.allocationData.employee_type };
+    this.route.navigate(['/change-address']);
   }
-  this.route.navigate(['./change-address']);
+  // this.route.navigate(['/change-address']);
 }
 doneUpdate(){
   this.apiService.presentLoadingDefault();
@@ -260,7 +263,7 @@ doneUpdate(){
       if (result.success == 1) {
         this.showDonebutt = 0;
         this.cart_details=result.data;
-      this.msg='';
+        this.msg='';
       } else {
         this.msg = result.message;
         this.cart_details=[];

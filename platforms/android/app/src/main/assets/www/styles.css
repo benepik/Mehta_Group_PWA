@@ -375,6 +375,7 @@ ion-toast.greenBg {
   border-radius: 10px;
   position: fixed;
   bottom: 0;
+  z-index: 9;
 }
 .centerData {
   display: block;
@@ -426,7 +427,7 @@ ion-toast.greenBg {
 @media only screen and (min-height: 350px) and (min-width: 250px) {
   .sc-ion-modal-md-h {
     --width: 400px;
-    --height: 240px;
+    --height: 300px;
     --border-radius: 8px;
     --ion-safe-area-top: 0px;
     --ion-safe-area-bottom: 0px;
@@ -463,6 +464,9 @@ ion-back-button {
 }
 .deskDiv1 {
   padding: 0px 25px 0px 11px;
+}
+.underLineBorder {
+  border: 5px solid var(--headerColor);
 }
 /*
  * App Global CSS

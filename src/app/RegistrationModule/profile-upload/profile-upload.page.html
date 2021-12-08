@@ -34,20 +34,20 @@
       
     </ion-row>
     <br>
-    <br>
-   <br>
-   <br>
 
-   
+   <ion-row>
+    <!-- <ion-col style="text-align: right; padding:20px;">
+      <ion-button class="ionic_btn butt" (click) = "back()">Back</ion-button>
+    </ion-col> -->
+    <ion-col style="padding:20px;"class="ion-text-center">
+      <ion-button [disabled]="userImg==''" class="ionic_btn" (click) = "next()">Next</ion-button>
+    </ion-col>
+  </ion-row>
+      <br>
+   <br>
+   <br>
     <div [ngClass]="{'banner': platform.width()<740}">
-      <ion-row>
-        <ion-col style="text-align: right; padding:20px;">
-          <ion-button class="ionic_btn butt" (click) = "back()">Back</ion-button>
-        </ion-col>
-        <ion-col  style="text-align: left; padding:20px;">
-          <ion-button [disabled]="userImg==''" class="ionic_btn" (click) = "next()">Next</ion-button>
-        </ion-col>
-      </ion-row>
+
       <img src = "assets/icon/Design 1.png" class="banner_bg">
     </div>
     

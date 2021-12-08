@@ -69,7 +69,7 @@
      
         <ion-row *ngIf="allocatedPointsRes?.statement?.show_statement_btn==true">
           <ion-col class="colom">
-            <ion-button class="act" (click) = "redemption_report(allocationData)">{{allocatedPointsRes?.statement?.statement_text}}</ion-button>
+            <ion-button class="act" tappable (click) = "redemption_report(allocationData)">{{allocatedPointsRes?.statement?.statement_text}}</ion-button>
           </ion-col>
         </ion-row>
      

@@ -17,8 +17,8 @@ export class ChangeAddressPage implements OnInit {
   msg:any="";
   constructor(private sendData: DataTransferService, public route: Router, public apiService:ApiService, private zone:NgZone) { 
     this.redeem_for = this.sendData.alldata;
-
     console.log("this.redeem_for",this.redeem_for);
+    
   }
   ionViewWillEnter(){
     this.chagngeAddress();
@@ -70,10 +70,10 @@ chagngeAddress(){
   this.zone.run(()=>{
     let apiKey = {
       "address_fetch_type":"change",
-      "redeem_for":this.redeem_for.request_page,
+      "redeem_for":this.redeem_for.request_page ,
       "request_page":"dealer",
-      "request_for":this.redeem_for.customer_id,
-      "request_user_type":this.redeem_for.employee_type
+      "request_for":this.redeem_for.customer_id || '',
+      "request_user_type":this.redeem_for.employee_type || ''
     }
     this.apiService.apiCallWithLoginToken(URLS.AddressUrl,apiKey).subscribe((result) =>{
       console.log("AddressUrl: ", result);
@@ -115,10 +115,10 @@ let item={"auto_id":'',"pin_code":''}
  console.log('selecttttt:', this.sendData.alldata);
   this.sendData.addressDetails =item;
   console.log('addressDetails:', this.sendData.addressDetails);
-  this.route.navigate(['./select-address']);
+  this.route.navigate(['/select-address']);
 }
 edit(item){
   this.sendData.addressDetails = item;
-  this.route.navigate(['./select-address']);
+  this.route.navigate(['/select-address']);
 }
 }

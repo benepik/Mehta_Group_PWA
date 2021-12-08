@@ -167,7 +167,7 @@ export class RedeemotpPage implements OnInit {
           }
     
         }
-        this.router.navigate(['/purchasehistory']);
+        // this.router.navigate(['/purchasehistory']);
         //this.callModal();
       }
       else{

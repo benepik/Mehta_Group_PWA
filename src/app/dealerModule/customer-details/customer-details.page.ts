@@ -15,10 +15,13 @@ export class CustomerDetailsPage implements OnInit {
   allocatedPointsRes: any;
   allocationData:any;
   checkredirect: any;
+  deelarId: any;
   constructor(private apiService: ApiService,private zone:NgZone,public loadingController: LoadingController, 
     public platform:Platform, private route:Router,private sendData:DataTransferService) { 
       this.allocationData= this.sendData.alldata;
       this.checkredirect=this.sendData.myParam;
+      this.deelarId=this.sendData.itemDetails;
+      console.log(' this.deelarId: ' , this.deelarId);
     platform.ready().then(() => {
       console.log('Width: ' + platform.width());
       console.log('Height: ' + platform.height());
@@ -76,23 +79,21 @@ gotoHomeTab(){
 }
 
   redemption_report(item){
-    this.sendData.alldata={ "item":item, "requestType":'customer', 'employee_type':this.allocationData.employee_type, 'dealer_id': this.sendData.itemDetails}
+    this.sendData.alldata={ "item":item, "requestType":'customer', 'employee_type':this.allocationData.employee_type, 
+    'dealer_id': this.sendData.itemDetails}
     this.route.navigate(['/redemption-report']);
   }
   customer_list(){
     // this.sendData.viewProfilId = item
     //this.sendData.alldata
-     this.route.navigate(['./customer-list']);
+     this.route.navigate(['/customer-list']);
    }
    goToRedeem(item){
       if(item.redirect_url=='purchasehistory'){
-       // this.sendData.backKey = ;
         this.sendData.alldata={'customer_id':this.allocationData.customer_id,
         'request_page':'customer', 'backKey':'back1', 'employee_type':this.allocationData.employee_type, }
       }else{
-        //this.sendData.backKey = 'back1';
-        this.sendData.alldata={'customer_id':this.allocationData.customer_id,
-        'employee_type':this.allocationData.employee_type,
+        this.sendData.alldata={'customer_id':this.allocationData.customer_id,'employee_type':this.allocationData.employee_type,
         'request_page':'dealer', 'backKey':'back1', 'redeem_for': 'other'}
         console.log('2345678:', this.sendData.alldata)
        // this.sendData.redeem_for = 'other';

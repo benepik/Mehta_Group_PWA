@@ -293,7 +293,7 @@ ion-content{ --background: linear-gradient(#68090354, rgba(243, 242, 242, 0.97))
 .homeBandhanLogo{height: 40px;margin-left: 10px;}
 ion-toast.redBg{--background:red;--color:#fff;}
 ion-toast.greenBg{--background: green;--color:#fff;}
-.autoMargin{margin: auto;}
+.autoMargin{margin: auto !important;}
 .deskDiv{padding: 0px 40px 0px 30px;}
 .redText{color:#ca2533;font-weight: bold;}
 .differentPagerDiv{

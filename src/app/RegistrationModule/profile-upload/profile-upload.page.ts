@@ -88,20 +88,20 @@ export class ProfileUploadPage implements OnInit {
       });
     });
   }
-  back(){
+  // back(){
     
-    let obj={
-      'request_page':this.registrationData.requestPage,
-      'frompage':'back'
-    }
-    this.sendData.alldata = this.registrationData.requestFor;
-    this.sendData.registrationType=obj;
-    setTimeout(() => {
-      // this.route.navigate(['./registration']);
-      this.location.back();
-    }, 1000);
+  //   let obj={
+  //     'request_page':this.registrationData.requestPage,
+  //     'frompage':'back'
+  //   }
+  //   this.sendData.alldata = this.registrationData.requestFor;
+  //   this.sendData.registrationType=obj;
+  //   setTimeout(() => {
+  //     // this.route.navigate(['./registration']);
+  //     this.location.back();
+  //   }, 1000);
     
-  }
+  // }
   async pickImage(sourceType) {
     const options: CameraOptions = {
     quality: 100,

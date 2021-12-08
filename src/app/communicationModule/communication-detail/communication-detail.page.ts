@@ -1,6 +1,7 @@
 import { jsDocComment } from '@angular/compiler';
 import { Component, OnInit, NgZone } from '@angular/core';
 import { Router, ActivatedRoute, NavigationExtras } from '@angular/router';
+import { Platform } from '@ionic/angular';
 import { ApiService } from 'src/app/provider/api.service';
 import { DataTransferService } from 'src/app/services/data-transfer.service';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
@@ -21,7 +22,7 @@ export class CommunicationDetailPage implements OnInit {
     spaceBetween:10,
   };
   loginAllData: any;
-  constructor(public activeRoute: ActivatedRoute, private router: Router, public zone: NgZone,
+  constructor(public activeRoute: ActivatedRoute, private router: Router, public zone: NgZone,public platform:Platform,
     private apiService: ApiService, public sendData: DataTransferService,private localStorgae:LocalStorageService) {
     this.communicationHomeData = this.sendData.alldata;
     this.localStorgae.getStorage().then(storedData=>{

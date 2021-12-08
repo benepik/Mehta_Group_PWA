@@ -288,6 +288,7 @@
         function TabsPage(zone, router, platform, popoverController, localStorage, apiService, sendData) {
           _classCallCheck(this, TabsPage);
 
+          // this.forceUpdate();
           this.zone = zone;
           this.router = router;
           this.platform = platform;
