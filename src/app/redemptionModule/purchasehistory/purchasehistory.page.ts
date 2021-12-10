@@ -5,6 +5,7 @@ import { URLS } from 'src/assets/constant';
 import { Router } from '@angular/router';
 import { ClipboardService } from 'ngx-clipboard';
 import { Location } from '@angular/common';
+import { NavController } from '@ionic/angular';
 @Component({
   selector: 'app-purchasehistory',
   templateUrl: './purchasehistory.page.html',
@@ -21,7 +22,7 @@ export class PurchasehistoryPage implements OnInit {
   title:any;
   allocationData: any;
   constructor(private router:Router,private sendData:DataTransferService, public route: Router,
-    private _clipboardService: ClipboardService,private location:Location,
+    private _clipboardService: ClipboardService,private location:Location,private navctrl:NavController,
     public apiService:ApiService, private zone:NgZone) {
       // this.request_page=this.sendData.request_page;
       this.allocationData = this.sendData.alldata;
@@ -56,7 +57,8 @@ export class PurchasehistoryPage implements OnInit {
   }
   goBack(){
     this.zone.run(async () => {
-      this.location.back();
+      // this.location.back();
+      this.navctrl.pop();
     // this.route.navigate(['./pointsgiftlist']);
     });
   }
