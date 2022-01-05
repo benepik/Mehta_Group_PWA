@@ -44,15 +44,15 @@
                 <div class="ion-padding-horizontal">
                   <p class="totalAmmountDiv TotalE">{{Reedem?.title}}</p>
                   <h3 class="totalAmmountDiv ion-no-margin TotalR"><b>{{Reedem?.total_points}}</b></h3>
-                  <ion-button size="small" class="Reedeembtn" color="danger" shape="round" tappable (click)="redeemDetails('self')">
+                  <ion-button size="small" class="Reedeembtn" shape="round" tappable (click)="redeemDetails('self')">
                   <img [src]="Reedem?.redeem_icon" onerror="this.src='assets/watermark/watermark.png'" 
                   class="reedeemIcon">&nbsp;<p class="totalAmmountDiv">{{Reedem?.redeem_text}}</p></ion-button>
                   <ion-row class="redeem_point">
                     <ion-col [size]="12" size-sm="12" size-md="5" size-lg="5" class="ion-text-left">
-                      <p class="avalpointsColor " [ngClass]="{'ion-no-margin': platform.is('mobile')}">{{Reedem?.available_point_text}} :{{Reedem?.available_points}}</p>
+                      <p class="avalpointsColor " [ngClass]="{'ion-no-margin': platform.is('mobile')}">{{Reedem?.available_point_text}}{{Reedem?.available_points}}</p>
                     </ion-col>
                     <ion-col [size]="12" size-sm="12" size-md="7" size-lg="7" class="ion-text-left">
-                      <p class="avalpointsColor" [ngClass]="{'ion-no-margin': platform.is('mobile')}">{{Reedem?.points_redeem_text}}  {{Reedem?.points_redeemed}}</p>
+                      <p class="avalpointsColor" [ngClass]="{'ion-no-margin': platform.is('mobile')}">{{Reedem?.points_redeem_text}}{{Reedem?.points_redeemed}}</p>
                     </ion-col>
                   </ion-row>
                 </div>

@@ -69,6 +69,7 @@ export class ProfilePage implements OnInit {
   }
 
   async gotoDetail(item){
+    // this.popoverController.dismiss();
     const popover = await this.popoverController.getTop();
     if (popover)
       await popover.dismiss(null);  

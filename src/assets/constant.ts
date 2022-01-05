@@ -62,12 +62,14 @@ export const URLS = {
   RedemptionUrl:'/redemption',
   BrandProductUrl:'/brandProduct',
   ExistingUrl:'/Existing',
-  alertListApi:'/alert'
+  alertListApi:'/alert',
+  filterProductApi:'/filter',
+  filterSubCategoryApi:'/getsubcat'
 }
 
 export const APP_CONFIG = {
   clientId :'CO-43',
-  app_version:3
+  app_version:4
   // device:4,
   // device_id:'PWA',
   // packageName : 'com.benepik.multiply',

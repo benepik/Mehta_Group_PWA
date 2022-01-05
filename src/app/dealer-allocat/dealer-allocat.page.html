@@ -13,7 +13,7 @@
       <!-- <div style="background-image: url('assets/Other Icons/Banner.svg');" class="bgWalletImage"> </div> -->
         <div class="underLineBorder"></div>
 
-     <div class="seg">
+     <div [ngClass]="[platform?.is('desktop') ? 'ion-padding' :'ion-no-padding']">
       <ion-row>
         <ion-col size-xl="6" size-md="6" size-xs="6">
          <ion-item lines="none">

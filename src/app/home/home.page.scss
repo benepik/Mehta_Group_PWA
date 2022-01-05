@@ -14,14 +14,14 @@
 }
 .titleDiv{color:white;font-size: 15px;font-weight: bold;}
 .quickAccessImg{height: 40px;object-fit: contain;display: block;margin: auto;}
-.quickAccessP{font-size: 12px; color:black;}
+.quickAccessP{font-size: 12px;color: black;letter-spacing: 1px;}
 .communicationImage{height: 68px;width: 100%;border-radius: 3px;object-fit: cover;}
 .marginTop{margin-top: 5px;}
 .reedemImage{position:absolute;top:0;left:0;right:0;bottom:0;z-index:-1;background-size:cover;height:100%;width:100%;}
 .avalpointsColor,.totalAmmountDiv{color: var(--reedeemColor);}
 .avalpointsColor{font-size: 13px; font-size: 15px;}
 .Reedeembtn{color:var(--reedeemColor);border:3px solid var(--reedeemColor);border-radius:16px;min-width:30%;
-    font-weight: bold;margin-top: 11px;font-size: 16px;text-transform: initial;}
+    font-weight: bold;margin-top: 11px;font-size: 16px;text-transform: initial;--background:transparent;}
 .reedeemIcon{height:15px;width: 15px;object-fit: contain;}
 .TotalE{margin-bottom: 7px; font-size: 18px;}
 .TotalR{margin-bottom: 5px;font-size: 30px;}

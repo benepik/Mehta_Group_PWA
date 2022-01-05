@@ -13,7 +13,7 @@
       <ion-slides pager="true" [options]="slideOpts" >
         <ion-slide *ngFor="let item of community?.data?.media">
           <img *ngIf="item?.media_type==1 || item?.media_type=='1'" [src]="item?.media"  onerror="this.src='assets/watermark/watermark.png'" class="communicationImage">
-          <video *ngIf="item?.media_type==2 || item?.media_type=='2'" [src]="item?.media" width="100%" height="250px" controls [poster]="item?.thumb_image"></video>
+          <video *ngIf="item?.media_type==2 || item?.media_type=='2'" [src]="item?.media" width="100%" height="200px" controls [poster]="item?.thumb_image"></video>
           <iframe *ngIf="item?.media_type==3 || item?.media_type=='3'" [src]="item?.media | safe " width=100% height="250px"></iframe>
         </ion-slide>
       </ion-slides>
@@ -74,7 +74,7 @@
         <ion-col [size]="10" size-sm="10" size-md="11" size-lg="11">
           <input [(ngModel)]="comment" placeholder="Type Your Comment Here">
         </ion-col>
-        <ion-col [size]="2" size-sm="2" size-md="1" size-lg="1" class="ion-text-center" *ngIf="comment!=''">
+        <ion-col [size]="2" size-sm="2" size-md="1" size-lg="1" class="ion-text-center autoMargin" *ngIf="comment!=''">
           <ion-icon name="caret-forward-outline" class="sendIcon" (click)="doComment(comment)"></ion-icon>
         </ion-col>
       </ion-row>

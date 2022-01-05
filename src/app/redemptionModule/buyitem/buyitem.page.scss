@@ -1,21 +1,12 @@
-.para{color: red;margin-top: 4px;margin-bottom: 4px;font-weight: bold;} 
+.para{color: gray;margin-top: 4px;margin-bottom: 4px;font-weight: bold;font-size: 17px;} 
 .para1{font-size: 12px;;margin-top: 4px;margin-bottom: 4px;}
 .para2{font-size: 16px;;color: red;margin-top: 4px;margin-bottom: 4px;}
 .brbottom{border-bottom: 1px solid lightgray;}
-.numcss{    border: 1px solid red;
-    border-radius: 10px;
-    text-align: center;
-    font-size: 14px;padding-bottom: 1px;
-    padding-top: 1px;
-    padding-left: 15px;
-    padding-right: 15px;}
+.numcss{border: 1px solid red;border-radius: 10px;text-align: center;font-size: 14px;padding-bottom: 1px;
+    padding-top: 1px;padding-left: 15px;padding-right: 15px;}
 .txtend{text-align: end;}
 .mrauto{ margin: auto;}   
-.ionic_btnic{
-    --background: var(--headerColor);
-    --border-radius: 14px;
-    width: auto;
-    text-transform: capitalize;
-    height: 30px;
-    font-size: 14px;
-}
+.ionic_btnic{--background: #f7d716;--border-radius: 5px;width: auto;text-transform: capitalize;height: 30px;
+    font-size: 14px;color: black;font-weight: bold;}
+.ionic_btn1{--background: #9ff1ff;--border-radius: 5px;width: 30%;text-transform: none;text-transform: initial;
+    height: 30px;font-size: 14px;color: black;font-weight: bold;}

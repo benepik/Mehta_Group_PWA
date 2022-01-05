@@ -30,21 +30,14 @@ allocationData: any;
      private sendData: DataTransferService, public route: Router, public apiService:ApiService, private zone:NgZone) {
    
    }
-   ionViewWillEnter(){
-  //  this.cart_details = this.sendData.cartDetails;
-    this.cart_req = this.sendData.cart_request;
-    this.showAddress();
-    this.buyitem(this.item_details);
-   // this.cart_details = this.sendData.cartDetails;
-   // this.itemDetailsShow();
-   }
-   ionViewWillLeave(){
-    //  if(this.allocationData.customer_id==''){
-    //    this.allocationData.request_page='self';
-    //  }else{
-    //   this.allocationData.request_page='other';
-    //  }
-   }
+  ionViewWillEnter(){
+//  this.cart_details = this.sendData.cartDetails;
+  this.cart_req = this.sendData.cart_request;
+  this.showAddress();
+  this.buyitem(this.item_details);
+  // this.cart_details = this.sendData.cartDetails;
+  // this.itemDetailsShow();
+  }
   
   ngOnInit() {
     this.redeem_for = this.sendData.redeem_for;
@@ -56,6 +49,10 @@ allocationData: any;
     // this.showAddress();
     // this.buyitem(this.item_details);
   }
+  ionViewWillLeave(){
+    // this.redeem_for=
+  }
+
   minus(item){
     if(item.quantity!=0){
       item.quantity = JSON.parse(item.quantity);
@@ -66,6 +63,42 @@ allocationData: any;
     }
    
   }
+  closeBtn(item){
+    if(item.quantity!=0){
+    item.quantity = JSON.parse(item.quantity);
+    item.quantity=item.quantity-1;
+    this.cart_req = "buy";
+    this.alertRemoveProduct();
+    }
+  
+  }
+async alertRemoveProduct() {
+  const alert = await this.alertController.create({
+    cssClass: 'my-custom-class',
+    message: 'Are you sure?',
+    buttons: [
+      {
+        text: 'No',
+        role: 'cancel',
+        cssClass: 'secondary',
+        handler: (blah) => {
+          console.log('Confirm Cancel: blah');
+        }
+      }, {
+        text: 'Yes',
+        handler: () => {
+          // this.cart_details.splice(ind,1);
+          this.doneUpdate();
+          console.log('Confirm Okay');
+        }
+      }
+    ]
+  });
+
+  await alert.present();
+}
+
+
   plus(item){
     // item.quantity = parseInt(item.quantity);
     item.quantity= parseInt(item.quantity)+1;
@@ -75,8 +108,7 @@ allocationData: any;
    
   }
 
-buyitem(item){ 
-  this.apiService.presentLoadingDefault();
+  buyitem(item){ 
   this.zone.run(async () => {
     let apiKey = {
       "request_page":"dealer",
@@ -89,7 +121,6 @@ buyitem(item){
     console.log("item.product_id ,item.quantity ", item.quantity, item.quantity)
     
     this.apiService.apiCallWithLoginToken(URLS.CartUrl, apiKey).subscribe((result) => {
-    this.apiService.presentLoadingClose();
       //this.temparray = result.data;
       if (result.success == 1) {
         this.cart_details=result.data;
@@ -100,13 +131,13 @@ buyitem(item){
       // this.apiService.showToastMessage(result.message, 'top', 3000, 'redBg');
       }
     }, err => {
-      this.apiService.presentLoadingClose();
       this.apiService.showToastMessage(JSON.stringify(err), 'top', 3000, 'redBg');
       
     });
      
     });
   }
+
   itemDetailsShow(){
    // this.apiService.presentLoadingDefault();
     this.zone.run(async () => {
@@ -134,37 +165,37 @@ buyitem(item){
      
   
     });
-   }
- modalcall(){
-  this.sendData.cartDetails =  this.cart_details;
-  console.log(" this.cart_details" ,  this.cart_detail);
-  
-  if(this.addres.data.data.length != 0){
-    this.sendData.address_id = this.addres.data.data[0].auto_id;
-  this.presentAlertConfirm();
- }
- else{
-   this.apiService.showToastMessage("Address is Required", 'top', 2000, 'redBg');
- }
-}
-async callModal(){
-  const modal = await this.modalCtrl.create({
-    component: RedeemotpPage,
-    cssClass: 'my-custom-class'
-  });
-  modal.onDidDismiss().then((dataReturned) => {
-    console.log("data returned after dismiss modal==",dataReturned);
-    if (dataReturned !== null) {
-      this.route.navigate(['/purchasehistory']);
-    }
-    else{
-      
-    }
-  });
-  this.sendData.alldata={"request_for":this.allocationData.customer_id,"request_user_type":this.allocationData.employee_type}
-  this.sendData.item=this.redeem_for;
-  return await modal.present();
-}
+  }
+  modalcall(){
+    this.sendData.cartDetails =  this.cart_details;
+    console.log(" this.cart_details" ,  this.cart_detail);
+    if(this.addres.data.data.length != 0){
+      this.sendData.address_id = this.addres.data.data[0].auto_id;
+    this.presentAlertConfirm();
+  }
+  else{
+    this.apiService.showToastMessage("Address is Required", 'top', 2000, 'redBg');
+  }
+  }
+
+  async callModal(){
+    const modal = await this.modalCtrl.create({
+      component: RedeemotpPage,
+      cssClass: 'my-custom-class'
+    });
+    modal.onDidDismiss().then((dataReturned) => {
+      console.log("data returned after dismiss modal==",dataReturned);
+      if (dataReturned !== null) {
+        this.route.navigate(['/purchasehistory']);
+      }
+      else{
+        
+      }
+    });
+    this.sendData.alldata={"request_for":this.allocationData.customer_id,"request_user_type":this.allocationData.employee_type}
+    this.sendData.item=this.redeem_for;
+    return await modal.present();
+  }
 // async presentPopover(ev: any) {
 //   const popover = await this.popoverController.create({
 //     component: redeemotp,
@@ -178,30 +209,30 @@ async callModal(){
 //  // const { role } = await popover.onDidDismiss();
 // //  console.log('onDidDismiss resolved with role', role);
 // }
-async presentAlertConfirm() {
-  const alert = await this.alertController.create({
-    cssClass: 'my-custom-class',
-    message: 'Are you sure, you want to buy?',
-    buttons: [
-      {
-        text: 'No',
-        role: 'cancel',
-        cssClass: 'secondary',
-        handler: (blah) => {
-          console.log('Confirm Cancel: blah');
+  async presentAlertConfirm() {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      message: 'Are you sure, you want to redeem?',
+      buttons: [
+        {
+          text: 'No',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            console.log('Confirm Cancel: blah');
+          }
+        }, {
+          text: 'Yes',
+          handler: () => {
+            this.callModal();
+            console.log('Confirm Okay');
+          }
         }
-      }, {
-        text: 'Yes',
-        handler: () => {
-          this.callModal();
-          console.log('Confirm Okay');
-        }
-      }
-    ]
-  });
+      ]
+    });
 
-  await alert.present();
-}
+    await alert.present();
+  }
 showAddress(){
   this.apiService.presentLoadingDefault();
   this.zone.run(()=>{
@@ -254,8 +285,8 @@ doneUpdate(){
       "request_for":this.allocationData.customer_id,
       "request_user_type":this.allocationData.employee_type,
     }
-    console.log("apikey : ", apiKey)
-    console.log("product_arr:", this.cart_detail)
+    console.log("apikey : ", apiKey);
+    console.log("product_arr:", this.cart_detail);
     
     this.apiService.apiCallWithLoginToken(URLS.CartUrl, apiKey).subscribe((result) => {
      this.apiService.presentLoadingClose();

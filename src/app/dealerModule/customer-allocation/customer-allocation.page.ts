@@ -113,17 +113,14 @@ export class CustomerAllocationPage implements OnInit {
     this.router.navigate(['./redemption-report']);
     });
   }
+
  async addCustomer(allVal){
-  this.zone.run(() => {
-    this.sendData.alldata=allVal;
-    
-          this.sendData.loginKey={
-            "type":'Register',
-            "requestPage":'dealer'
-          }
-         // this.sendData.itemDetails=dataReturned;
-          this.router.navigate(['/mobile']); 
-        });
+  this.zone.run(() =>{
+    this.sendData.alldata={show_popup:['', allVal]};
+    this.sendData.loginKey={"type":'Register',"requestPage":'dealer'}
+    // this.sendData.itemDetails=dataReturned;
+    this.router.navigate(['/mobile']); 
+  });
   }
       
 }

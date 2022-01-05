@@ -4,6 +4,7 @@
     <ion-buttons slot="start">
       <ion-back-button (click)="close()"></ion-back-button>
     </ion-buttons>
+
   </ion-toolbar>
 </ion-header>
 <ion-content class="ion-padding">
@@ -12,7 +13,7 @@
 	  </ion-refresher>
   <ion-row>
     <ion-col [size]="12" sizexs="12" size-md="8" size-lg="8" push-md="2" push-lg="2" class="whiteCol ion-no-padding">
-      <div *ngIf="temparray?.success==1" style="background-image: url('assets/Other Icons/Banner.svg');" class="bgWalletImage">
+      <div  style="background-image: url('assets/Other Icons/Banner.svg');" class="bgWalletImage">
         <ion-row>
           <ion-col [size]="2" sizexs="2" size-md="2" size-lg="2">
             <img [src]="temparray?.header_data?.coin_icon" onerror="this.src='assets/watermark/watermark.png'" class="walletImages">
@@ -28,19 +29,33 @@
         </ion-row>
       </div>
       <div>
-        <ion-row *ngIf = "temparray?.header_data?.cart_btn_applicable == true">
-          <ion-col size = "9" class="ion-text-right col_sss">
-            <img [src]="temparray?.header_data?.cart_icon" onerror="this.src='assets/watermark/watermark.png'" class="walletImage1">
+        <ion-row>
+          <ion-col [size]="12" sizexs="12" size-md="12" size-lg="12" >
+            <ion-searchbar placeholder="Search Product"  [(ngModel)]="productSearch" (ionChange)="searchApi($event)"></ion-searchbar>
           </ion-col>
-          <ion-col size = "3" class="col_ss" (click)="goToCart()">
-            <p>{{temparray?.header_data?.cart_text}}: {{temparray?.header_data?.total_products}}</p>
+        </ion-row>
+        <ion-row >
+          <ion-col [size]="8" sizexs="8" size-md="10" size-lg="10"  >
+          <div >
+            <img src="assets/Other Icons/filter.png" class="filterImg" (click)="ModalOpen()"/>
+          </div>
+          </ion-col>
+          <ion-col [size]="4" sizexs="4" size-md="2" size-lg="2" (click)="goToCart()" 
+          *ngIf = "temparray?.header_data?.cart_btn_applicable == true">
+            <ion-row>
+              <ion-col [size]="4" sizexs="4" size-md="3" size-lg="3" class="ion-no-padding">
+                <img [src]="temparray?.header_data?.cart_icon" onerror="this.src='assets/watermark/watermark.png'" class="walletImage1">
+              </ion-col>
+              <ion-col [size]="8" sizexs="8" size-md="9" size-lg="9" >
+                <p class="ion-no-margin">{{temparray?.header_data?.cart_text}}: {{temparray?.header_data?.total_products}}</p></ion-col>
+            </ion-row>
           </ion-col>
         </ion-row>
        
         
       </div>
       <ion-row class="rowReedem">
-        <ion-col [size]="12" sizexs="12" size-md="12" size-lg="12" *ngFor="let item of serverData; let ind=index">
+        <ion-col [size]="12" sizexs="12" size-md="12" size-lg="12" *ngFor="let item of serverData ; let ind=index">
         
           <div class="slabsDiv">
           <p class="ion-no-margin slabsPDiv">{{item.slabs}}</p>
@@ -82,9 +97,12 @@
         </ion-col>
       
       </ion-row>
-     <div>
+     <!-- <div *ngIf="errorImage!=''">
        <img [src]="errorImage"/>
-     </div>
+     </div> -->
+     <div *ngIf="errorMessage!=''">
+     <p class="ion-text-center">{{errorMessage}}</p>
+    </div>
     </ion-col>
   </ion-row>
 </ion-content>

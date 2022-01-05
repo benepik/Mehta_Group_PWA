@@ -1,0 +1,89 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Filter</ion-title>
+    <ion-buttons slot="start" (click)="gotoBack()">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end" >
+     <ion-button (click)="clearFilter()" style="color:white;"> Clear</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="leftDiv">
+    <ion-row>
+      <ion-col [size]="4" class="padd">
+        <ion-row *ngFor="let Data of filterData; let i=index" (click)="applydata(Data,i)">
+          <ion-col [size]="12" [ngClass]="{colorchange: changecolorcheck==i,colorsame: changecolorcheck!=i}">
+            <p class="parasize cntr">{{Data?.name}}</p>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+      <ion-col [size]="8" class="newCol8">
+        <ion-row *ngFor="let seconddata of applydataarr; let j=index" 
+        (click)="select(seconddata,j)" [ngClass]="{colorchange1:seconddata?.is_selected=='1'}">
+          <!-- <ion-col [size]="3" class="mrauto">
+            <div> <img *ngIf="seconddata.logo" [src]="seconddata.logo" class="imgcss" /></div>
+          </ion-col> -->
+          <ion-col [size]="12" class="mrauto">
+            <p class="parasize">{{seconddata.category_name}}</p>
+          </ion-col>
+        </ion-row>
+        <br><br><br><br>
+      </ion-col>
+    </ion-row>
+  <!-- </div>
+  <div class="rightDiv"> -->
+    <!-- <div class="bottombton">
+      <ion-row>
+        <ion-col [size]="12" class="centerelement">
+          <ion-button class="themeBtn" tappable (click)="ClickOnNext()">Apply</ion-button>
+        </ion-col>
+      </ion-row>
+    </div> -->
+
+    <div class="tempBtnDiv">
+      <ion-row >
+          <ion-col [size]="4" class="ion-text-center">
+              <!-- <ion-button class="themeBtn"  tappable (click)="todayAccountStatementList()">Apply</ion-button> -->
+            </ion-col>
+        <ion-col [size]="8" class="ion-text-center">
+          <ion-button class="ionic_btn"  tappable (click)="applyfun()">Apply</ion-button>
+        </ion-col>
+      </ion-row>
+    </div>
+  </div>
+  
+  <!-- <ion-row>
+    <ion-col [size]="4" class="padd">
+      <ion-row *ngFor="let Data of filterData; let i=index" (click)="applydata(Data,i)">
+        <ion-col [size]="12" [ngClass]="{colorchange: changecolorcheck==i,colorsame: changecolorcheck!=i}">
+          <p class="parasize cntr">{{Data.name}}</p>
+        </ion-col>
+      </ion-row>
+    </ion-col>
+    <ion-col [size]="8" class="newCol8">
+      <ion-row *ngFor="let seconddata of applydataarr; let j=index" (click)="select(seconddata,j)" [ngClass]="{colorchange1: selectedindex==j,colorsame: selectedindex!=j}">
+        <ion-col [size]="3">
+          <img *ngIf="seconddata.logo" [src]="seconddata.logo" class="imgcss" />
+        </ion-col>
+        <ion-col [size]="9" class="mrauto">
+          <p class="parasize">{{seconddata.name}}</p>
+        </ion-col>
+      </ion-row>
+
+    </ion-col>
+  </ion-row> -->
+
+</ion-content>
+
+<!-- <ion-footer>
+    <ion-row >
+        <ion-col [size]="4" class="centerelement">
+          </ion-col>
+        <ion-col [size]="8" class="centerelement">
+          <ion-button class="themeBtn"  tappable (click)="todayAccountStatementList()">Apply</ion-button>
+        </ion-col>
+      </ion-row>
+  </ion-footer> -->

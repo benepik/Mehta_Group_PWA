@@ -10,12 +10,18 @@
   .walletImages{ height: 40px;width: 50px;object-fit: contain;margin: auto;display: block;}
     .colorWhite{color: #fff;}
     .accTitle{font-size:14px; font-weight:bold;}
-    .bgWalletImage{background-repeat: no-repeat; background-size: cover; background-position: center;}
-    .totalBtn{--background:#ec6d72;text-transform:initial;max-width:100%;white-space:pre-wrap;font-size:11px;
-        --padding-start: 5px; --padding-end: 5px;}
-    .fontAcc{font-size: 12px;}
+    .bgWalletImage{background-repeat: no-repeat; background-size: cover; background-position: center;padding: 10px;}
+    .totalBtn{--background:#ec6d72;text-transform:initial;
+      // max-width:100%;
+      white-space:pre-wrap;font-size:14px;font-weight: bold;
+        // --padding-start: 5px; --padding-end: 5px;
+      }
+    .fontAcc{font-size: 15px;letter-spacing: 1px;}
     .dataTable{
       .header-row td{min-width:100px;padding: 10px;  border-right: 1px solid #fff;}
       tr td {padding:2px;border-right: 1px solid #ECEEEF;font-size: 13px;}
 
     }
+    .boldDiv{    font-weight: bold;
+      font-size: 18px;
+      letter-spacing: 1px;}

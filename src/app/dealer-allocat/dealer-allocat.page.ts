@@ -16,7 +16,8 @@ export class DealerAllocatPage implements OnInit {
   mnth:any='';
   yr:any='';
   message:any;
-  constructor(private route: Router, public platform:Platform, private apiService: ApiService,private zone:NgZone,private sendData:DataTransferService) {
+  constructor(private route: Router, public platform:Platform, private apiService: ApiService,private zone:NgZone,
+    private sendData:DataTransferService) {
     // this.mnth = this.month.slice(5,7);
     // this.yr= this.month.slice(0,4);
     platform.ready().then(() => {

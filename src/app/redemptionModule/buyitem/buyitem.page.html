@@ -32,7 +32,7 @@
             
             <ion-row *ngIf="cart_details?.length>0">
                 <ion-col [size]="12" size-xs="12" size-md="12" size-lg="12" class="brbottom">
-                    <p class="para">Item purchased</p>
+                    <p class="para">Item redeemed</p>
                 </ion-col>
             </ion-row>
             <ion-row *ngIf ="msg">
@@ -40,17 +40,22 @@
                     <h5 style="color: #B01D22;" class="no-margin">{{msg}}</h5>
                 </ion-col>
             </ion-row>
-            <ion-row class="brbottom" *ngFor = "let item of cart_details">
+            <ion-row class="brbottom" *ngFor = "let item of cart_details; let i=index;">
                 <!-- {{cart_details}} -->
+          
+           
                 <ion-col *ngIf="msg==''" [size]="3" sizexs="3" size-md="3" size-lg="3">
                     <img [src]="item?.good_image" onerror="this.src='assets/watermark/watermark.png'" class="imgcss">
                 </ion-col>
-                <ion-col *ngIf="msg==''" [size]="5" sizexs="5" size-md="5" size-lg="5">
+                <ion-col *ngIf="msg==''" [size]="8" sizexs="8" size-md="8" size-lg="8">
                     <p class="para1">{{item?.goods_name}}</p>
                     <p class="para1">{{item?.good_point}}</p>
                     <!-- <p class="para2">Amount 6000</p> -->
                 </ion-col>
-                <ion-col *ngIf="msg==''" [size]="4" sizexs="4" size-md="4" size-lg="4" class="mrauto">
+                <ion-col class="circle"  [size]="1" sizexs="1" size-md="1" size-lg="1" class="autoMargin">
+                    <ion-icon name="close" class="circle_close" (click)="closeBtn(item)"></ion-icon>
+                </ion-col>
+                <!-- <ion-col *ngIf="msg==''" [size]="4" sizexs="4" size-md="4" size-lg="4" class="mrauto">
                     <ion-row >
                         <ion-col [size]="3" sizexs="3" size-md="3" size-lg="3" class="txtend">
                             <div>
@@ -66,13 +71,13 @@
                             </div>
                         </ion-col>
                     </ion-row>
-                </ion-col>
+                </ion-col> -->
             </ion-row>
             <br>
-            <br>
+            <!-- <br> -->
             <div class="ion-text-center">
-                <ion-button class="ionic_btn" *ngIf="showDonebutt ==1 && !msg" (click)="doneUpdate()">Done</ion-button>
-                <ion-button class="ionic_btn"  *ngIf="showDonebutt ==0 && !msg" (click)="modalcall()">Buy</ion-button>
+                <ion-button class="ionic_btn1" *ngIf="showDonebutt ==1 && !msg" (click)="doneUpdate()">Done</ion-button>
+                <ion-button class="ionic_btn1"  *ngIf="showDonebutt ==0 && !msg" (click)="modalcall()">Redeem</ion-button>
             </div>
             <br>
         </ion-col>

@@ -12,14 +12,14 @@
     <ion-col [size]="12" size-sm="12" size-md="8" size-lg="8" push-lg="2" push-md="2" class="whiteCol ion-padding borderRediDiv quick widthtotalDiv">
         <ion-searchbar placeholder="Search Customer"  [(ngModel)]="searchString" (ionChange)="searchCustomer($event)"></ion-searchbar>
       <ion-row>
-        <ion-col size-xl="6" size-md="6" size-xs="6">
+        <ion-col size-xl="6" size-md="6" size-xs="6" class="ion-no-padding">
          <ion-item lines="none">
            <!-- <ion-label position="stacked">Change Year</ion-label> -->
              <ion-datetime [(ngModel)] = "month" displayFormat="MMMM" placeholder="Month" (ionChange)="changeData($event)"></ion-datetime>
              <ion-icon name="chevron-down-outline"></ion-icon>
            </ion-item>
         </ion-col>
-        <ion-col size-xl="6" size-md="6" size-xs="6" class="autoMargin">
+        <ion-col size-xl="6" size-md="6" size-xs="6" class="autoMargin ion-no-padding">
             <!-- <ion-label position="stacked">Customer Type &nbsp;<ion-icon name="chevron-down-outline"></ion-icon></ion-label> -->
             <ion-select  placeholder="Customer Type"  (ionChange)="checkValue($event)" class="ion-text-center">
               <ion-select-option *ngFor = "let id of listType" [value]="id?.value" >{{id?.key}}</ion-select-option>

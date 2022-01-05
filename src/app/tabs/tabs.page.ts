@@ -142,7 +142,6 @@ export class TabsPage implements OnInit{
       this.apiService.apiCallWithLoginToken(URLS.LogOutUrl,apiKey).subscribe((result) =>{
         console.log('logout data response',result);   
         this.localStorage.remove('allStoreData');
-
         this.apiService.generateDeviceId();
         this.apiService.generateFCMToken();
         this.maintance();

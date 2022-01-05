@@ -250,6 +250,10 @@ const routes: Routes = [
     path: 'force-optional-update',
     loadChildren: () => import('./force-optional-update/force-optional-update.module').then( m => m.ForceOptionalUpdatePageModule)
   },
+  {
+    path: 'redeemfilter',
+    loadChildren: () => import('./redeemfilter/redeemfilter.module').then( m => m.RedeemfilterPageModule)
+  },
 ];
 
 @NgModule({

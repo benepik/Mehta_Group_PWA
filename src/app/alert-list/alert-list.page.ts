@@ -59,12 +59,21 @@ export class AlertListPage implements OnInit {
   }
 
 
+  // alertDetail(data){
+  //   this.zone.run(()=>{
+  //     if(data.fron_end_page_name!=''){
+  //       this.sendData.alldata=data;
+  //       console.log('alertDat',this.sendData.alldata);    
+  //       this.router.navigate([data.fron_end_page_name]);
+  //     }else{}
+  //   });
+  // }
   alertDetail(data){
     this.zone.run(()=>{
-      if(data.fron_end_page_name!=''){
+      if(data.redirection_type==1){
         this.sendData.alldata=data;
         console.log('alertDat',this.sendData.alldata);    
-        this.router.navigate([data.fron_end_page_name]);
+        this.router.navigate([data.href]);
       }else{}
     });
   }
